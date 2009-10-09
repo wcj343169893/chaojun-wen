@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>JavaWeb</display-name>
+	<welcome-file-list>
+		<welcome-file>upload.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!--
+		配置servlet容器的初始化参数，参数名字设置为"yoyoServletContextInit"
+		参数的值为"servet容器的初始化参数值"。取得该参数的过程，请参照elDemoRequest.jsp
+	-->
+	<context-param>
+		<param-name>yoyoServletContextInit</param-name>
+		<param-value>servet容器的初始化参数值</param-value>
+	</context-param>
+
+	<!-- 设置session过期时间，这里设置为1分钟，因此在本工程中session将在1分钟后失效 -->
+	<session-config>
+		<session-timeout>1</session-timeout>
+	</session-config>
+	
+	<!-- 
+		该配置可有可无，意思是告诉其他人，当前应用程序依赖于容器的实现，也就是说它用了
+		Tomcat的数据库连接池的实现。以后如果该项目发布到其他web服务器(如weblogic)的时候，
+		要在其他web服务器上配置数据库连接池。这段配置就是一个提示的作用。关于tomcat下的
+		数据源配置，可以通过D:\Program Files\Apache Software Foundation\Tomcat 6.0\conf
+		路径下的context.xml来实现。请参照服务器上的context.xml文件。另外，如果使用在
+		Tomcat下配置数据源，则需要将classes12.jar驱动复制到D:\Program Files\Apache Software Foundation\Tomcat 6.0\lib
+		路径下，否则tomcat将无法连接ORACLE。如果工程中都是通过tomcat(或其他服务器连接数据库)，
+		则工程中可以不导入classes12.jar。
+    -->
+	<resource-ref>
+		<res-ref-name>jdbc/testDB</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	
+	<!-- 
+		配置过滤器
+		其配置方法和配置servlet非常相似，但是过滤器配置必须放在servlet配置的前面！
+		另外 url-pattern属性是用来指定要针对那个页面或者servlet进行过滤的，
+		如果要对工程中所有的页面和servlet进行过滤，则将该属性设置为/*。
+		另外过滤器链的先后取决于这里的配置先后顺序
+	-->
+	<filter>
+		<filter-name>WelcomeFilter</filter-name>
+		<filter-class>com.zuxia.chapter5.WelcomeFilter</filter-class>
+		<init-param>
+			<param-name>yoyoInit</param-name>
+			<param-value>yoyoInitValue</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>WelcomeFilter</filter-name>
+		<url-pattern>/chapter5/welcome.jsp</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>WelcomeFilter2</filter-name>
+		<filter-class>com.zuxia.chapter5.WelcomeFilter2</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>WelcomeFilter2</filter-name>
+		<url-pattern>/chapter5/welcome.jsp</url-pattern>
+	</filter-mapping>
+	
+	<!-- 配置监听器 -->
+	<listener>
+		<listener-class>com.zuxia.chapter5.MySessionListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.zuxia.chapter5.MyServletContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.zuxia.chapter5.MyRequestListener</listener-class>
+	</listener>
+
+	<!--
+		要想使用servlet，就必须要通过在web.xml中配置servlet。这里注意
+		和下面的elDemoRequestJspServlet作区分。但是其中的初始化参数不是必须的，如果不需要可以不配置。
+	-->
+	<servlet>
+		<servlet-name>demoServlet</servlet-name>
+		<servlet-class>com.zuxia.chapter2.DemoServlet</servlet-class>
+		<init-param>
+			<param-name>demoServletInit</param-name>
+			<param-value>demoServlet初始化参数</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>loginServlet</servlet-name>
+		<servlet-class>com.zuxia.chapter5.LoginServlet</servlet-class>
+	</servlet>
+
+	<!--
+		配置elDemoRequest.jsp页面的初始化参数，注意和前面的"yoyoServletContextInit"进行区分。
+		这里将elDemoRequest.jsp页面的初始化参数名设置为jspinit,参数值设置为"elDemoRequest.jsp页面的初始值"
+		另外在设置其访问路径的时候，最好设置成与其存放路径相同。另外需要注意，如果我们不需要配置jsp初始化参数
+		的时候，这个servlet就没有必要配置了。
+	-->
+	<servlet>
+		<servlet-name>elDemoRequestJspServlet</servlet-name>
+		<jsp-file>/chapter2/elDemoRequest.jsp</jsp-file>
+		<init-param>
+			<param-name>jspinit</param-name>
+			<param-value>elDemoRequest.jsp页面的初始值</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!-- 配置第6章的Servlet，该Servlet通过配置连接池得到数据源的事例Servlet -->
+	<servlet>
+		<servlet-name>dataSourceDemoServlet</servlet-name>
+		<servlet-class>com.zuxia.chapter6.DataSourceDemoServlet</servlet-class>
+	</servlet>
+	
+	<!-- 配置第7章的Servlet,该Servlet用于上传文件 -->
+	<servlet>
+		<servlet-name>UploadServlet</servlet-name>
+		<servlet-class>com.zuxia.chapter7.UploadServlet</servlet-class>
+	</servlet>
+	
+	<!-- 配置第7章的Servlet,该Servlet用于下载文件 -->
+	<servlet>
+		<description>
+		</description>
+		<display-name>DownLoadServlet</display-name>
+		<servlet-name>DownLoadServlet</servlet-name>
+		<servlet-class>
+		com.zuxia.chapter7.DownLoadServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ByteUploadServlet</display-name>
+		<servlet-name>ByteUploadServlet</servlet-name>
+		<servlet-class>
+		com.zuxia.chapter7.ByteUploadServlet</servlet-class>
+	</servlet>
+	
+	<!-- 
+		配置servlet-mapping，注意url-pattern属性，该属性如果不带前路径，代表servlet在web根目录下(如/demoServlet)
+		若带前路径，则代表servlet在web根目录下的相应目录下(如/chapter5/loginServlet)。
+		另外servlet-name属性必须跟servlet中配置的servlet-name保持一致。
+	 -->
+	<servlet-mapping>
+		<servlet-name>demoServlet</servlet-name>
+		<url-pattern>/demoServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>elDemoRequestJspServlet</servlet-name>
+		<url-pattern>/chapter2/elDemoRequest.jsp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>loginServlet</servlet-name>
+		<url-pattern>/chapter5/loginServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>dataSourceDemoServlet</servlet-name>
+		<url-pattern>/chapter6/dataSourceDemoServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UploadServlet</servlet-name>
+		<url-pattern>/uploadServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DownLoadServlet</servlet-name>
+		<url-pattern>/downLoadServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ByteUploadServlet</servlet-name>
+		<url-pattern>/byteUploadServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 
+		配置标签库信息。这一步是为了方便在jsp中调用自定义标签。如果在jsp中直接
+		通过	/WEB-INF/tld/date.tld路径导入标签，则在web.xml中没有必要进行以下配置。
+		以下配置中的<taglib-uri>date</taglib-uri>用于在jsp中导入标签时填写的uri；
+		<taglib-location>/WEB-INF/tld/date.tld</taglib-location>则将指向真实的tld文件
+	 -->
+	<jsp-config>
+		<taglib>
+			<taglib-uri>date</taglib-uri>
+			<taglib-location>/WEB-INF/tld/date.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+</web-app>
+

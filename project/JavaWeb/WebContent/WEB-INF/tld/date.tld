@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+	<!--
+		关于body-content属性 对于继承TagSupport、BodyTagSupport的标签,如果不含标签间值的时候，
+		body-content属性的值可以设置为"empty"、"JSP"、"tagdependent"。
+		empty:空标记，即起始标记和结束标记之间没有内容;
+		JSP:接受所有JSP语法，如定制的或内部的tag、scripts、静态HTML、脚本元素、JSP指令和动作;
+		tagdependent:标签体内容直接被写入BodyContent，由自定义标签类来进行处理，而不被JSP容器解释;
+
+		对于继承SimpleTagSupport的标签，body-content属性的值可以设置为"empty"、"tagdependent"、"scriptless"。
+		其中scriptless接受文本、EL和JSP动作。其他请参照前面的注释说明。
+	-->
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.1</jsp-version>
+	<short-name>date</short-name>
+	<tag>
+		<name>displayDate</name>
+		<tag-class>
+			com.zuxia.chapter3.DisplayDate
+		</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
+
+	<tag>
+		<name>infoTagBodyExample</name>
+		<tag-class>com.zuxia.chapter3.InfoTagBodyExample</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<name>count</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>userName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>demoSimpleTag</name>
+		<tag-class>com.zuxia.chapter3.DemoSimpleTag</tag-class>
+		<body-content>Scriptless</body-content>
+		<attribute>
+			<name>num</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+</taglib>
