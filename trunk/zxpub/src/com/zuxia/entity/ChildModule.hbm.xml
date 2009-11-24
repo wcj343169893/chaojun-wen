@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-11-23 12:07:21 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="com.zuxia.entity.ChildModule" table="child_module" catalog="chaojun">
+        <id name="childModuleCd" type="java.lang.Integer">
+            <column name="CHILD_MODULE_CD" />
+            <generator class="identity" />
+        </id>
+        <property name="moduleCd" type="java.lang.Integer">
+            <column name="MODULE_CD" />
+        </property>
+        <property name="childModuleName" type="string">
+            <column name="CHILD_MODULE_NAME" length="40" />
+        </property>
+        <property name="childModuleMasterCd" type="java.lang.Integer">
+            <column name="CHILD_MODULE_MASTER_CD" />
+        </property>
+        <property name="moduleComment" type="string">
+            <column name="MODULE_COMMENT" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

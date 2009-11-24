@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory name="sessionFactory">
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.password">123456</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:8080/zxpub</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<mapping resource="com/zuxia/entity/ChildModule.hbm.xml" />
+		<mapping resource="com/zuxia/entity/City.hbm.xml" />
+		<mapping resource="com/zuxia/entity/FellowNote.hbm.xml" />
+		<mapping resource="com/zuxia/entity/hibernate.reveng.xml" />
+		<mapping resource="com/zuxia/entity/Module.hbm.xml" />
+		<mapping resource="com/zuxia/entity/Note.hbm.xml" />
+		<mapping resource="com/zuxia/entity/Password.hbm.xml" />
+		<mapping resource="com/zuxia/entity/Province.hbm.xml" />
+		<mapping resource="com/zuxia/entity/QuestionMaster.hbm.xml" />
+		<mapping resource="com/zuxia/entity/SafeQuestion.hbm.xml" />
+		<mapping resource="com/zuxia/entity/User.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
