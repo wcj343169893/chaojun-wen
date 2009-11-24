@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+	<!--
+		- Middle tier application context definition for the image database.
+	-->
+<beans>
+	<bean id="userDao" class="com.zuxia.dao.UserDao"></bean>
+	<bean id="userService" class="com.zuxia.service.UserService">
+		<property name="userDao" ref="userDao" />
+	</bean>
+	<bean id="RegistAction" class="com.zuxia.action.RegistAction">
+		<property name="userService" ref="userService" />
+	</bean>
+	<bean id="LoginAction" class="com.zuxia.action.LoginAction">
+		<property name="userService" ref="userService" />
+	</bean>
+</beans>

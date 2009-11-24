@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="chaojun" match-name="child_module"/>
+  <table-filter match-catalog="chaojun" match-name="city"/>
+  <table-filter match-catalog="chaojun" match-name="fellow_note"/>
+  <table-filter match-catalog="chaojun" match-name="module"/>
+  <table-filter match-catalog="chaojun" match-name="note"/>
+  <table-filter match-catalog="chaojun" match-name="password"/>
+  <table-filter match-catalog="chaojun" match-name="province"/>
+  <table-filter match-catalog="chaojun" match-name="question_master"/>
+  <table-filter match-catalog="chaojun" match-name="safe_question"/>
+  <table-filter match-catalog="chaojun" match-name="user"/>
+</hibernate-reverse-engineering>
