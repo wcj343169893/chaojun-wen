@@ -35,7 +35,7 @@
 	</field>
 	<field name="user.email">
 		<field-validator type="email">
-			<message>请输入邮箱</message>
+			<message>输入的邮箱格式不正确</message>
 		</field-validator>
 	</field>
 </validators>

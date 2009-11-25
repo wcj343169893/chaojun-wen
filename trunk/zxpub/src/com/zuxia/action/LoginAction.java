@@ -1,44 +1,40 @@
 package com.zuxia.action;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.zuxia.entity.Password;
-import com.zuxia.entity.SafeQuestion;
 import com.zuxia.entity.User;
 import com.zuxia.service.IUserService;
 
-/**
- * RegistAction概要说明 处理注册
- * 
- * @author 文朝军
- */
-public class RegistAction extends ActionSupport {
+public class LoginAction extends ActionSupport {
 	private IUserService userService;
 
 	private User user;
 
 	private Password password;
 
-	private SafeQuestion safeQuestion;
-	
-	private String password2;
+	private String validateCode;
 
 	/**
-	 * password2属性的get方法
+	 * validateCode属性的get方法
 	 * 
-	 * @return the password2
+	 * @return the validateCode
 	 */
-	public String getPassword2() {
-		return password2;
+	public String getValidateCode() {
+		return validateCode;
 	}
 
 	/**
-	 * password2属性的set方法
+	 * validateCode属性的set方法
 	 * 
-	 * @param password2
-	 *            the password2 to set
+	 * @param validateCode
+	 *            the validateCode to set
 	 */
-	public void setPassword2(String password2) {
-		this.password2 = password2;
+	public void setValidateCode(String validateCode) {
+		this.validateCode = validateCode;
 	}
 
 	/**
@@ -98,32 +94,23 @@ public class RegistAction extends ActionSupport {
 		this.password = password;
 	}
 
-	/**
-	 * safeQuestion属性的get方法
-	 * 
-	 * @return the safeQuestion
-	 */
-	public SafeQuestion getSafeQuestion() {
-		return safeQuestion;
-	}
-
-	/**
-	 * safeQuestion属性的set方法
-	 * 
-	 * @param safeQuestion
-	 *            the safeQuestion to set
-	 */
-	public void setSafeQuestion(SafeQuestion safeQuestion) {
-		this.safeQuestion = safeQuestion;
-	}
-
 	@Override
 	public String execute() throws Exception {
-		password.setUser(user);
-		user.setPassword(password);
-		boolean isRegist = userService.insert(user);
-		if (isRegist) {
+		User u = userService.getUserByUserName(user.getUserName());
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Object validate_session = request.getSession().getAttribute("validateCodeRecruit");
+		System.out.println("validate_session:"+validate_session);
+		if (!validate_session.equals(validateCode.toUpperCase())) {
+			request.getSession().setAttribute("logerror", "验证码错误");
+		} else if (u == null) {
+			request.getSession().setAttribute("logerror", "用户名不存在");
+		} else if (password.getPassword().equals(u.getPassword().getPassword())) {
+			request.getSession().removeAttribute("logerror");
+			request.getSession().setAttribute("users", u);
+			System.out.println("验证登录通过");
 			return "success";
+		} else {
+			request.getSession().setAttribute("logerror", "密码错误");
 		}
 		return "error";
 	}
