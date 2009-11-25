@@ -29,7 +29,7 @@
 	<P class="STYLE2"><span class="STYLE3">信息提交成功！</span></P>
 	</center>
 	<center><input type="button" value="确 定"
-		style="height: 20px; width: 40px; font-size: 10px" onClick="window.open('regist.jsp');window.close();"></center>
+		style="height: 20px; width: 40px; font-size: 10px" onClick=""></center>
 	</DIV>
 
 	<!-- 尾 --> 
