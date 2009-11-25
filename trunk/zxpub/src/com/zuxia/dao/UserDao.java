@@ -30,6 +30,7 @@ public class UserDao extends HibernateDaoSupport implements IUserDao {
 		try {
 			String hql = "from User where USER_NAME=:userName";
 			Query query = session.createQuery(hql);
+			query.setParameter("userName", userName);
 			List<User> userList = query.list();
 			if (userList != null && userList.size() > 0) {
 				user = userList.get(0);
