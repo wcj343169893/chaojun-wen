@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-11-25 11:12:28 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="com.zuxia.entity.SafeQuestion" table="safe_question" catalog="zxpub">
+        <id name="userCd" type="int">
+            <column name="USER_CD" />
+            <generator class="assigned" />
+        </id>
+        <property name="questionCd" type="java.lang.Integer">
+            <column name="QUESTION_CD" />
+        </property>
+        <property name="answer" type="string">
+            <column name="ANSWER" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>
