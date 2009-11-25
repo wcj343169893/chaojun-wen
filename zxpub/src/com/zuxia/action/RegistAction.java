@@ -1,16 +1,6 @@
 package com.zuxia.action;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.ServletActionContext;
-
-import com.jspsmart.upload.SmartUpload;
-import com.jspsmart.upload.SmartUploadException;
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.org.apache.xml.internal.security.Init;
 import com.zuxia.entity.Password;
 import com.zuxia.entity.SafeQuestion;
 import com.zuxia.entity.User;
@@ -29,25 +19,22 @@ public class RegistAction extends ActionSupport {
 	private Password password = new Password();
 
 	private SafeQuestion safeQuestion = new SafeQuestion();
-	private ServletConfig config;
+	private String password2;
 
 	/**
-	 * config属性的get方法
-	 * 
-	 * @return the config
+	 * password2属性的get方法
+	 * @return the password2
 	 */
-	public ServletConfig getConfig() {
-		return config;
+	public String getPassword2() {
+		return password2;
 	}
 
 	/**
-	 * config属性的set方法
-	 * 
-	 * @param config
-	 *            the config to set
+	 * password2属性的set方法
+	 * @param password2 the password2 to set
 	 */
-	public void setConfig(ServletConfig config) {
-		this.config = config;
+	public void setPassword2(String password2) {
+		this.password2 = password2;
 	}
 
 	/**
@@ -128,7 +115,9 @@ public class RegistAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		boolean isRegist = userService.regist(user, password, safeQuestion);
+		password.setUser(user);
+		user.setPassword(password);
+		boolean isRegist = userService.insert(user);
 		if (isRegist) {
 			return "success";
 		}

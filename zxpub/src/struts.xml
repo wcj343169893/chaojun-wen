@@ -5,8 +5,8 @@
 
 <struts>
 
-	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
-	<constant name="struts.devMode" value="false" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="true" />
 	<constant name="struts.objectFactory" value="spring" />
 	<constant name="struts.action.extension" value="do,action"></constant>
 	<package name="zxpub" extends="struts-default">
@@ -14,11 +14,6 @@
 			<result name="input">/regist.jsp</result>
 			<result name="error">/regist.jsp</result>
 			<result name="success">/success.jsp</result>
-		</action>
-		<action name="login" class="LoginAction">
-			<result name="input">/regist.jsp</result>
-			<result name="error">/regist.jsp</result>
-			<result name="success">/succes.jsp</result>
 		</action>
 	</package>
 </struts>
