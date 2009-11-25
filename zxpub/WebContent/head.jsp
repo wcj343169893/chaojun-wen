@@ -22,7 +22,7 @@
 			<LI id=memcp><A href="login.jsp" target="_parent">登录</A></LI>
 		</c:when>
 		<c:otherwise>
-			<LI id=memcp><CITE><A href="">${users.name }</A> </CITE></LI>
+			<LI id=memcp><CITE><A href="">${users.userName }</A> </CITE></LI>
 			<LI id=memcp><A href="index.jsp" target="_parent">首页</A></LI>
 			<LI id=memcp><A href="">退出</A></LI>
 			<LI id=memcp><A href="">积分管理</A></LI>
