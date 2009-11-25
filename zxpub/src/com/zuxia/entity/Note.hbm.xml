@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-11-25 11:12:28 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="com.zuxia.entity.Note" table="note" catalog="zxpub">
+        <id name="noteCd" type="java.lang.Integer">
+            <column name="NOTE_CD" />
+            <generator class="identity" />
+        </id>
+        <property name="pubUserCd" type="java.lang.Integer">
+            <column name="PUB_USER_CD" />
+        </property>
+        <property name="moduleCd" type="java.lang.Integer">
+            <column name="MODULE_CD" />
+        </property>
+        <property name="childModuleCd" type="java.lang.Integer">
+            <column name="CHILD_MODULE_CD" />
+        </property>
+        <property name="title" type="string">
+            <column name="TITLE" length="40" />
+        </property>
+        <property name="content" type="string">
+            <column name="CONTENT" length="4000" />
+        </property>
+        <property name="publishDate" type="date">
+            <column name="PUBLISH_DATE" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>
