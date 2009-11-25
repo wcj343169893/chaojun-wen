@@ -23,6 +23,7 @@ public class RegistAction extends ActionSupport {
 
 	/**
 	 * password2属性的get方法
+	 * 
 	 * @return the password2
 	 */
 	public String getPassword2() {
@@ -31,7 +32,9 @@ public class RegistAction extends ActionSupport {
 
 	/**
 	 * password2属性的set方法
-	 * @param password2 the password2 to set
+	 * 
+	 * @param password2
+	 *            the password2 to set
 	 */
 	public void setPassword2(String password2) {
 		this.password2 = password2;
