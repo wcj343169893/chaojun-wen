@@ -209,7 +209,7 @@ var ispass=false;
 			tabindex="28"></textarea></td>
 	</tr>
 </table>
-<button class="submit" type="submit" name="regsubmit" value="true"
+<button class="submit" type="submit" value="true"
 	tabindex="100">提交</button>
 </div>
 </form>

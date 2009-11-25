@@ -1,8 +1,6 @@
 package com.zuxia.service;
 
 import com.zuxia.dao.IUserDao;
-import com.zuxia.entity.Password;
-import com.zuxia.entity.SafeQuestion;
 import com.zuxia.entity.User;
 
 public class UserService implements IUserService {
@@ -17,9 +15,8 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public boolean regist(User user, Password password,
-			SafeQuestion safeQuestion) {
-		return userDao.regist(user, password, safeQuestion);
+	public boolean insert(User user) {
+		return userDao.insert(user);
 	}
 
 	@Override
