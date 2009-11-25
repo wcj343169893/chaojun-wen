@@ -21,20 +21,17 @@ public class UserService implements IUserService {
 
 	@Override
 	public User getUserByUserName(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.getUserByUserName(userName);
 	}
 
 	@Override
 	public boolean deleteUserByName(String name) {
-		// TODO Auto-generated method stub
-		return false;
+		return userDao.deleteUserByName(name);
 	}
 
 	@Override
 	public boolean updateUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		return userDao.updateUser(user);
 	}
 
 }
