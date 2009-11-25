@@ -15,18 +15,26 @@
 				userName.value="";
 			}
 		}
+		function reloadVerifyCode(obj){  
+		    obj.src = "<%=request.getContextPath()%>/ValidateImageServlet?d=" + new Date();
+		} 
 	</script>
+	<!-- 在父级窗口显示 -->
+<base target="_parent">
 </head>
 <body>
 <DIV id=foruminfo>
 <DIV id=userinfo><c:choose>
 	<c:when test="${empty users}">
 		<DIV id=nav>
-		<FORM action="login.action" method="post"><INPUT maxLength="40" size="15"
+		<FORM action="login.do" method="post"><INPUT maxLength="40" size="15"
 			value="用户名" name="user.userName"
-			onclick="clickusername(this);" onblur="if(this.value==''){this.value='用户名'}" /> <INPUT
-			type="password" size="10" name="password.password" /> <INPUT
-			type="submit" value="登录" /></FORM>
+			onclick="clickusername(this);" onblur="if(this.value==''){this.value='用户名'}" tabIndex=1/>密码: <INPUT
+			type="password" size="10" name="password.password" tabIndex=2 />验证码:<input name="validateCode" type="text" size="4" maxlength="4" tabIndex=3 />
+		  <img alt="看不清楚，换一张"
+			src="<%=request.getContextPath() %>/ValidateImageServlet"
+			onclick="reloadVerifyCode(this);" style="cursor: hand;" /> <INPUT
+			type="submit" value="登录" tabIndex=4 /></FORM>
 		</DIV>
 	</c:when>
 	<c:otherwise>

@@ -30,7 +30,7 @@ function reloadVerifyCode(obj){
 								<TD>
 									会员登录
 								</TD>
-								<td>${logerror }</td>
+								<td style="color: red;">${logerror }</td>
 							</TR>
 						</THEAD>
 						<TBODY>
@@ -66,7 +66,7 @@ function reloadVerifyCode(obj){
 									验证码
 								</TD>
 								<TD>
-									  <input name="validateCode" type="text" size="4" maxlength="4" />
+									  <input name="validateCode" type="text" size="4" maxlength="4" tabIndex=4 />
 		  <img alt="看不清楚，换一张"
 			src="<%=request.getContextPath() %>/ValidateImageServlet"
 			onclick="reloadVerifyCode(this);" style="cursor: hand;" />
