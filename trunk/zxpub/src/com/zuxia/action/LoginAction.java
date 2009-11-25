@@ -98,6 +98,8 @@ public class LoginAction extends ActionSupport {
 	public String execute() throws Exception {
 		User u = userService.getUserByUserName(user.getUserName());
 		HttpServletRequest request = ServletActionContext.getRequest();
+		System.out.println(request.getRequestURI());
+		System.out.println(request.getRequestURL());
 		Object validate_session = request.getSession().getAttribute("validateCodeRecruit");
 		System.out.println("validate_session:"+validate_session);
 		if (!validate_session.equals(validateCode.toUpperCase())) {
@@ -105,6 +107,7 @@ public class LoginAction extends ActionSupport {
 		} else if (u == null) {
 			request.getSession().setAttribute("logerror", "用户名不存在");
 		} else if (password.getPassword().equals(u.getPassword().getPassword())) {
+			
 			request.getSession().removeAttribute("logerror");
 			request.getSession().setAttribute("users", u);
 			System.out.println("验证登录通过");
