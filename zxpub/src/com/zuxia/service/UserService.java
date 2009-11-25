@@ -25,4 +25,16 @@ public class UserService implements IUserService {
 		return null;
 	}
 
+	@Override
+	public boolean deleteUserByName(String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateUser(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
