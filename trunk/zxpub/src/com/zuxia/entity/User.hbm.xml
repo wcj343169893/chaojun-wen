@@ -25,12 +25,10 @@
 		<property name="birthday" type="date">
 			<column name="BIRTHDAY" length="0" />
 		</property>
-		<property name="provinceCd" type="java.lang.Integer">
-			<column name="PROVINCE_CD" />
-		</property>
-		<property name="cityCd" type="java.lang.Integer">
-			<column name="CITY_CD" />
-		</property>
+		<many-to-one name="province" class="com.zuxia.entity.Province"
+			column="PROVINCE_CD"></many-to-one>
+		<many-to-one name="city" class="com.zuxia.entity.City"
+			column="CITY_CD"></many-to-one>
 		<property name="email" type="string">
 			<column name="EMAIL" length="40" />
 		</property>

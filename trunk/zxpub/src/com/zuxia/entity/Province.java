@@ -12,7 +12,16 @@ public class Province implements java.io.Serializable {
 
 	private Integer provinceCd;
 	private String provinceName;
+	/**
+	 * citys属性概述
+	 * 
+	 */
 	private List<City> citys = new ArrayList<City>();
+	/**
+	 * users属性概述
+	 * 
+	 */
+	private List<User> users = new ArrayList<User>();
 
 	/**
 	 * provinceCd属性的get方法
@@ -69,6 +78,25 @@ public class Province implements java.io.Serializable {
 	 */
 	public void setCitys(List<City> citys) {
 		this.citys = citys;
+	}
+
+	/**
+	 * users属性的get方法
+	 * 
+	 * @return the users
+	 */
+	public List<User> getUsers() {
+		return users;
+	}
+
+	/**
+	 * users属性的set方法
+	 * 
+	 * @param users
+	 *            the users to set
+	 */
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 }
