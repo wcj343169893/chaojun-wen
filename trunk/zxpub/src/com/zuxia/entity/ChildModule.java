@@ -1,5 +1,8 @@
 package com.zuxia.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * ChildModule概要说明
  * 
@@ -16,6 +19,29 @@ public class ChildModule implements java.io.Serializable {
 	private String childModuleName;
 	private String moduleComment;
 	private User user;
+	/**
+	 * notes属性概述 主贴
+	 */
+	private List<Note> notes = new ArrayList<Note>();
+
+	/**
+	 * notes属性的get方法
+	 * 
+	 * @return the notes
+	 */
+	public List<Note> getNotes() {
+		return notes;
+	}
+
+	/**
+	 * notes属性的set方法
+	 * 
+	 * @param notes
+	 *            the notes to set
+	 */
+	public void setNotes(List<Note> notes) {
+		this.notes = notes;
+	}
 
 	/**
 	 * user属性的get方法

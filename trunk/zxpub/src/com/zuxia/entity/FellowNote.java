@@ -10,58 +10,108 @@ import java.util.Date;
 public class FellowNote implements java.io.Serializable {
 
 	private Integer fellowNoteCd;
-	private Integer ownerNoteCd;
-	private Integer flwUserCd;
+	/**
+	 * note属性概述 主帖子CODE
+	 */
+	private Note note;
+	/**
+	 * user属性概述 跟贴用户CODE
+	 */
+	private User user;
 	private String flwContent;
 	private Date publishDate;
 
-	public FellowNote() {
-	}
-
-	public FellowNote(Integer ownerNoteCd, Integer flwUserCd,
-			String flwContent, Date publishDate) {
-		this.ownerNoteCd = ownerNoteCd;
-		this.flwUserCd = flwUserCd;
-		this.flwContent = flwContent;
-		this.publishDate = publishDate;
-	}
-
+	/**
+	 * fellowNoteCd属性的get方法
+	 * 
+	 * @return the fellowNoteCd
+	 */
 	public Integer getFellowNoteCd() {
-		return this.fellowNoteCd;
+		return fellowNoteCd;
 	}
 
+	/**
+	 * fellowNoteCd属性的set方法
+	 * 
+	 * @param fellowNoteCd
+	 *            the fellowNoteCd to set
+	 */
 	public void setFellowNoteCd(Integer fellowNoteCd) {
 		this.fellowNoteCd = fellowNoteCd;
 	}
 
-	public Integer getOwnerNoteCd() {
-		return this.ownerNoteCd;
+	/**
+	 * note属性的get方法
+	 * 
+	 * @return the note
+	 */
+	public Note getNote() {
+		return note;
 	}
 
-	public void setOwnerNoteCd(Integer ownerNoteCd) {
-		this.ownerNoteCd = ownerNoteCd;
+	/**
+	 * note属性的set方法
+	 * 
+	 * @param note
+	 *            the note to set
+	 */
+	public void setNote(Note note) {
+		this.note = note;
 	}
 
-	public Integer getFlwUserCd() {
-		return this.flwUserCd;
+	/**
+	 * user属性的get方法
+	 * 
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
 	}
 
-	public void setFlwUserCd(Integer flwUserCd) {
-		this.flwUserCd = flwUserCd;
+	/**
+	 * user属性的set方法
+	 * 
+	 * @param user
+	 *            the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
 	}
 
+	/**
+	 * flwContent属性的get方法
+	 * 
+	 * @return the flwContent
+	 */
 	public String getFlwContent() {
-		return this.flwContent;
+		return flwContent;
 	}
 
+	/**
+	 * flwContent属性的set方法
+	 * 
+	 * @param flwContent
+	 *            the flwContent to set
+	 */
 	public void setFlwContent(String flwContent) {
 		this.flwContent = flwContent;
 	}
 
+	/**
+	 * publishDate属性的get方法
+	 * 
+	 * @return the publishDate
+	 */
 	public Date getPublishDate() {
-		return this.publishDate;
+		return publishDate;
 	}
 
+	/**
+	 * publishDate属性的set方法
+	 * 
+	 * @param publishDate
+	 *            the publishDate to set
+	 */
 	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
 	}

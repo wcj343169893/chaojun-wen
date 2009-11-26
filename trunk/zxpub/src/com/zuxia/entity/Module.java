@@ -13,66 +13,108 @@ public class Module implements java.io.Serializable {
 	private Integer moduleCd;
 	private String moduleName;
 	/**
-	 * user属性概述
-	 * 大模块版主CODE
+	 * user属性概述 大模块版主CODE
 	 */
 	private User user;
 	/**
-	 * childModule属性概述  子版块
+	 * childModule属性概述 子版块
 	 */
 	private List<ChildModule> childModule = new ArrayList<ChildModule>();
 	/**
+	 * notes属性概述 主贴
+	 */
+	private List<Note> notes = new ArrayList<Note>();
+
+	/**
+	 * notes属性的get方法
+	 * 
+	 * @return the notes
+	 */
+	public List<Note> getNotes() {
+		return notes;
+	}
+
+	/**
+	 * notes属性的set方法
+	 * 
+	 * @param notes
+	 *            the notes to set
+	 */
+	public void setNotes(List<Note> notes) {
+		this.notes = notes;
+	}
+
+	/**
 	 * moduleCd属性的get方法
+	 * 
 	 * @return the moduleCd
 	 */
 	public Integer getModuleCd() {
 		return moduleCd;
 	}
+
 	/**
 	 * moduleCd属性的set方法
-	 * @param moduleCd the moduleCd to set
+	 * 
+	 * @param moduleCd
+	 *            the moduleCd to set
 	 */
 	public void setModuleCd(Integer moduleCd) {
 		this.moduleCd = moduleCd;
 	}
+
 	/**
 	 * moduleName属性的get方法
+	 * 
 	 * @return the moduleName
 	 */
 	public String getModuleName() {
 		return moduleName;
 	}
+
 	/**
 	 * moduleName属性的set方法
-	 * @param moduleName the moduleName to set
+	 * 
+	 * @param moduleName
+	 *            the moduleName to set
 	 */
 	public void setModuleName(String moduleName) {
 		this.moduleName = moduleName;
 	}
+
 	/**
 	 * user属性的get方法
+	 * 
 	 * @return the user
 	 */
 	public User getUser() {
 		return user;
 	}
+
 	/**
 	 * user属性的set方法
-	 * @param user the user to set
+	 * 
+	 * @param user
+	 *            the user to set
 	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 	/**
 	 * childModule属性的get方法
+	 * 
 	 * @return the childModule
 	 */
 	public List<ChildModule> getChildModule() {
 		return childModule;
 	}
+
 	/**
 	 * childModule属性的set方法
-	 * @param childModule the childModule to set
+	 * 
+	 * @param childModule
+	 *            the childModule to set
 	 */
 	public void setChildModule(List<ChildModule> childModule) {
 		this.childModule = childModule;

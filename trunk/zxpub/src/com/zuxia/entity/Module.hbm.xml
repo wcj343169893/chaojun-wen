@@ -17,5 +17,9 @@
 		</bag>
 		<many-to-one name="user" class="com.zuxia.entity.User"
 			column="MODULE_MASTER_CD"></many-to-one>
+		<bag name="notes">
+			<key column="MODULE_CD"></key>
+			<one-to-many class="com.zuxia.entity.Note" />
+		</bag>
 	</class>
 </hibernate-mapping>
