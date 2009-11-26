@@ -1,5 +1,8 @@
 package com.zuxia.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // Generated 2009-11-25 11:12:27 by Hibernate Tools 3.2.4.GA
 
 /**
@@ -9,38 +12,70 @@ public class Module implements java.io.Serializable {
 
 	private Integer moduleCd;
 	private String moduleName;
-	private Integer moduleMasterCd;
-
-	public Module() {
-	}
-
-	public Module(String moduleName, Integer moduleMasterCd) {
-		this.moduleName = moduleName;
-		this.moduleMasterCd = moduleMasterCd;
-	}
-
+	/**
+	 * user属性概述
+	 * 大模块版主CODE
+	 */
+	private User user;
+	/**
+	 * childModule属性概述  子版块
+	 */
+	private List<ChildModule> childModule = new ArrayList<ChildModule>();
+	/**
+	 * moduleCd属性的get方法
+	 * @return the moduleCd
+	 */
 	public Integer getModuleCd() {
-		return this.moduleCd;
+		return moduleCd;
 	}
-
+	/**
+	 * moduleCd属性的set方法
+	 * @param moduleCd the moduleCd to set
+	 */
 	public void setModuleCd(Integer moduleCd) {
 		this.moduleCd = moduleCd;
 	}
-
+	/**
+	 * moduleName属性的get方法
+	 * @return the moduleName
+	 */
 	public String getModuleName() {
-		return this.moduleName;
+		return moduleName;
 	}
-
+	/**
+	 * moduleName属性的set方法
+	 * @param moduleName the moduleName to set
+	 */
 	public void setModuleName(String moduleName) {
 		this.moduleName = moduleName;
 	}
-
-	public Integer getModuleMasterCd() {
-		return this.moduleMasterCd;
+	/**
+	 * user属性的get方法
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
 	}
-
-	public void setModuleMasterCd(Integer moduleMasterCd) {
-		this.moduleMasterCd = moduleMasterCd;
+	/**
+	 * user属性的set方法
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
+	/**
+	 * childModule属性的get方法
+	 * @return the childModule
+	 */
+	public List<ChildModule> getChildModule() {
+		return childModule;
+	}
+	/**
+	 * childModule属性的set方法
+	 * @param childModule the childModule to set
+	 */
+	public void setChildModule(List<ChildModule> childModule) {
+		this.childModule = childModule;
 	}
 
 }
