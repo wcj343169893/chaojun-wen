@@ -24,6 +24,10 @@ public class User implements java.io.Serializable {
 	private Date lastLoginDate;
 	private Date registDate;
 	private String comment;
+	/**
+	 * password属性概述
+	 * 
+	 */
 	private Password password;
 	/**
 	 * modules属性概述 主版块
@@ -33,9 +37,56 @@ public class User implements java.io.Serializable {
 	 * childModules属性概述 子版块
 	 */
 	private List<ChildModule> childModules = new ArrayList<ChildModule>();
+	/**
+	 * notes属性概述 主贴
+	 */
+	private List<Note> notes = new ArrayList<Note>();
+	/**
+	 * fellowNotes属性概述 跟帖
+	 */
+	private List<FellowNote> fellowNotes = new ArrayList<FellowNote>();
+
+	/**
+	 * notes属性的get方法
+	 * 
+	 * @return the notes
+	 */
+	public List<Note> getNotes() {
+		return notes;
+	}
+
+	/**
+	 * notes属性的set方法
+	 * 
+	 * @param notes
+	 *            the notes to set
+	 */
+	public void setNotes(List<Note> notes) {
+		this.notes = notes;
+	}
+
+	/**
+	 * fellowNotes属性的get方法
+	 * 
+	 * @return the fellowNotes
+	 */
+	public List<FellowNote> getFellowNotes() {
+		return fellowNotes;
+	}
+
+	/**
+	 * fellowNotes属性的set方法
+	 * 
+	 * @param fellowNotes
+	 *            the fellowNotes to set
+	 */
+	public void setFellowNotes(List<FellowNote> fellowNotes) {
+		this.fellowNotes = fellowNotes;
+	}
 
 	/**
 	 * childModules属性的get方法
+	 * 
 	 * @return the childModules
 	 */
 	public List<ChildModule> getChildModules() {
@@ -44,7 +95,9 @@ public class User implements java.io.Serializable {
 
 	/**
 	 * childModules属性的set方法
-	 * @param childModules the childModules to set
+	 * 
+	 * @param childModules
+	 *            the childModules to set
 	 */
 	public void setChildModules(List<ChildModule> childModules) {
 		this.childModules = childModules;

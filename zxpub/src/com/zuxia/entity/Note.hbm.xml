@@ -6,17 +6,11 @@
     <class name="com.zuxia.entity.Note" table="note" catalog="zxpub">
         <id name="noteCd" type="java.lang.Integer">
             <column name="NOTE_CD" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
-        <property name="pubUserCd" type="java.lang.Integer">
-            <column name="PUB_USER_CD" />
-        </property>
-        <property name="moduleCd" type="java.lang.Integer">
-            <column name="MODULE_CD" />
-        </property>
-        <property name="childModuleCd" type="java.lang.Integer">
-            <column name="CHILD_MODULE_CD" />
-        </property>
+        <many-to-one name="user" class="com.zuxia.entity.User" column="PUB_USER_CD"></many-to-one>
+        <many-to-one name="module" class="com.zuxia.entity.Module" column="MODULE_CD"></many-to-one>
+        <many-to-one name="childModule" class="com.zuxia.entity.ChildModule" column="CHILD_MODULE_CD"></many-to-one>
         <property name="title" type="string">
             <column name="TITLE" length="40" />
         </property>
@@ -26,5 +20,9 @@
         <property name="publishDate" type="date">
             <column name="PUBLISH_DATE" length="0" />
         </property>
+        <bag name="fellowNote">
+        	<key column="OWNER_NOTE_CD"></key>
+        	<one-to-many class="com.zuxia.entity.FellowNote"/>
+        </bag>
     </class>
 </hibernate-mapping>

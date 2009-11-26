@@ -1,24 +1,23 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2009-11-25 11:12:28 by Hibernate Tools 3.2.4.GA -->
+	<!-- Generated 2009-11-25 11:12:28 by Hibernate Tools 3.2.4.GA -->
 <hibernate-mapping>
-    <class name="com.zuxia.entity.FellowNote" table="fellow_note" catalog="zxpub">
-        <id name="fellowNoteCd" type="java.lang.Integer">
-            <column name="FELLOW_NOTE_CD" />
-            <generator class="identity" />
-        </id>
-        <property name="ownerNoteCd" type="java.lang.Integer">
-            <column name="OWNER_NOTE_CD" />
-        </property>
-        <property name="flwUserCd" type="java.lang.Integer">
-            <column name="FLW_USER_CD" />
-        </property>
-        <property name="flwContent" type="string">
-            <column name="FLW_CONTENT" length="1000" />
-        </property>
-        <property name="publishDate" type="date">
-            <column name="PUBLISH_DATE" length="0" />
-        </property>
-    </class>
+	<class name="com.zuxia.entity.FellowNote" table="fellow_note"
+		catalog="zxpub">
+		<id name="fellowNoteCd" type="java.lang.Integer">
+			<column name="FELLOW_NOTE_CD" />
+			<generator class="native" />
+		</id>
+		<many-to-one name="note" class="com.zuxia.entity.Note"
+			column="OWNER_NOTE_CD"></many-to-one>
+		<many-to-one name="user" class="com.zuxia.entity.User"
+			column="FLW_USER_CD"></many-to-one>
+		<property name="flwContent" type="string">
+			<column name="FLW_CONTENT" length="1000" />
+		</property>
+		<property name="publishDate" type="date">
+			<column name="PUBLISH_DATE" length="0" />
+		</property>
+	</class>
 </hibernate-mapping>
