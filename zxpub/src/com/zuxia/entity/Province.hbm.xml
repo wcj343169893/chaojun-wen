@@ -6,10 +6,14 @@
     <class name="com.zuxia.entity.Province" table="province" catalog="zxpub">
         <id name="provinceCd" type="java.lang.Integer">
             <column name="PROVINCE_CD" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
         <property name="provinceName" type="string">
             <column name="PROVINCE_NAME" length="20" />
         </property>
+        <bag name="citys">
+        	<key column="PROVINCE_CD"></key>
+        	<one-to-many class="com.zuxia.entity.City"/>
+        </bag>
     </class>
 </hibernate-mapping>

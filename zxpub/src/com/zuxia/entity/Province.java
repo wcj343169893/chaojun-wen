@@ -1,5 +1,8 @@
 package com.zuxia.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // Generated 2009-11-25 11:12:27 by Hibernate Tools 3.2.4.GA
 
 /**
@@ -9,28 +12,63 @@ public class Province implements java.io.Serializable {
 
 	private Integer provinceCd;
 	private String provinceName;
+	private List<City> citys = new ArrayList<City>();
 
-	public Province() {
-	}
-
-	public Province(String provinceName) {
-		this.provinceName = provinceName;
-	}
-
+	/**
+	 * provinceCd属性的get方法
+	 * 
+	 * @return the provinceCd
+	 */
 	public Integer getProvinceCd() {
-		return this.provinceCd;
+		return provinceCd;
 	}
 
+	/**
+	 * provinceCd属性的set方法
+	 * 
+	 * @param provinceCd
+	 *            the provinceCd to set
+	 */
 	public void setProvinceCd(Integer provinceCd) {
 		this.provinceCd = provinceCd;
 	}
 
+	/**
+	 * provinceName属性的get方法
+	 * 
+	 * @return the provinceName
+	 */
 	public String getProvinceName() {
-		return this.provinceName;
+		return provinceName;
 	}
 
+	/**
+	 * provinceName属性的set方法
+	 * 
+	 * @param provinceName
+	 *            the provinceName to set
+	 */
 	public void setProvinceName(String provinceName) {
 		this.provinceName = provinceName;
+	}
+
+	/**
+	 * citys属性的get方法
+	 * 
+	 * @return the citys
+	 */
+	public List<City> getCitys() {
+		return citys;
+	}
+
+	/**
+	 * citys属性的set方法
+	 * 
+	 * @param citys
+	 *            the citys to set
+	 */
+	public void setCitys(List<City> citys) {
+		this.citys = citys;
 	}
 
 }

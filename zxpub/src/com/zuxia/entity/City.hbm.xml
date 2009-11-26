@@ -6,11 +6,9 @@
     <class name="com.zuxia.entity.City" table="city" catalog="zxpub">
         <id name="cityCd" type="java.lang.Integer">
             <column name="CITY_CD" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
-        <property name="provinceCd" type="java.lang.Integer">
-            <column name="PROVINCE_CD" />
-        </property>
+        <many-to-one name="province" class="com.zuxia.entity.Province"></many-to-one>
         <property name="cityName" type="string">
             <column name="CITY_NAME" length="20" />
         </property>
