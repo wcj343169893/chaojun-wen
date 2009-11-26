@@ -8,20 +8,6 @@
 <title></title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/style_10.css" />
-	<script type="text/javascript">
-		function getChange()
-		{
-			
-			if(document.getElementById("chkMany").checked==true)
-			{
-				document.getElementById("div1").style.display="block";
-			}
-			else
-			{
-				document.getElementById("div1").style.display="none";
-			}
-		}
-		</script>
 </head>
 <body><DIV class=wrap>
 			<!-- *************头************* -->
@@ -32,6 +18,7 @@
 			<iframe width=100% height=48px src="navigation.jsp" frameborder=0>
 			</iframe>
 			<!-- *************网站导航地图************* -->
+			<form action="">
 			<DIV class="mainbox formbox">
 				<H1>
 					发新话题
@@ -43,9 +30,9 @@
 								用户名
 							</TH>
 							<TD>
-								xiaolan [
+								${users.userName }
 								<A
-									href="http://bbs.thec.cn/logging.php?action=logout&amp;formhash=6b487188">退出登录</A>]
+									href="LogoutServlet">退出登录</A>]
 							</TD>
 						</TR>
 					</THEAD>
