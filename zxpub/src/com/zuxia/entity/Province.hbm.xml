@@ -1,19 +1,23 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2009-11-25 11:12:28 by Hibernate Tools 3.2.4.GA -->
+	<!-- Generated 2009-11-25 11:12:28 by Hibernate Tools 3.2.4.GA -->
 <hibernate-mapping>
-    <class name="com.zuxia.entity.Province" table="province" catalog="zxpub">
-        <id name="provinceCd" type="java.lang.Integer">
-            <column name="PROVINCE_CD" />
-            <generator class="native" />
-        </id>
-        <property name="provinceName" type="string">
-            <column name="PROVINCE_NAME" length="20" />
-        </property>
-        <bag name="citys">
-        	<key column="PROVINCE_CD"></key>
-        	<one-to-many class="com.zuxia.entity.City"/>
-        </bag>
-    </class>
+	<class name="com.zuxia.entity.Province" table="province" catalog="zxpub">
+		<id name="provinceCd" type="java.lang.Integer">
+			<column name="PROVINCE_CD" />
+			<generator class="native" />
+		</id>
+		<property name="provinceName" type="string">
+			<column name="PROVINCE_NAME" length="20" />
+		</property>
+		<bag name="citys">
+			<key column="PROVINCE_CD"></key>
+			<one-to-many class="com.zuxia.entity.City" />
+		</bag>
+		<bag name="users">
+			<key column="PROVINCE_CD"></key>
+			<one-to-many class="com.zuxia.entity.User" />
+		</bag>
+	</class>
 </hibernate-mapping>
