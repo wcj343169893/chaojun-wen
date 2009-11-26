@@ -8,44 +8,88 @@ package com.zuxia.entity;
 public class SafeQuestion implements java.io.Serializable {
 
 	private int userCd;
-	private Integer questionCd;
+	/**
+	 * questionMaster属性概述
+	 * 
+	 */
+	private QuestionMaster questionMaster;
 	private String answer;
+	private User user;
 
-	public SafeQuestion() {
-	}
-
-	public SafeQuestion(int userCd) {
-		this.userCd = userCd;
-	}
-
-	public SafeQuestion(int userCd, Integer questionCd, String answer) {
-		this.userCd = userCd;
-		this.questionCd = questionCd;
-		this.answer = answer;
-	}
-
+	/**
+	 * userCd属性的get方法
+	 * 
+	 * @return the userCd
+	 */
 	public int getUserCd() {
-		return this.userCd;
+		return userCd;
 	}
 
+	/**
+	 * userCd属性的set方法
+	 * 
+	 * @param userCd
+	 *            the userCd to set
+	 */
 	public void setUserCd(int userCd) {
 		this.userCd = userCd;
 	}
 
-	public Integer getQuestionCd() {
-		return this.questionCd;
+	/**
+	 * questionMaster属性的get方法
+	 * 
+	 * @return the questionMaster
+	 */
+	public QuestionMaster getQuestionMaster() {
+		return questionMaster;
 	}
 
-	public void setQuestionCd(Integer questionCd) {
-		this.questionCd = questionCd;
+	/**
+	 * questionMaster属性的set方法
+	 * 
+	 * @param questionMaster
+	 *            the questionMaster to set
+	 */
+	public void setQuestionMaster(QuestionMaster questionMaster) {
+		this.questionMaster = questionMaster;
 	}
 
+	/**
+	 * answer属性的get方法
+	 * 
+	 * @return the answer
+	 */
 	public String getAnswer() {
-		return this.answer;
+		return answer;
 	}
 
+	/**
+	 * answer属性的set方法
+	 * 
+	 * @param answer
+	 *            the answer to set
+	 */
 	public void setAnswer(String answer) {
 		this.answer = answer;
+	}
+
+	/**
+	 * user属性的get方法
+	 * 
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * user属性的set方法
+	 * 
+	 * @param user
+	 *            the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

@@ -10,6 +10,8 @@
 		</id>
 		<one-to-one name="password" class="com.zuxia.entity.Password"
 			cascade="all"></one-to-one>
+		<one-to-one name="safeQuestion" class="com.zuxia.entity.SafeQuestion"
+			cascade="all"></one-to-one>
 		<property name="userName" type="string">
 			<column name="USER_NAME" length="20" not-null="true" />
 		</property>
