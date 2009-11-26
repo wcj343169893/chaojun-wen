@@ -11,6 +11,11 @@ import java.util.List;
  */
 public class User implements java.io.Serializable {
 
+	/**
+	 * serialVersionUID属性概述
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer userCd;
 	private String userName;
 	private int roleCd;
@@ -37,6 +42,11 @@ public class User implements java.io.Serializable {
 	 * 
 	 */
 	private Password password;
+	/**
+	 * safeQuestion属性概述
+	 * 
+	 */
+	private SafeQuestion safeQuestion;
 	/**
 	 * modules属性概述 主版块
 	 */
@@ -394,6 +404,25 @@ public class User implements java.io.Serializable {
 	 */
 	public void setPassword(Password password) {
 		this.password = password;
+	}
+
+	/**
+	 * safeQuestion属性的get方法
+	 * 
+	 * @return the safeQuestion
+	 */
+	public SafeQuestion getSafeQuestion() {
+		return safeQuestion;
+	}
+
+	/**
+	 * safeQuestion属性的set方法
+	 * 
+	 * @param safeQuestion
+	 *            the safeQuestion to set
+	 */
+	public void setSafeQuestion(SafeQuestion safeQuestion) {
+		this.safeQuestion = safeQuestion;
 	}
 
 }

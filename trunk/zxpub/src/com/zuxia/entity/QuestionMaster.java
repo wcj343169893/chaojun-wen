@@ -1,5 +1,8 @@
 package com.zuxia.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // Generated 2009-11-25 11:12:27 by Hibernate Tools 3.2.4.GA
 
 /**
@@ -9,28 +12,67 @@ public class QuestionMaster implements java.io.Serializable {
 
 	private Integer questionCd;
 	private String question;
+	/**
+	 * safeQuestions属性概述
+	 * 
+	 */
+	private List<SafeQuestion> safeQuestions = new ArrayList<SafeQuestion>();
 
-	public QuestionMaster() {
-	}
-
-	public QuestionMaster(String question) {
-		this.question = question;
-	}
-
+	/**
+	 * questionCd属性的get方法
+	 * 
+	 * @return the questionCd
+	 */
 	public Integer getQuestionCd() {
-		return this.questionCd;
+		return questionCd;
 	}
 
+	/**
+	 * questionCd属性的set方法
+	 * 
+	 * @param questionCd
+	 *            the questionCd to set
+	 */
 	public void setQuestionCd(Integer questionCd) {
 		this.questionCd = questionCd;
 	}
 
+	/**
+	 * question属性的get方法
+	 * 
+	 * @return the question
+	 */
 	public String getQuestion() {
-		return this.question;
+		return question;
 	}
 
+	/**
+	 * question属性的set方法
+	 * 
+	 * @param question
+	 *            the question to set
+	 */
 	public void setQuestion(String question) {
 		this.question = question;
+	}
+
+	/**
+	 * safeQuestions属性的get方法
+	 * 
+	 * @return the safeQuestions
+	 */
+	public List<SafeQuestion> getSafeQuestions() {
+		return safeQuestions;
+	}
+
+	/**
+	 * safeQuestions属性的set方法
+	 * 
+	 * @param safeQuestions
+	 *            the safeQuestions to set
+	 */
+	public void setSafeQuestions(List<SafeQuestion> safeQuestions) {
+		this.safeQuestions = safeQuestions;
 	}
 
 }

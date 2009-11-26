@@ -1,15 +1,20 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2009-11-25 11:12:28 by Hibernate Tools 3.2.4.GA -->
+	<!-- Generated 2009-11-25 11:12:28 by Hibernate Tools 3.2.4.GA -->
 <hibernate-mapping>
-    <class name="com.zuxia.entity.QuestionMaster" table="question_master" catalog="zxpub">
-        <id name="questionCd" type="java.lang.Integer">
-            <column name="QUESTION_CD" />
-            <generator class="identity" />
-        </id>
-        <property name="question" type="string">
-            <column name="QUESTION" length="50" />
-        </property>
-    </class>
+	<class name="com.zuxia.entity.QuestionMaster" table="question_master"
+		catalog="zxpub">
+		<id name="questionCd" type="java.lang.Integer">
+			<column name="QUESTION_CD" />
+			<generator class="identity" />
+		</id>
+		<property name="question" type="string">
+			<column name="QUESTION" length="50" />
+		</property>
+		<bag name="safeQuestions">
+			<key column="QUESTION_CD"></key>
+			<one-to-many class="com.zuxia.entity.SafeQuestion" />
+		</bag>
+	</class>
 </hibernate-mapping>
