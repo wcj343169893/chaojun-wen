@@ -8,37 +8,62 @@ package com.zuxia.entity;
 public class City implements java.io.Serializable {
 
 	private Integer cityCd;
-	private Integer provinceCd;
+	private Province province;
 	private String cityName;
 
-	public City() {
-	}
-
-	public City(Integer provinceCd, String cityName) {
-		this.provinceCd = provinceCd;
-		this.cityName = cityName;
-	}
-
+	/**
+	 * cityCd属性的get方法
+	 * 
+	 * @return the cityCd
+	 */
 	public Integer getCityCd() {
-		return this.cityCd;
+		return cityCd;
 	}
 
+	/**
+	 * cityCd属性的set方法
+	 * 
+	 * @param cityCd
+	 *            the cityCd to set
+	 */
 	public void setCityCd(Integer cityCd) {
 		this.cityCd = cityCd;
 	}
 
-	public Integer getProvinceCd() {
-		return this.provinceCd;
+	/**
+	 * province属性的get方法
+	 * 
+	 * @return the province
+	 */
+	public Province getProvince() {
+		return province;
 	}
 
-	public void setProvinceCd(Integer provinceCd) {
-		this.provinceCd = provinceCd;
+	/**
+	 * province属性的set方法
+	 * 
+	 * @param province
+	 *            the province to set
+	 */
+	public void setProvince(Province province) {
+		this.province = province;
 	}
 
+	/**
+	 * cityName属性的get方法
+	 * 
+	 * @return the cityName
+	 */
 	public String getCityName() {
-		return this.cityName;
+		return cityName;
 	}
 
+	/**
+	 * cityName属性的set方法
+	 * 
+	 * @param cityName
+	 *            the cityName to set
+	 */
 	public void setCityName(String cityName) {
 		this.cityName = cityName;
 	}
