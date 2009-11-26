@@ -31,7 +31,6 @@
 	<center><input type="button" value="确 定"
 		style="height: 20px; width: 40px; font-size: 10px" onClick=""></center>
 	</DIV>
-
 	<!-- 尾 --> 
 	<iframe width=100% height=113px src="cauda.jsp" frameborder=0>
 	</iframe> 
