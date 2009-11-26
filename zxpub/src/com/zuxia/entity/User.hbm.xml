@@ -45,5 +45,13 @@
         <property name="comment" type="string">
             <column name="COMMENT" length="200" />
         </property>
+        <bag name="modules">
+        	<key column="MODULE_MASTER_CD"></key>
+        	<one-to-many class="com.zuxia.entity.Module"/>
+        </bag>
+        <bag name="childModules">
+        	<key column="CHILD_MODULE_MASTER_CD"></key>
+        	<one-to-many class="com.zuxia.entity.ChildModule"/>
+        </bag>
     </class>
 </hibernate-mapping>
