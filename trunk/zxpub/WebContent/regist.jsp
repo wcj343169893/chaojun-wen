@@ -148,7 +148,7 @@ var ispass=false;
 	</tr>
 	<tr>
 		<th><label for="advshow"> 高级选项 </label></th>
-		<td><input id="advshow" name="advshow" class="checkbox"
+		<td><input id="advshow" class="checkbox"
 			type="checkbox" value="1" onclick="showadv()" tabindex="12" /> <label
 			for="advshow">显示高级用户设置选项 </label></td>
 	</tr>
@@ -164,7 +164,7 @@ var ispass=false;
 	</thead>
 	<tr>
 		<th><label for="questionid"> 安全提问 </label></th>
-		<td><select id="questionid" name="safeQuestion.questionCd"
+		<td><select id="questionid" name="safeQuestion.questionMaster.questionCd"
 			tabindex="13">
 			<option value="0">无安全提问</option>
 			<option value="1">母亲的名字</option>
@@ -191,12 +191,12 @@ var ispass=false;
 
 	<tr>
 		<th><label for="loactionnew"> 省 </label></th>
-		<td><input type="text" id="loactionnew" name="user.provinceCd"
+		<td><input type="text" id="loactionnew" name="user.province.provinceCd"
 			size="25" tabindex="21" /></td>
 	</tr>
 	<tr>
 		<th><label for="loactionnew"> 市 </label></th>
-		<td><input type="text" id="loactionnew" name="user.cityCd"
+		<td><input type="text" id="loactionnew" name="user.city.cityCd"
 			size="25" tabindex="21" /></td>
 	</tr>
 	<tr>

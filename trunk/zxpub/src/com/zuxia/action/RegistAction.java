@@ -12,6 +12,12 @@ import com.zuxia.service.IUserService;
  * @author ÎÄ³¯¾ü
  */
 public class RegistAction extends ActionSupport {
+	/**
+	 * serialVersionUIDÊôÐÔ¸ÅÊö
+	 * 
+	 */
+	private static final long serialVersionUID = 1445290649313491318L;
+
 	private IUserService userService;
 
 	private User user;

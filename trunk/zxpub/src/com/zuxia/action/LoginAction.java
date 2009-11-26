@@ -10,6 +10,12 @@ import com.zuxia.entity.User;
 import com.zuxia.service.IUserService;
 
 public class LoginAction extends ActionSupport {
+	/**
+	 * serialVersionUID Ù–‘∏≈ ˆ
+	 * 
+	 */
+	private static final long serialVersionUID = -2850961552303905001L;
+
 	private IUserService userService;
 
 	private User user;

@@ -1,7 +1,5 @@
 package com.zuxia.dao;
 
-import com.zuxia.entity.Password;
-import com.zuxia.entity.SafeQuestion;
 import com.zuxia.entity.User;
 
 public interface IUserDao {
