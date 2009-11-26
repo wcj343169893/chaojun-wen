@@ -1,5 +1,8 @@
 package com.zuxia.action;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.zuxia.entity.Password;
 import com.zuxia.entity.SafeQuestion;
@@ -127,6 +130,9 @@ public class RegistAction extends ActionSupport {
 	public String execute() throws Exception {
 		password.setUser(user);
 		user.setPassword(password);
+		SimpleDateFormat sdf=new SimpleDateFormat("");
+		
+		user.setRegistDate(new Date());
 		boolean isRegist = userService.insert(user);
 		if (isRegist) {
 			return "success";
