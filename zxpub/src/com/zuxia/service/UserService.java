@@ -28,7 +28,6 @@ public class UserService implements IUserService {
 			String filePath = ServletActionContext.getServletContext()
 					.getRealPath("/")
 					+ "head\\" + user.getPhotoPath();
-			System.out.println(filePath);
 			SaveFile(upload, filePath);
 		}
 		return userDao.insert(user);

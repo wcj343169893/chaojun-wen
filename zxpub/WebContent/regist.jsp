@@ -129,9 +129,11 @@ var ispass=false;
 	</tr>
 	<tr>
 		<th>性别</th>
-		<td><label> <input type="radio" name="user.sex" value="0"
+		<td><label> <input type="radio" name="user.sex" value="1"
 			checked="checked" tabindex="6" /> 男 </label> <label> <input
-			type="radio" name="user.sex" value="2" tabindex="18" /> 女 </label></td>
+			type="radio" name="user.sex" value="2" tabindex="18" /> 女 </label><s:fielderror>
+			<s:param>user.sex</s:param>
+		</s:fielderror></td>
 	</tr>
 	<tr>
 		<td><label for="email"> Email * </label></td>
@@ -181,7 +183,9 @@ var ispass=false;
 		<th><label for="bday"> 生日 </label></th>
 		<td><input type="text" id="bday" name="user.birthday" size="25"
 			onclick="setday(this)" runat="server" value="1990-01-01"
-			tabindex="20" /></td>
+			tabindex="20" /> <s:fielderror>
+			<s:param>user.birthday</s:param>
+		</s:fielderror></td>
 	</tr>
 
 	<tr>

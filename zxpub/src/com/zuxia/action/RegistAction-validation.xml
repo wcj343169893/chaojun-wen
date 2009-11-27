@@ -24,10 +24,9 @@
 	</field>
 	<field name="user.sex">
 		<field-validator type="fieldexpression">
-			<param name="expression">user.sex!=1 || user.sex!=2</param>
+			<param name="expression">user.sex=="1" || user.sex=="2"</param>
 			<message>请确定您的性别</message>
 		</field-validator>
-		
 	</field>
 	<field name="user.birthday">
 		<field-validator type="date">

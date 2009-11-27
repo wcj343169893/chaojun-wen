@@ -180,7 +180,14 @@ public class RegistAction extends ActionSupport {
 		user.setRegistDate(new Date());
 		user.setScore(0);
 		user.setRoleCd(0);
-		user.setPhotoPath(photoFileName);
+		user.setSafeQuestion(safeQuestion);
+		safeQuestion.setUser(user);
+		if (photoFileName != null) {
+			String fileName = user.getUserName()
+					+ photoFileName.substring(photoFileName.indexOf("."),
+							photoFileName.length());
+			user.setPhotoPath(fileName);
+		}
 		boolean isRegist = userService.insert(user, photo);
 		if (isRegist) {
 			return "success";
