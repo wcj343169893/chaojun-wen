@@ -14,11 +14,11 @@
 		<action name="regist" class="RegistAction">
 			<result name="input">/regist.jsp</result>
 			<result name="error">/regist.jsp</result>
-			<result name="success">/success.jsp</result>
+			<result name="success" type="redirect">/success.jsp</result>
 		</action>
 		<action name="login" class="LoginAction">
 			<result name="input">/login.jsp</result>
-			<result name="success">/success.jsp</result>
+			<result name="success" type="redirect">/success.jsp</result>
 			<result name="error">/login.jsp</result>
 		</action>
 	</package>
