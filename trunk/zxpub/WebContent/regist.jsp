@@ -95,7 +95,6 @@ var ispass=false;
 	action="regist.action" onSubmit="return checkform()">
 <div class="mainbox formbox">
 <h1>注册</h1>
-<s:fielderror></s:fielderror>
 <table summary="注册" cellspacing="0" cellpadding="0">
 	<thead>
 		<tr>
@@ -106,10 +105,10 @@ var ispass=false;
 	<tr>
 		<th><label for="username"> 用户名 * </label></th>
 		<td><input type="text" id="username" name="user.userName"
-			size="25" maxlength="15" onBlur="checkusername()" tabindex="3" /> <span
+			size="25" maxlength="15" onBlur="checkusername()" tabindex="3" /> <span 
 			id="checkusername" class="errorMessage"> <s:fielderror>
 			<s:param>user.userName</s:param>
-		</s:fielderror> </span></td>
+		</s:fielderror> ${userexist}</span></td>
 	</tr>
 
 	<tr>

@@ -3,6 +3,8 @@ package com.zuxia.action;
 import java.io.File;
 import java.util.Date;
 
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.zuxia.entity.Password;
 import com.zuxia.entity.SafeQuestion;
@@ -175,6 +177,14 @@ public class RegistAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
+		User user_db = userService.getUserByUserName(user.getUserName());
+		if (user_db != null) {
+			ServletActionContext.getRequest().getSession().setAttribute(
+					"userexist", "用户已经存在");
+			return "error";
+		}
+		ServletActionContext.getRequest().getSession().removeAttribute(
+				"userexist");
 		password.setUser(user);
 		user.setPassword(password);
 		user.setRegistDate(new Date());
