@@ -1,11 +1,11 @@
 package com.zuxia.service;
 
-import com.zuxia.entity.Password;
-import com.zuxia.entity.SafeQuestion;
+import java.io.File;
+
 import com.zuxia.entity.User;
 
 public interface IUserService {
-	public boolean insert(User user);
+	public boolean insert(User user,File upload);
 
 	public User getUserByUserName(String userName);
 

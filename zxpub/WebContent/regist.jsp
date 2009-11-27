@@ -9,8 +9,12 @@
 <title></title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/style_10.css" />
-<script src="js/common.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/setday.js"></script>
+<script src="${pageContext.request.contextPath}/js/common.js"
+	type="text/javascript"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/setday.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/pro_city.js"></script>
 <script type="text/javascript">
 var ispass=false;
 	function showadv() {
@@ -81,19 +85,17 @@ var ispass=false;
 	}
 </script>
 </head>
-<body>
-<DIV class=wrap><!-- *************头************* -->
- <iframe width=100% height=109px src="head.jsp" frameborder=0> </iframe> 
- <!-- *************头************* -->
-<!-- *************网站导航地图************* --> 
-	<iframe width=100% height=48px
-	src="navigation.jsp" frameborder=0> </iframe>
-	<!-- *************网站导航地图************* -->
+<body onload="setProvince(0),setCity(0)">
+<DIV class=wrap><!-- *************头************* --> <iframe
+	width=100% height=109px src="head.jsp" frameborder=0> </iframe> <!-- *************头************* -->
+<!-- *************网站导航地图************* --> <iframe width=100% height=48px
+	src="navigation.jsp" frameborder=0> </iframe> <!-- *************网站导航地图************* -->
 <div class="wrap">
-<form method="post" name="register" action="regist.action"
-	onSubmit="return checkform()">
+<form enctype="multipart/form-data" method="post" name="register"
+	action="regist.action" onSubmit="return checkform()">
 <div class="mainbox formbox">
 <h1>注册</h1>
+<s:fielderror></s:fielderror>
 <table summary="注册" cellspacing="0" cellpadding="0">
 	<thead>
 		<tr>
@@ -105,23 +107,18 @@ var ispass=false;
 		<th><label for="username"> 用户名 * </label></th>
 		<td><input type="text" id="username" name="user.userName"
 			size="25" maxlength="15" onBlur="checkusername()" tabindex="3" /> <span
-			id="checkusername" class="errorMessage">
-			<s:fielderror >
+			id="checkusername" class="errorMessage"> <s:fielderror>
 			<s:param>user.userName</s:param>
-			</s:fielderror>
-			</span></td>
+		</s:fielderror> </span></td>
 	</tr>
 
 	<tr>
 		<td><label for="password"> 密码 * </label></td>
 		<td><input type="password" name="password.password" size="25"
 			id="password" onBlur="checkpassword()" tabindex="4" /> <span
-			id="checkpassword" class="errorMessage">
-			<s:fielderror >
+			id="checkpassword" class="errorMessage"> <s:fielderror>
 			<s:param>password.password</s:param>
-			</s:fielderror>
-			</span>
-			</td>
+		</s:fielderror> </span></td>
 	</tr>
 
 	<tr>
@@ -132,25 +129,23 @@ var ispass=false;
 	</tr>
 	<tr>
 		<th>性别</th>
-		<td><label> <input type="radio" name="user.sex" value="1"
-			checked="checked" tabindex="17" /> 男 </label> <label> <input
+		<td><label> <input type="radio" name="user.sex" value="0"
+			checked="checked" tabindex="6" /> 男 </label> <label> <input
 			type="radio" name="user.sex" value="2" tabindex="18" /> 女 </label></td>
 	</tr>
 	<tr>
 		<td><label for="email"> Email * </label></td>
 		<td><input type="text" name="user.email" size="25" id="email"
-			onBlur="checkemail()" tabindex="6" /> <span id="checkemail"
-			class="errorMessage">
-			<s:fielderror >
+			onBlur="checkemail()" tabindex="7" /> <span id="checkemail"
+			class="errorMessage"> <s:fielderror>
 			<s:param>user.email</s:param>
-			</s:fielderror>
-			</span></td>
+		</s:fielderror> </span></td>
 	</tr>
 	<tr>
 		<th><label for="advshow"> 高级选项 </label></th>
-		<td><input id="advshow" class="checkbox"
-			type="checkbox" value="1" onclick="showadv()" tabindex="12" /> <label
-			for="advshow">显示高级用户设置选项 </label></td>
+		<td><input id="advshow" class="checkbox" type="checkbox"
+			value="1" onclick="showadv()" tabindex="12" /> <label for="advshow">显示高级用户设置选项
+		</label></td>
 	</tr>
 </table>
 
@@ -164,8 +159,8 @@ var ispass=false;
 	</thead>
 	<tr>
 		<th><label for="questionid"> 安全提问 </label></th>
-		<td><select id="questionid" name="safeQuestion.questionMaster.questionCd"
-			tabindex="13">
+		<td><select id="questionid"
+			name="safeQuestion.questionMaster.questionCd" tabindex="13">
 			<option value="0">无安全提问</option>
 			<option value="1">母亲的名字</option>
 			<option value="2">爷爷的名字</option>
@@ -190,27 +185,26 @@ var ispass=false;
 	</tr>
 
 	<tr>
-		<th><label for="loactionnew"> 省 </label></th>
-		<td><input type="text" id="loactionnew" name="user.province.provinceCd"
-			size="25" tabindex="21" /></td>
+		<th><label for="province"> 省 </label></th>
+		<td><select id="province" name="user.province.provinceCd"
+			tabindex="21" onchange="setCity(0)"></select></td>
 	</tr>
 	<tr>
-		<th><label for="loactionnew"> 市 </label></th>
-		<td><input type="text" id="loactionnew" name="user.city.cityCd"
-			size="25" tabindex="21" /></td>
+		<th><label for="city"> 市 </label></th>
+		<td><select id="city" name="user.city.cityCd" tabindex="22"></select>
+		</td>
 	</tr>
 	<tr>
 		<td><label for="alipay"> 用户头像 </label></td>
-		<td><input id="alipay" name="user.photoPath" type="file" /></td>
+		<td><input id="alipay" name="photo" type="file" tabindex="23" /></td>
 	</tr>
 	<tr>
 		<td valign="top"><label for="bio"> 自我介绍 </label></td>
 		<td><textarea rows="5" cols="30" id="bio" name="user.comment"
-			tabindex="28"></textarea></td>
+			tabindex="24"></textarea></td>
 	</tr>
 </table>
-<button class="submit" type="submit" value="true"
-	tabindex="100">提交</button>
+<button class="submit" type="submit" value="true" tabindex="100">提交</button>
 </div>
 </form>
 </div>

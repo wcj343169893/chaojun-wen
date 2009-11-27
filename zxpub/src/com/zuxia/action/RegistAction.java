@@ -1,6 +1,6 @@
 package com.zuxia.action;
 
-import java.text.SimpleDateFormat;
+import java.io.File;
 import java.util.Date;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -28,8 +28,55 @@ public class RegistAction extends ActionSupport {
 	private Password password;
 
 	private SafeQuestion safeQuestion;
-	
+
 	private String password2;
+	/**
+	 * uploadFileName属性概述 actionSuppet 隐含属性 ,专门获取上传文件的文件名
+	 */
+	private String photoFileName;
+
+	/**
+	 * photo属性概述 头像
+	 */
+	private File photo;
+
+	/**
+	 * photoFileName属性的get方法
+	 * 
+	 * @return the photoFileName
+	 */
+	public String getPhotoFileName() {
+		return photoFileName;
+	}
+
+	/**
+	 * photoFileName属性的set方法
+	 * 
+	 * @param photoFileName
+	 *            the photoFileName to set
+	 */
+	public void setPhotoFileName(String photoFileName) {
+		this.photoFileName = photoFileName;
+	}
+
+	/**
+	 * photo属性的get方法
+	 * 
+	 * @return the photo
+	 */
+	public File getPhoto() {
+		return photo;
+	}
+
+	/**
+	 * photo属性的set方法
+	 * 
+	 * @param photo
+	 *            the photo to set
+	 */
+	public void setPhoto(File photo) {
+		this.photo = photo;
+	}
 
 	/**
 	 * password2属性的get方法
@@ -130,7 +177,11 @@ public class RegistAction extends ActionSupport {
 	public String execute() throws Exception {
 		password.setUser(user);
 		user.setPassword(password);
-		boolean isRegist = userService.insert(user);
+		user.setRegistDate(new Date());
+		user.setScore(0);
+		user.setRoleCd(0);
+		user.setPhotoPath(photoFileName);
+		boolean isRegist = userService.insert(user, photo);
 		if (isRegist) {
 			return "success";
 		}

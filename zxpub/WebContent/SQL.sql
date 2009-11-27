@@ -1,13 +1,11 @@
---drop database zxpub;
-create database zxpub;
-use zxpub;
+
 /*----------------建数USER(1用户信息)表----------------------*/
 DROP TABLE USER;
 CREATE TABLE USER
 (
    USER_CD INT AUTO_INCREMENT PRIMARY KEY,
    USER_NAME VARCHAR(20) NOT NULL,
-   ROLE_CD INT default 0,--1,管理员,0.用户
+   ROLE_CD INT default 0,
    SEX CHAR(4) NOT NULL,
    PHOTO_PATH VARCHAR (100),
    BIRTHDAY DATE,
@@ -16,7 +14,7 @@ CREATE TABLE USER
    EMAIL VARCHAR (40),
    SCORE INT default 0,
    LAST_LOGIN_DATE DATE,
-   REGIST_DATE DATE default sysdate,
+   REGIST_DATE DATE,
    COMMENT VARCHAR (200)
 );
 
