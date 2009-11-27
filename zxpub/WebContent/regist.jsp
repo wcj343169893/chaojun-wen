@@ -172,21 +172,11 @@ var ispass=false;
 			<option value="7">驾驶执照的最后四位数字</option>
 		</select> 如果您启用安全提问，登录时需填入相应的项目才能登录</td>
 	</tr>
-
 	<tr>
 		<th><label for="answer"> 回答 </label></th>
 		<td><input type="text" id="answer" name="safeQuestion.answer"
 			size="25" tabindex="14" /></td>
 	</tr>
-	<tr>
-		<th><label for="bday"> 生日 </label></th>
-		<td><input type="text" id="bday" name="user.birthday" size="25"
-			onclick="setday(this)" runat="server" value="1990-01-01"
-			tabindex="20" /> <s:fielderror>
-			<s:param>user.birthday</s:param>
-		</s:fielderror></td>
-	</tr>
-
 	<tr>
 		<th><label for="province"> 省 </label></th>
 		<td><select id="province" name="user.province.provinceCd"
@@ -196,6 +186,14 @@ var ispass=false;
 		<th><label for="city"> 市 </label></th>
 		<td><select id="city" name="user.city.cityCd" tabindex="22"></select>
 		</td>
+	</tr>
+	<tr>
+		<th><label for="bday"> 生日 </label></th>
+		<td><input type="text" id="bday" name="user.birthday" size="25"
+			onclick="setday(this)" value="1990-01-01"
+			tabindex="20" /> <s:fielderror>
+			<s:param>user.birthday</s:param>
+		</s:fielderror></td>
 	</tr>
 	<tr>
 		<td><label for="alipay"> 用户头像 </label></td>
