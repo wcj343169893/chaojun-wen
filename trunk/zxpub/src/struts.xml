@@ -8,6 +8,7 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.custom.i18n.resources" value="globalMessage" />
 	<constant name="struts.action.extension" value="do,action"></constant>
 	<package name="zxpub" extends="struts-default">
 		<action name="regist" class="RegistAction">

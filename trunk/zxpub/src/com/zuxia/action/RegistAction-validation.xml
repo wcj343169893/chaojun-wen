@@ -17,15 +17,18 @@
 		<field-validator type="requiredstring">
 			<message>请输入确认密码</message>
 		</field-validator>
-	</field>
-
-	<field name="password2">
 		<field-validator type="fieldexpression">
 			<param name="expression">password.password==password2</param>
 			<message>确认密码和密码不一致</message>
 		</field-validator>
 	</field>
-
+	<field name="user.sex">
+		<field-validator type="fieldexpression">
+			<param name="expression">user.sex!=1 || user.sex!=2</param>
+			<message>请确定您的性别</message>
+		</field-validator>
+		
+	</field>
 	<field name="user.birthday">
 		<field-validator type="date">
 			<param name="min">1990-01-01</param>
