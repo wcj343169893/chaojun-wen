@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
@@ -19,30 +18,51 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<!-- 加载类 -->
 	<bean id="user" class="com.zuxia.entity.User"></bean>
 	<bean id="password" class="com.zuxia.entity.Password"></bean>
 	<bean id="safeQuestion" class="com.zuxia.entity.SafeQuestion"></bean>
+	<!-- *************dao************* -->
 	<!-- userDao -->
-	<bean id="userDao" class="com.zuxia.dao.UserDao">
+	<bean id="userDaoImpl" class="com.zuxia.dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<!-- userService -->
-	<bean id="userService" class="com.zuxia.service.UserService">
-		<property name="userDao" ref="userDao" />
+	<!-- noteDao -->
+	<bean id="noteDaoImpl" class="com.zuxia.dao.impl.NoteDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<!-- fellowNoteDao -->
+	<bean id="fellowNoteDaoImpl" class="com.zuxia.dao.impl.FellowNoteDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- *************service************* -->
+	<!-- userService -->
+	<bean id="userServiceImpl" class="com.zuxia.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDaoImpl" />
+	</bean>
+	<bean id="noteServiceImpl" class="com.zuxia.service.impl.NoteServiceImpl">
+		<property name="noteDao" ref="noteDaoImpl" />
+	</bean>
+	<bean id="fellowNoteServiceImpl" class="com.zuxia.service.impl.FellowNoteServiceImpl">
+		<property name="fellowNotedao" ref="fellowNoteDaoImpl" />
+	</bean>
+	<!-- *************action************* -->
 	<!-- RegistAction scope="prototype" 非单例模式-->
-	<bean id="RegistAction" class="com.zuxia.action.RegistAction" scope="prototype">
-		<property name="userService" ref="userService" />
+	<bean id="RegistAction" class="com.zuxia.action.RegistAction"
+		scope="prototype">
+		<property name="userService" ref="userServiceImpl" />
 		<property name="user" ref="user" />
 		<property name="password" ref="password" />
 		<property name="safeQuestion" ref="safeQuestion" />
 	</bean>
 	<!-- LoginAction -->
 	<bean id="LoginAction" class="com.zuxia.action.LoginAction">
-		<property name="userService" ref="userService" />
+		<property name="userService" ref="userServiceImpl" />
 		<property name="user" ref="user" />
 		<property name="password" ref="password" />
 	</bean>
+
+
 	<!-- 事物管理 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>

@@ -1,4 +1,4 @@
-package com.zuxia.dao;
+package com.zuxia.dao.impl;
 
 import java.util.List;
 
@@ -7,9 +7,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.zuxia.dao.IUserDao;
 import com.zuxia.entity.User;
 
-public class UserDao extends HibernateDaoSupport implements IUserDao {
+public class UserDaoImpl extends HibernateDaoSupport implements IUserDao {
 	@Override
 	public boolean insert(User user) {
 		boolean flag = false;
