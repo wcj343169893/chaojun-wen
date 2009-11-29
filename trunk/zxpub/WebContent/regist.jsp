@@ -180,18 +180,18 @@ var ispass=false;
 	<tr>
 		<th><label for="province"> 省 </label></th>
 		<td><select id="province" name="user.province.provinceCd"
-			tabindex="21" onchange="setCity(0)"></select></td>
+			tabindex="20" onchange="setCity(0)"></select></td>
 	</tr>
 	<tr>
 		<th><label for="city"> 市 </label></th>
-		<td><select id="city" name="user.city.cityCd" tabindex="22"></select>
+		<td><select id="city" name="user.city.cityCd" tabindex="21"></select>
 		</td>
 	</tr>
 	<tr>
 		<th><label for="bday"> 生日 </label></th>
 		<td><input type="text" id="bday" name="user.birthday" size="25"
 			onclick="setday(this)" value="1990-01-01"
-			tabindex="20" /> <s:fielderror>
+			tabindex="22" /> <s:fielderror>
 			<s:param>user.birthday</s:param>
 		</s:fielderror></td>
 	</tr>
