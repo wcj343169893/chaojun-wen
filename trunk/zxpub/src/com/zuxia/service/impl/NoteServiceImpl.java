@@ -1,12 +1,13 @@
 package com.zuxia.service.impl;
 
 import com.zuxia.dao.INoteDao;
+import com.zuxia.entity.Note;
 import com.zuxia.service.INoteService;
 
 /**
  * NoteServiceImpl概要说明
  * 
- *
+ * 
  * @author 文朝军
  */
 public class NoteServiceImpl implements INoteService {
@@ -29,6 +30,11 @@ public class NoteServiceImpl implements INoteService {
 	 */
 	public void setNoteDao(INoteDao noteDao) {
 		this.noteDao = noteDao;
+	}
+
+	@Override
+	public boolean addNote(Note note) {
+		return noteDao.insertNote();
 	}
 
 }

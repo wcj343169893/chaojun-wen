@@ -18,7 +18,8 @@
 			<iframe width=100% height=48px src="navigation.jsp" frameborder=0>
 			</iframe>
 			<!-- *************网站导航地图************* -->
-			<form action="">
+			<form action="addNote.do" method="post">
+		
 			<DIV class="mainbox formbox">
 				<H1>
 					发新话题
@@ -43,7 +44,7 @@
 							</LABEL>
 						</TH>
 						<TD style="BORDER-BOTTOM-WIDTH: 0px">
-							<input id=subject tabindex=3 size=45 name=subject>
+							<input id=subject tabindex=3 size=45 name="note.title">
 						</TD>
 					</TR>
 					<TR>
@@ -59,7 +60,7 @@
 									<TR>
 										<TD>
 											<TEXTAREA class=autosave id=posteditor_textarea
-												style="WIDTH: 99%; HEIGHT: 250px" tabIndex=100 name=message
+												style="WIDTH: 99%; HEIGHT: 250px" tabIndex=100 name="note.content"
 												rows=10 cols=60></TEXTAREA>
 										</TD>
 									</TR>
@@ -80,7 +81,7 @@
 						</TH>
 						<TD>
 
-							<BUTTON id=postsubmit tabIndex=300 name=topicsubmit type=submit
+							<BUTTON id=postsubmit tabIndex=300 type=submit
 								value="true">
 								发新话题
 							</BUTTON>

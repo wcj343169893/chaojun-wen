@@ -8,6 +8,7 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.objectFactory" value="spring" />
+	<!-- 改变提示语言 -->
 	<constant name="struts.custom.i18n.resources" value="globalMessage" />
 	<constant name="struts.action.extension" value="do,action"></constant>
 	<package name="zxpub" extends="struts-default">
@@ -20,6 +21,9 @@
 			<result name="input">/login.jsp</result>
 			<result name="success" type="redirect">/success.jsp</result>
 			<result name="error">/login.jsp</result>
+		</action>
+		<action name="*Note" class="NoteAction" method="{1}">
+			<result name="success">/index.jsp</result>
 		</action>
 	</package>
 </struts>
