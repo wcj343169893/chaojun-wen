@@ -1,4 +1,4 @@
-package com.zuxia.service;
+package com.zuxia.service.impl;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,8 +10,9 @@ import org.apache.struts2.ServletActionContext;
 
 import com.zuxia.dao.IUserDao;
 import com.zuxia.entity.User;
+import com.zuxia.service.IUserService;
 
-public class UserService implements IUserService {
+public class UserServiceImpl implements IUserService {
 	private IUserDao userDao;
 
 	public IUserDao getUserDao() {
