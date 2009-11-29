@@ -11,6 +11,11 @@ import java.util.List;
  */
 public class Note implements java.io.Serializable {
 
+	/**
+	 * serialVersionUID属性概述
+	 * 
+	 */
+	private static final long serialVersionUID = 7478822662932661205L;
 	private Integer noteCd;
 	/**
 	 * user属性概述 用户

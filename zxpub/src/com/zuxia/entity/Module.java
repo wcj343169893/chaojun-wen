@@ -10,6 +10,11 @@ import java.util.List;
  */
 public class Module implements java.io.Serializable {
 
+	/**
+	 * serialVersionUID Ù–‘∏≈ ˆ
+	 * 
+	 */
+	private static final long serialVersionUID = 7744276603410155030L;
 	private Integer moduleCd;
 	private String moduleName;
 	/**

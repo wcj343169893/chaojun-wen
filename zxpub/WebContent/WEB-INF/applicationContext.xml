@@ -22,6 +22,13 @@
 	<bean id="user" class="com.zuxia.entity.User"></bean>
 	<bean id="password" class="com.zuxia.entity.Password"></bean>
 	<bean id="safeQuestion" class="com.zuxia.entity.SafeQuestion"></bean>
+	<bean id="questionMaster" class="com.zuxia.entity.QuestionMaster"></bean>
+	<bean id="module" class="com.zuxia.entity.Module"></bean>
+	<bean id="childModule" class="com.zuxia.entity.ChildModule"></bean>
+	<bean id="note" class="com.zuxia.entity.Note"></bean>
+	<bean id="fellowNote" class="com.zuxia.entity.FellowNote"></bean>
+	<bean id="province" class="com.zuxia.entity.Province"></bean>
+	<bean id="city" class="com.zuxia.entity.City"></bean>
 	<!-- *************dao************* -->
 	<!-- userDao -->
 	<bean id="userDaoImpl" class="com.zuxia.dao.impl.UserDaoImpl">
@@ -35,6 +42,13 @@
 	<bean id="fellowNoteDaoImpl" class="com.zuxia.dao.impl.FellowNoteDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<!-- moduleDao -->
+	<bean id="moduleDaoImpl" class="com.zuxia.dao.impl.ModuleDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="childModuleDaoImpl" class="com.zuxia.dao.impl.ChildModuleDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	<!-- *************service************* -->
 	<!-- userService -->
 	<bean id="userServiceImpl" class="com.zuxia.service.impl.UserServiceImpl">
@@ -45,6 +59,12 @@
 	</bean>
 	<bean id="fellowNoteServiceImpl" class="com.zuxia.service.impl.FellowNoteServiceImpl">
 		<property name="fellowNotedao" ref="fellowNoteDaoImpl" />
+	</bean>
+	<bean id="moduleServiceImpl" class="com.zuxia.service.impl.ModuleServiceImpl">
+		<property name="moduleDao" ref="moduleDaoImpl" />
+	</bean>
+	<bean id="childModuleServiceImpl" class="com.zuxia.service.impl.ChildModuleServiceImpl">
+		<property name="childModuleDao" ref="childModuleDaoImpl" />
 	</bean>
 	<!-- *************action************* -->
 	<!-- RegistAction scope="prototype" 非单例模式-->
@@ -75,6 +95,4 @@
 		<aop:advisor pointcut="execution(* com.zuxia.dao.*.*(..))"
 			advice-ref="txAdvice" />
 	</aop:config>
-
-
 </beans>

@@ -9,6 +9,11 @@ import java.util.Date;
  */
 public class FellowNote implements java.io.Serializable {
 
+	/**
+	 * serialVersionUID属性概述
+	 * 
+	 */
+	private static final long serialVersionUID = -4263761897461937747L;
 	private Integer fellowNoteCd;
 	/**
 	 * note属性概述 主帖子CODE

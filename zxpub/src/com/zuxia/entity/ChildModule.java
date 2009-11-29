@@ -11,6 +11,11 @@ import java.util.List;
  */
 public class ChildModule implements java.io.Serializable {
 
+	/**
+	 * serialVersionUIDÊôĞÔ¸ÅÊö
+	 * 
+	 */
+	private static final long serialVersionUID = 4918263731915786834L;
 	private Integer childModuleCd;
 	/**
 	 * moduleÊôĞÔ¸ÅÊö Ö÷°æ¿é
