@@ -7,6 +7,11 @@ package com.zuxia.entity;
  */
 public class Password implements java.io.Serializable {
 
+	/**
+	 * serialVersionUID Ù–‘∏≈ ˆ
+	 * 
+	 */
+	private static final long serialVersionUID = -8983656626549307137L;
 	private int userCd;
 	private String password;
 	private User user;

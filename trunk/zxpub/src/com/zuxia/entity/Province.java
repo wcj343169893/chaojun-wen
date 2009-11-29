@@ -10,6 +10,11 @@ import java.util.List;
  */
 public class Province implements java.io.Serializable {
 
+	/**
+	 * serialVersionUID Ù–‘∏≈ ˆ
+	 * 
+	 */
+	private static final long serialVersionUID = 3979685385303116579L;
 	private Integer provinceCd;
 	private String provinceName;
 	/**

@@ -12,6 +12,12 @@ import com.zuxia.dao.IUserDao;
 import com.zuxia.entity.User;
 import com.zuxia.service.IUserService;
 
+/**
+ * UserServiceImpl概要说明
+ * 
+ *
+ * @author 文朝军
+ */
 public class UserServiceImpl implements IUserService {
 	private IUserDao userDao;
 

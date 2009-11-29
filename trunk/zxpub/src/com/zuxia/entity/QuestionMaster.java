@@ -10,6 +10,11 @@ import java.util.List;
  */
 public class QuestionMaster implements java.io.Serializable {
 
+	/**
+	 * serialVersionUID Ù–‘∏≈ ˆ
+	 * 
+	 */
+	private static final long serialVersionUID = 347089612639293469L;
 	private Integer questionCd;
 	private String question;
 	/**

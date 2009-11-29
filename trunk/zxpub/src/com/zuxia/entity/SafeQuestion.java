@@ -7,6 +7,11 @@ package com.zuxia.entity;
  */
 public class SafeQuestion implements java.io.Serializable {
 
+	/**
+	 * serialVersionUIDÊôĞÔ¸ÅÊö
+	 * 
+	 */
+	private static final long serialVersionUID = -7288731626538661661L;
 	private int userCd;
 	/**
 	 * questionMasterÊôĞÔ¸ÅÊö

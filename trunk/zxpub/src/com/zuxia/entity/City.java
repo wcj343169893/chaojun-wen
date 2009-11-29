@@ -10,6 +10,11 @@ import java.util.List;
  */
 public class City implements java.io.Serializable {
 
+	/**
+	 * serialVersionUID属性概述
+	 * 
+	 */
+	private static final long serialVersionUID = 1114943405574348973L;
 	private Integer cityCd;
 	/**
 	 * province属性概述
@@ -22,58 +27,78 @@ public class City implements java.io.Serializable {
 	 * 
 	 */
 	private List<User> users = new ArrayList<User>();
+
 	/**
 	 * cityCd属性的get方法
+	 * 
 	 * @return the cityCd
 	 */
 	public Integer getCityCd() {
 		return cityCd;
 	}
+
 	/**
 	 * cityCd属性的set方法
-	 * @param cityCd the cityCd to set
+	 * 
+	 * @param cityCd
+	 *            the cityCd to set
 	 */
 	public void setCityCd(Integer cityCd) {
 		this.cityCd = cityCd;
 	}
+
 	/**
 	 * province属性的get方法
+	 * 
 	 * @return the province
 	 */
 	public Province getProvince() {
 		return province;
 	}
+
 	/**
 	 * province属性的set方法
-	 * @param province the province to set
+	 * 
+	 * @param province
+	 *            the province to set
 	 */
 	public void setProvince(Province province) {
 		this.province = province;
 	}
+
 	/**
 	 * cityName属性的get方法
+	 * 
 	 * @return the cityName
 	 */
 	public String getCityName() {
 		return cityName;
 	}
+
 	/**
 	 * cityName属性的set方法
-	 * @param cityName the cityName to set
+	 * 
+	 * @param cityName
+	 *            the cityName to set
 	 */
 	public void setCityName(String cityName) {
 		this.cityName = cityName;
 	}
+
 	/**
 	 * users属性的get方法
+	 * 
 	 * @return the users
 	 */
 	public List<User> getUsers() {
 		return users;
 	}
+
 	/**
 	 * users属性的set方法
-	 * @param users the users to set
+	 * 
+	 * @param users
+	 *            the users to set
 	 */
 	public void setUsers(List<User> users) {
 		this.users = users;

@@ -15,7 +15,7 @@ public class User implements java.io.Serializable {
 	 * serialVersionUID Ù–‘∏≈ ˆ
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -7956105904317773989L;
 	private Integer userCd;
 	private String userName;
 	private int roleCd;

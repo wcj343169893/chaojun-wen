@@ -10,7 +10,7 @@ import com.zuxia.entity.FellowNote;
 public class FellowNoteDaoImpl extends HibernateDaoSupport implements IFellowNoteDao {
 
 	@Override
-	public boolean deleteNote() {
+	public boolean deleteFellowNote(int fellowNoteCd) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -22,21 +22,22 @@ public class FellowNoteDaoImpl extends HibernateDaoSupport implements IFellowNot
 	}
 
 	@Override
-	public List<FellowNote> getNotes() {
+	public List<FellowNote> getFellowNotes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean insertNote() {
+	public boolean insertFellowNote(FellowNote fellowNote) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean updateNote() {
+	public boolean updateFellowNote(FellowNote fellowNote) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 }
