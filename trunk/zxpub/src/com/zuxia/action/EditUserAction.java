@@ -14,7 +14,11 @@
  */
 package com.zuxia.action;
 
+import org.apache.jasper.tagplugins.jstl.core.If;
+import org.aspectj.weaver.patterns.IfPointcut.IfFalsePointcut;
+
 import com.opensymphony.xwork2.ActionSupport;
+import com.zuxia.form.EditPwdForm;
 import com.zuxia.form.EditUserForm;
 import com.zuxia.service.IUserService;
 
@@ -27,6 +31,26 @@ import com.zuxia.service.IUserService;
 public class EditUserAction extends ActionSupport {
 	private EditUserForm editUserForm;
 	private IUserService userService;
+	private EditPwdForm editPwdForm;
+
+	/**
+	 * editPwdForm属性的get方法
+	 * 
+	 * @return the editPwdForm
+	 */
+	public EditPwdForm getEditPwdForm() {
+		return editPwdForm;
+	}
+
+	/**
+	 * editPwdForm属性的set方法
+	 * 
+	 * @param editPwdForm
+	 *            the editPwdForm to set
+	 */
+	public void setEditPwdForm(EditPwdForm editPwdForm) {
+		this.editPwdForm = editPwdForm;
+	}
 
 	/**
 	 * userService属性的get方法
@@ -68,7 +92,18 @@ public class EditUserAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		userService.updateUser(editUserForm);
-		return super.execute();
+		boolean flag=userService.updateUser(editUserForm);
+		if (!flag) {
+			return "editUser";
+		}
+		return "success";
+	}
+
+	public String pwd() throws Exception {
+		boolean flag = userService.updateUser(editPwdForm);
+		if (!flag) {
+			return "editPwd";
+		}
+		return "success";
 	}
 }

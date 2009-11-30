@@ -59,7 +59,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements IUserDao {
 		boolean flag = false;
 		Session session = this.getSession();
 		try {
-			session.update(user);
+			session.saveOrUpdate(user);
 			flag = true;
 		} catch (HibernateException e) {
 			flag = false;
