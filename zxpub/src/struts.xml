@@ -13,8 +13,8 @@
 	<constant name="struts.action.extension" value="do,action"></constant>
 	<package name="zxpub" extends="struts-default">
 		<action name="regist" class="RegistAction">
-			<result name="input">/regist.jsp</result>
-			<result name="error">/regist.jsp</result>
+			<result name="input" type="redirect-action">registInit.do</result>
+			<result name="error" type="redirect-action">registInit.do</result>
 			<result name="success" type="redirect">/success.jsp</result>
 		</action>
 		<action name="login" class="LoginAction">
@@ -38,7 +38,7 @@
 			<result name="success">/index.jsp</result>
 		</action>
 		<action name="registInit" class="registInitAction">
-			<result name="scucess">/regist.jsp</result>
+			<result name="scucess">/WEB-INF/regist.jsp</result>
 		</action>
 	</package>
 </struts>
