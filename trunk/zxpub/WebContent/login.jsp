@@ -10,7 +10,7 @@
 	href="${pageContext.request.contextPath}/css/style_10.css" />
 	<script type="text/javascript">
 function reloadVerifyCode(obj){  
-    obj.src = "<%=request.getContextPath()%>/ValidateImageServlet?d=" + new Date();
+    obj.src = "<%=request.getContextPath()%>/validateImage.do";
 } 
 </script>
 </head>
@@ -46,7 +46,7 @@ function reloadVerifyCode(obj){
 									<INPUT type="text" id="userName" tabIndex=2 maxLength=40
 										size=25 name="user.userName">
 									&nbsp;
-									<EM class=tips><A href="regist.jsp">注册</A>
+									<EM class=tips><A href="preRegist.jsp">注册</A>
 									</EM>
 								</TD>
 							</TR>
@@ -68,7 +68,7 @@ function reloadVerifyCode(obj){
 								<TD>
 									  <input name="validateCode" type="text" size="4" maxlength="4" tabIndex=4 />
 		  <img alt="看不清楚，换一张"
-			src="<%=request.getContextPath() %>/ValidateImageServlet"
+			src="validateImage.do"
 			onclick="reloadVerifyCode(this);" style="cursor: hand;" />
 								</TD>
 							</TR>

@@ -16,7 +16,7 @@
 			}
 		}
 		function reloadVerifyCode(obj){  
-		    obj.src = "<%=request.getContextPath()%>/ValidateImageServlet?d=" + new Date();
+		    obj.src = "<%=request.getContextPath()%>/validateImage.do";
 		} 
 	</script>
 	<!-- 在父级窗口显示 -->
@@ -32,7 +32,7 @@
 			onclick="clickusername(this);" onblur="if(this.value==''){this.value='用户名'}" tabIndex=1/>密码: <INPUT
 			type="password" size="10" name="password.password" tabIndex=2 />验证码:<input name="validateCode" type="text" size="4" maxlength="4" tabIndex=3 />
 		  <img alt="看不清楚，换一张"
-			src="<%=request.getContextPath() %>/ValidateImageServlet"
+			src="<%=request.getContextPath() %>/validateImage.do"
 			onclick="reloadVerifyCode(this);" style="cursor: hand;" /> <INPUT
 			type="submit" value="登录" tabIndex=4 /></FORM>
 		</DIV>

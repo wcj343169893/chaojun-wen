@@ -28,7 +28,7 @@
 			<LI id=memcp><A href="index.jsp">首页</A></LI>
 			<LI id=memcp><A href="LogoutServlet">退出</A></LI>
 			<LI id=memcp><A href="">积分管理</A></LI>
-			<LI id=memcp><A href="">个人信息编辑</A></LI>
+			<LI id=memcp><A href="editUser.jsp">个人信息编辑</A></LI>
 			<LI id=memcp><A href="">修改密码</A></LI>
 			<LI id=memcp><A href="">搜索</A></LI>
 		</c:otherwise>

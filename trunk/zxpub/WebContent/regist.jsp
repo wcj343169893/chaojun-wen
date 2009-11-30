@@ -162,14 +162,9 @@ var ispass=false;
 		<th><label for="questionid"> 安全提问 </label></th>
 		<td><select id="questionid"
 			name="safeQuestion.questionMaster.questionCd" tabindex="13">
-			<option value="0">无安全提问</option>
-			<option value="1">母亲的名字</option>
-			<option value="2">爷爷的名字</option>
-			<option value="3">父亲出生的城市</option>
-			<option value="4">您其中一位老师的名字</option>
-			<option value="5">您个人计算机的型号</option>
-			<option value="6">您最喜欢的餐馆名称</option>
-			<option value="7">驾驶执照的最后四位数字</option>
+			<c:forEach items="${requestScope.questionMasters}" var="qm">
+			<option value="${qm.questionCd }">${qm.question }</option>
+			</c:forEach>
 		</select> 如果您启用安全提问，登录时需填入相应的项目才能登录</td>
 	</tr>
 	<tr>
