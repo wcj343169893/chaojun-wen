@@ -1,14 +1,14 @@
 package com.zuxia.service;
 
-import java.io.File;
 import java.util.List;
 
 import com.zuxia.entity.QuestionMaster;
 import com.zuxia.entity.User;
 import com.zuxia.form.EditUserForm;
+import com.zuxia.form.RegistForm;
 
 public interface IUserService {
-	public boolean insert(User user, File upload);
+	public boolean insert(RegistForm registForm);
 
 	public User getUserByUserName(String userName);
 

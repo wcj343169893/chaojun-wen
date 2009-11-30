@@ -76,7 +76,7 @@
 									</TH>
 									<TD>
 										<INPUT id=email value="${users.email }"
-											onclick="showcalendar(event, this)" size=5
+											onclick="showcalendar(event, this)" size="30"
 											name=editUserForm.email tabindex="5">
 									</TD>
 								</TR>
@@ -97,7 +97,7 @@
 										</LABEL>
 									</TH>
 									<td>
-										<textarea rows="5" cols="30" id="bio" name="editUserForm.comment" tabindex="7"></textarea>
+										<textarea rows="5" cols="30" id="bio" name="editUserForm.comment" tabindex="7">${users.comment }</textarea>
 									</td>
 								</TR>
 

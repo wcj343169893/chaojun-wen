@@ -38,7 +38,7 @@
 			<result name="success">/index.jsp</result>
 		</action>
 		<action name="registInit" class="registInitAction">
-			<result name="scucess">/WEB-INF/regist.jsp</result>
+			<result name="scucess">/regist.jsp</result>
 		</action>
 	</package>
 </struts>
