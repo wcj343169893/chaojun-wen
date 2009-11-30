@@ -31,7 +31,7 @@
 			</iframe>			
 			<!-- *************网站导航地图************* -->
 				<script src="CSS/calendar.js" type="text/javascript"></script>
-				<form name="bbrules" method="post" action="regist.jsp">
+				<form name="bbrules" method="post" action="registInit.do">
 					<input type="hidden" name="formhash" value="f68c3dba" />
 					<input type="hidden" name="referer" value="index.php" />
 					<div class="mainbox formbox">
@@ -84,7 +84,7 @@
 		}
 	}
 	function timer() {
-		$('rulebutton').innerHTML = '<button type="submit" id="rulesubmit" name="rulesubmit" value="true">同 意</button> &nbsp; <button type="button" onclick="location.href=\'http://localhost:8080/zxpub/\'">不同意</button>';
+		$('rulebutton').innerHTML = '<button type="submit" id="rulesubmit" value="true">同 意</button> &nbsp; <button type="button" onclick="location.href=\'http://localhost:8080/zxpub/\'">不同意</button>';
 	}
 	</script>
 			</div>

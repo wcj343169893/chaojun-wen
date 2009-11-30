@@ -5,21 +5,45 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.zuxia.dao.IQuestionMasterDao;
 import com.zuxia.dao.IUserDao;
+import com.zuxia.entity.QuestionMaster;
 import com.zuxia.entity.User;
+import com.zuxia.form.EditUserForm;
 import com.zuxia.service.IUserService;
 
 /**
  * UserServiceImpl概要说明
  * 
- *
+ * 
  * @author 文朝军
  */
 public class UserServiceImpl implements IUserService {
+	private IQuestionMasterDao questionMasterDao;
 	private IUserDao userDao;
+
+	/**
+	 * questionMasterDao属性的get方法
+	 * 
+	 * @return the questionMasterDao
+	 */
+	public IQuestionMasterDao getQuestionMasterDao() {
+		return questionMasterDao;
+	}
+
+	/**
+	 * questionMasterDao属性的set方法
+	 * 
+	 * @param questionMasterDao
+	 *            the questionMasterDao to set
+	 */
+	public void setQuestionMasterDao(IQuestionMasterDao questionMasterDao) {
+		this.questionMasterDao = questionMasterDao;
+	}
 
 	public IUserDao getUserDao() {
 		return userDao;
@@ -40,6 +64,14 @@ public class UserServiceImpl implements IUserService {
 		return userDao.insert(user);
 	}
 
+	/**
+	 * SaveFile方法概述
+	 * 
+	 *保存文件
+	 * 
+	 * @param upload
+	 * @param filePath
+	 */
 	public void SaveFile(File upload, String filePath) {
 		try {
 			FileOutputStream fos = new FileOutputStream(new File(filePath));
@@ -66,8 +98,16 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public boolean updateUser(User user) {
-		return userDao.updateUser(user);
+	public List<QuestionMaster> getQuestionMaster() {
+		return questionMasterDao.getQuestionMaster();
+	}
+
+	@Override
+	public boolean updateUser(EditUserForm editUserForm) {
+		User user = (User) ServletActionContext.getRequest().getSession()
+				.getAttribute("users");
+		user.setBirthday(editUserForm.getBirthday());
+		return false;
 	}
 
 }

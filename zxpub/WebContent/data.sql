@@ -1,15 +1,12 @@
-
-
-
 /**安全问题**/
-insert into QUESTION_MASTER values(0,'无安全提问');
-insert into QUESTION_MASTER values(1,'母亲的名字');
-insert into QUESTION_MASTER values(2,'爷爷的名字');
-insert into QUESTION_MASTER values(3,'父亲出生的城市');
-insert into QUESTION_MASTER values(4,'您其中一位老师的名字');
-insert into QUESTION_MASTER values(5,'您个人计算机的型号');
-insert into QUESTION_MASTER values(6,'您最喜欢的餐馆名称');
-insert into QUESTION_MASTER values(7,'驾驶执照的最后四位数字');
+insert into QUESTION_MASTER values(1,'无安全提问');
+insert into QUESTION_MASTER values(2,'母亲的名字');
+insert into QUESTION_MASTER values(3,'爷爷的名字');
+insert into QUESTION_MASTER values(4,'父亲出生的城市');
+insert into QUESTION_MASTER values(5,'您其中一位老师的名字');
+insert into QUESTION_MASTER values(6,'您个人计算机的型号');
+insert into QUESTION_MASTER values(7,'您最喜欢的餐馆名称');
+insert into QUESTION_MASTER values(8,'驾驶执照的最后四位数字');
 /*--中国34个省级行政单位 23个省 5个自治区 4个直辖市 2特别行政区*/
 INSERT INTO PROVINCE VALUES(1,'北京市');
 INSERT INTO PROVINCE VALUES(2,'天津市');

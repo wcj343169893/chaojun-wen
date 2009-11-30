@@ -25,5 +25,19 @@
 		<action name="*Note" class="NoteAction" method="{1}">
 			<result name="success">/index.jsp</result>
 		</action>
+		<!-- 生成验证码 -->
+		<action name="validateImage" class="validateImageAction">
+			<result type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="editUser" class="editUserAction">
+			<result name="input">/eidtUser.jsp</result>
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="registInit" class="registInitAction">
+			<result name="scucess">/regist.jsp</result>
+		</action>
 	</package>
 </struts>

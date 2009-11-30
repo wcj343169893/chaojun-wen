@@ -49,10 +49,14 @@
 	<bean id="childModuleDaoImpl" class="com.zuxia.dao.impl.ChildModuleDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="questionMasterDaoImpl" class="com.zuxia.dao.impl.QuestionMasterDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	<!-- *************service************* -->
 	<!-- userService -->
 	<bean id="userServiceImpl" class="com.zuxia.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDaoImpl" />
+		<property name="questionMasterDao" ref="questionMasterDaoImpl" />
 	</bean>
 	<bean id="noteServiceImpl" class="com.zuxia.service.impl.NoteServiceImpl">
 		<property name="noteDao" ref="noteDaoImpl" />
@@ -85,7 +89,13 @@
 		<property name="noteService" ref="noteServiceImpl" />
 		<property name="note" ref="note"></property>
 	</bean>
-
+	<bean id="editUserAction" class="com.zuxia.action.EditUserAction">
+		<property name="userService" ref="userServiceImpl" />
+	</bean>
+	<bean id="registInitAction" class="com.zuxia.action.RegistInitAction">
+		<property name="userService" ref="userServiceImpl" />
+	</bean>
+	<bean id="validateImageAction" class="com.zuxia.action.ValidateImageAction" scope="prototype"></bean>
 	<!-- 事物管理 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
