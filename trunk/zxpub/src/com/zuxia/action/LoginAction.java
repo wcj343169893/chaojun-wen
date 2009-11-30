@@ -1,5 +1,7 @@
 package com.zuxia.action;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
@@ -111,9 +113,11 @@ public class LoginAction extends ActionSupport {
 		} else if (u == null) {
 			request.getSession().setAttribute("logerror", "用户名不存在");
 		} else if (password.getPassword().equals(u.getPassword().getPassword())) {
-
+			// 修改用户登录时间
+			u.setLastLoginDate(new Date());
 			request.getSession().removeAttribute("logerror");
 			request.getSession().setAttribute("users", u);
+			userService.updateUser(u);
 			return "success";
 		} else {
 			request.getSession().setAttribute("logerror", "密码错误");

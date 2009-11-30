@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -38,8 +39,9 @@
 		</DIV>
 	</c:when>
 	<c:otherwise>
-		<P>您上次访问是在: <EM>2009-4-23 10:58</EM> &nbsp;</P>
-		<DIV id=nav><A href="#">足下技术论坛</A> - <A href="#">XXXXXX</A> - <A
+	<fmt:formatDate value="${users.lastLoginDate}" var="lastlog" pattern="yyyy-MM-dd HH:mm:ss"/>
+		<P>您上次访问是在: <EM>${lastlog }</EM> &nbsp;</P>
+		<DIV id=nav><A href="index.jsp">足下技术论坛</A> - <A href="#">XXXXXX</A> - <A
 			href="#">XXXXXX</A></DIV>
 	</c:otherwise>
 </c:choose></DIV>

@@ -63,6 +63,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements IUserDao {
 			flag = true;
 		} catch (HibernateException e) {
 			flag = false;
+			e.printStackTrace();
 		}
 		return flag;
 	}

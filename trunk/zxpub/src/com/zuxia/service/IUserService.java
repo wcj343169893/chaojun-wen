@@ -15,6 +15,7 @@ public interface IUserService {
 	public boolean deleteUserByName(String name);
 
 	public boolean updateUser(EditUserForm editUserForm);
+	public boolean updateUser(User user);
 
 	/**
 	 * getQuestionMaster·½·¨¸ÅÊö
