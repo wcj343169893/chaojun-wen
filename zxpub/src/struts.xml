@@ -36,6 +36,8 @@
 		<action name="editUser" class="editUserAction">
 			<result name="input">/eidtUser.jsp</result>
 			<result name="success">/index.jsp</result>
+			<result name="editUser">/editUser.jsp</result>
+			<result name="editPwd">/editPWD.jsp</result>
 		</action>
 		<action name="registInit" class="registInitAction">
 			<result name="scucess">/regist.jsp</result>

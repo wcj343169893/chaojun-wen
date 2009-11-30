@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts2.ServletActionContext;
 
 import com.zuxia.dao.IQuestionMasterDao;
@@ -16,6 +18,7 @@ import com.zuxia.entity.Password;
 import com.zuxia.entity.Province;
 import com.zuxia.entity.QuestionMaster;
 import com.zuxia.entity.User;
+import com.zuxia.form.EditPwdForm;
 import com.zuxia.form.EditUserForm;
 import com.zuxia.form.RegistForm;
 import com.zuxia.service.IUserService;
@@ -67,24 +70,25 @@ public class UserServiceImpl implements IUserService {
 		}
 		ServletActionContext.getRequest().getSession().removeAttribute(
 				"userexist");
-		User user=new User();
+		User user = new User();
 		user.setUserName(registForm.getUserName());
 		user.setBirthday(registForm.getBirthday());
-		Password password=new Password();
+		Password password = new Password();
 		password.setPassword(registForm.getPassword());
 		password.setUser(user);
 		user.setPassword(password);
-		City city=new City();
+		City city = new City();
 		city.setCityCd(registForm.getCityCd());
 		user.setCity(city);
-		Province province =new Province();
+		Province province = new Province();
 		province.setProvinceCd(registForm.getProvinceCd());
 		user.setProvince(province);
 		user.setSex(registForm.getSex());
 		user.setEmail(registForm.getEmail());
 		if (registForm.getPhotoFileName() != null) {
 			String fileName = user.getUserName()
-					+ registForm.getPhotoFileName().substring(registForm.getPhotoFileName().indexOf("."),
+					+ registForm.getPhotoFileName().substring(
+							registForm.getPhotoFileName().indexOf("."),
 							registForm.getPhotoFileName().length());
 			user.setPhotoPath(fileName);
 		}
@@ -168,6 +172,26 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public boolean updateUser(User user) {
 		return userDao.updateUser(user);
+	}
+
+	@Override
+	public boolean updateUser(EditPwdForm editPwdForm) {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		if (!editPwdForm.getNewPwd().equals(editPwdForm.getNewPwd2())) {
+			request.setAttribute("editPwdError", "两次密码输入不一致");
+			return false;
+		}
+		User user = (User) request.getSession().getAttribute("users");
+		if (!user.getPassword().getPassword().equals(editPwdForm.getOldPwd())) {
+			request.setAttribute("editPwdError", "原密码不正确");
+			return false;
+		} else {
+			Password password = user.getPassword();
+			password.setPassword(editPwdForm.getNewPwd());
+			//password.setUser(user);
+			user.setPassword(password);
+			return userDao.updateUser(user);
+		}
 	}
 
 }

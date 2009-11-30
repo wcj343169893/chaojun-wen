@@ -73,6 +73,7 @@
 	<!-- *************Form*************** -->
 	<bean id="registForm" class="com.zuxia.form.RegistForm"></bean>
 	<bean id="editUserForm" class="com.zuxia.form.EditUserForm"></bean>
+	<bean id="editPwdForm" class="com.zuxia.form.EditPwdForm"></bean>
 	<!-- *************action************* -->
 	<!-- RegistAction scope="prototype" 非单例模式-->
 	<bean id="RegistAction" class="com.zuxia.action.RegistAction"
@@ -93,6 +94,7 @@
 	<bean id="editUserAction" class="com.zuxia.action.EditUserAction">
 		<property name="userService" ref="userServiceImpl" />
 		<property name="editUserForm" ref="editUserForm" />
+		<property name="editPwdForm" ref="editPwdForm" />
 	</bean>
 	<bean id="registInitAction" class="com.zuxia.action.RegistInitAction">
 		<property name="userService" ref="userServiceImpl" />
