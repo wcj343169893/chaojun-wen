@@ -120,4 +120,10 @@ public class LoginAction extends ActionSupport {
 		}
 		return "error";
 	}
+
+	public String out() throws Exception {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		request.getSession().removeAttribute("users");
+		return "logout";
+	}
 }
