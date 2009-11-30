@@ -11,6 +11,8 @@ import org.apache.struts2.ServletActionContext;
 
 import com.zuxia.dao.IQuestionMasterDao;
 import com.zuxia.dao.IUserDao;
+import com.zuxia.entity.City;
+import com.zuxia.entity.Province;
 import com.zuxia.entity.QuestionMaster;
 import com.zuxia.entity.User;
 import com.zuxia.form.EditUserForm;
@@ -107,7 +109,34 @@ public class UserServiceImpl implements IUserService {
 		User user = (User) ServletActionContext.getRequest().getSession()
 				.getAttribute("users");
 		user.setBirthday(editUserForm.getBirthday());
-		return false;
+		user.setComment(editUserForm.getComment());
+		user.setEmail(editUserForm.getEmail());
+		Province province = new Province();
+		province.setProvinceCd(editUserForm.getProvinceCd());
+		user.setProvince(province);
+		City city = new City();
+		city.setCityCd(editUserForm.getCityCd());
+		user.setCity(city);
+		if (editUserForm.getPhotoFileName() != null) {
+			String fileName = user.getUserName()
+					+ editUserForm.getPhotoFileName().substring(
+							editUserForm.getPhotoFileName().indexOf("."),
+							editUserForm.getPhotoFileName().length());
+			user.setPhotoPath(fileName);
+		}
+		if (editUserForm.getPhoto() != null) {
+			String filePath = ServletActionContext.getServletContext()
+					.getRealPath("/")
+					+ "head\\" + user.getPhotoPath();
+			SaveFile(editUserForm.getPhoto(), filePath);
+		}
+		return userDao.updateUser(user);
+
+	}
+
+	@Override
+	public boolean updateUser(User user) {
+		return userDao.updateUser(user);
 	}
 
 }

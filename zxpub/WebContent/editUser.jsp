@@ -26,7 +26,7 @@
 			<!-- *************网站导航地图************* -->
 			<DIV class=container>
 				<DIV>
-					<FORM enctype="multipart/form-data" method="post" action="edituser.do" name=reg onSubmit="return validate(this)"
+					<FORM enctype="multipart/form-data" method="post" action="editUser.do" name=reg onSubmit="return validate(this)"
 						method=post>
 						<INPUT type=hidden value=5ff95e3e name=formhash>
 						<DIV class="mainbox formbox">
@@ -37,6 +37,27 @@
 							<TABLE cellSpacing=0 cellPadding=0 summary=编辑个人资料>
 								<TR>
 									<TH>
+										<LABEL for=locationnew>
+											省
+										</LABEL>
+									</TH>
+									<TD>
+										<select id="province" name="editUserForm.provinceCd"
+			tabindex="2" onchange="setCity(0)"></select>
+									</TD>
+								</TR>
+								<TR>
+									<TH>
+										<LABEL for=sitenew>
+											市
+										</LABEL>
+									</TH>
+									<TD>
+										<select id="city" name="editUserForm.cityCd" tabindex="3"></select>
+									</TD>
+								</TR>
+								<TR>
+									<TH>
 										<LABEL for=bdaynew>
 											生日
 										</LABEL>
@@ -44,7 +65,7 @@
 									<TD>
 									<fmt:formatDate var="birth" pattern="yyyy-MM-dd" value="${users.birthday}"></fmt:formatDate>
 										<input type="text" id="bday" name="editUserForm.birthday" size="25" onclick="setday(this)" value="${birth }"
-											tabindex="10" /> 
+											tabindex="4" /> 
 									</TD>
 								</TR>
 								<TR>
@@ -55,29 +76,8 @@
 									</TH>
 									<TD>
 										<INPUT id=email value="${users.email }"
-											onclick="showcalendar(event, this)" size=25
-											name=editUserForm.email>
-									</TD>
-								</TR>
-								<TR>
-									<TH>
-										<LABEL for=locationnew>
-											省
-										</LABEL>
-									</TH>
-									<TD>
-										<select id="province" name="editUserForm.provinceCd"
-			tabindex="20" onchange="setCity(0)"></select>
-									</TD>
-								</TR>
-								<TR>
-									<TH>
-										<LABEL for=sitenew>
-											市
-										</LABEL>
-									</TH>
-									<TD>
-										<select id="city" name="editUserForm.cityCd" tabindex="21"></select>
+											onclick="showcalendar(event, this)" size=5
+											name=editUserForm.email tabindex="5">
 									</TD>
 								</TR>
 								<TR>
@@ -87,7 +87,7 @@
 										</LABEL>
 									</TH>
 									<TD>
-										<img alt="${users.userName }的头像" src="${pageContext.request.contextPath}/head/${users.photoPath}" width="40px" height="30px" > <INPUT name="editUserForm.photo" type="file">
+										<img alt="${users.userName }的头像" src="${pageContext.request.contextPath}/head/${users.photoPath}" width="40px" height="30px" > <INPUT name="editUserForm.photo" tabindex="6" type="file">
 									</TD>
 								</TR>
 								<TR>
@@ -97,7 +97,7 @@
 										</LABEL>
 									</TH>
 									<td>
-										<textarea rows="5" cols="30" id="bio" name="editUserForm.comment" tabindex="28"></textarea>
+										<textarea rows="5" cols="30" id="bio" name="editUserForm.comment" tabindex="7"></textarea>
 									</td>
 								</TR>
 
