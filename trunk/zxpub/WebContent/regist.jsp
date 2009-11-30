@@ -104,42 +104,44 @@ var ispass=false;
 	</thead>
 	<tr>
 		<th><label for="username"> 用户名 * </label></th>
-		<td><input type="text" id="username" name="user.userName"
+		<td><input type="text" id="username" name="registForm.userName"
 			size="25" maxlength="15" onBlur="checkusername()" tabindex="3" /> <span 
 			id="checkusername" class="errorMessage"> <s:fielderror>
-			<s:param>user.userName</s:param>
+			<s:param>registForm.userName</s:param>
 		</s:fielderror> ${userexist}</span></td>
 	</tr>
 
 	<tr>
 		<td><label for="password"> 密码 * </label></td>
-		<td><input type="password" name="password.password" size="25"
+		<td><input type="password" name="registForm.password" size="25"
 			id="password" onBlur="checkpassword()" tabindex="4" /> <span
 			id="checkpassword" class="errorMessage"> <s:fielderror>
-			<s:param>password.password</s:param>
+			<s:param>registForm.password</s:param>
 		</s:fielderror> </span></td>
 	</tr>
 
 	<tr>
 		<th><label for="password2"> 确认密码 * </label></th>
-		<td><input type="password" name="password2" size="25"
+		<td><input type="password" name="registForm.password2" size="25"
 			id="password2" onBlur="checkpassword2()" tabindex="5" /> <span
-			id="checkpassword2" class="errorMessage"></span></td>
+			id="checkpassword2" class="errorMessage"><s:fielderror>
+			<s:param>registForm.password2</s:param>
+		</s:fielderror></span></td>
 	</tr>
 	<tr>
 		<th>性别</th>
-		<td><label> <input type="radio" name="user.sex" value="1"
+		<td><label> <input type="radio" name="registForm.sex" value="1"
 			checked="checked" tabindex="6" /> 男 </label> <label> <input
-			type="radio" name="user.sex" value="2" tabindex="18" /> 女 </label><s:fielderror>
-			<s:param>user.sex</s:param>
+			type="radio" name="registForm.sex" value="2" tabindex="18" /> 女 </label><s:fielderror>
+			<s:param>registForm.sex</s:param>
 		</s:fielderror></td>
 	</tr>
 	<tr>
 		<td><label for="email"> Email * </label></td>
-		<td><input type="text" name="user.email" size="25" id="email"
+		<td><input type="text" name="registForm.email" size="25" id="email"
 			onBlur="checkemail()" tabindex="7" /> <span id="checkemail"
 			class="errorMessage"> <s:fielderror>
-			<s:param>user.email</s:param>
+			<s:param>registForm.email</s:param>
 		</s:fielderror> </span></td>
 	</tr>
 	<tr>
@@ -161,7 +163,7 @@ var ispass=false;
 	<tr>
 		<th><label for="questionid"> 安全提问 </label></th>
 		<td><select id="questionid"
-			name="safeQuestion.questionMaster.questionCd" tabindex="13">
+			name="registForm.questionCd" tabindex="13">
 			<c:forEach items="${requestScope.questionMasters}" var="qm">
 			<option value="${qm.questionCd }">${qm.question }</option>
 			</c:forEach>
@@ -169,34 +171,34 @@ var ispass=false;
 	</tr>
 	<tr>
 		<th><label for="answer"> 回答 </label></th>
-		<td><input type="text" id="answer" name="safeQuestion.answer"
+		<td><input type="text" id="answer" name="registForm.answer"
 			size="25" tabindex="14" /></td>
 	</tr>
 	<tr>
 		<th><label for="province"> 省 </label></th>
-		<td><select id="province" name="user.province.provinceCd"
+		<td><select id="province" name="registForm.provinceCd"
 			tabindex="20" onchange="setCity(0)"></select></td>
 	</tr>
 	<tr>
 		<th><label for="city"> 市 </label></th>
-		<td><select id="city" name="user.city.cityCd" tabindex="21"></select>
+		<td><select id="city" name="registForm.cityCd" tabindex="21"></select>
 		</td>
 	</tr>
 	<tr>
 		<th><label for="bday"> 生日 </label></th>
-		<td><input type="text" id="bday" name="user.birthday" size="25"
+		<td><input type="text" id="bday" name="registForm.birthday" size="25"
 			onclick="setday(this)" value="1990-01-01"
 			tabindex="22" /> <s:fielderror>
-			<s:param>user.birthday</s:param>
+			<s:param>registForm.birthday</s:param>
 		</s:fielderror></td>
 	</tr>
 	<tr>
 		<td><label for="alipay"> 用户头像 </label></td>
-		<td><input id="alipay" name="photo" type="file" tabindex="23" /></td>
+		<td><input id="alipay" name="registForm.photo" type="file" tabindex="23" /></td>
 	</tr>
 	<tr>
 		<td valign="top"><label for="bio"> 自我介绍 </label></td>
-		<td><textarea rows="5" cols="30" id="bio" name="user.comment"
+		<td><textarea rows="5" cols="30" id="bio" name="registForm.comment"
 			tabindex="24"></textarea></td>
 	</tr>
 </table>

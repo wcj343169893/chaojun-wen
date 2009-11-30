@@ -70,14 +70,15 @@
 	<bean id="childModuleServiceImpl" class="com.zuxia.service.impl.ChildModuleServiceImpl">
 		<property name="childModuleDao" ref="childModuleDaoImpl" />
 	</bean>
+	<!-- *************Form*************** -->
+	<bean id="registForm" class="com.zuxia.form.RegistForm"></bean>
+	<bean id="editUserForm" class="com.zuxia.form.EditUserForm"></bean>
 	<!-- *************action************* -->
 	<!-- RegistAction scope="prototype" 非单例模式-->
 	<bean id="RegistAction" class="com.zuxia.action.RegistAction"
 		scope="prototype">
 		<property name="userService" ref="userServiceImpl" />
-		<property name="user" ref="user" />
-		<property name="password" ref="password" />
-		<property name="safeQuestion" ref="safeQuestion" />
+		<property name="registForm" ref="registForm"/>
 	</bean>
 	<!-- LoginAction -->
 	<bean id="LoginAction" class="com.zuxia.action.LoginAction">
@@ -91,6 +92,7 @@
 	</bean>
 	<bean id="editUserAction" class="com.zuxia.action.EditUserAction">
 		<property name="userService" ref="userServiceImpl" />
+		<property name="editUserForm" ref="editUserForm" />
 	</bean>
 	<bean id="registInitAction" class="com.zuxia.action.RegistInitAction">
 		<property name="userService" ref="userServiceImpl" />

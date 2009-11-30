@@ -3,28 +3,28 @@
         "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
 
 <validators>
-	<field name="user.userName">
+	<field name="registForm.userName">
 		<field-validator type="requiredstring">
 			<message key="请输入用户名">请输入用户名</message>
 		</field-validator>
 	</field>
-	<field name="password.password">
+	<field name="registForm.password">
 		<field-validator type="requiredstring">
 			<message>请输入密码</message>
 		</field-validator>
 	</field>
-	<field name="password2">
+	<field name="registForm.password2">
 		<field-validator type="requiredstring">
 			<message>请输入确认密码</message>
 		</field-validator>
 		<field-validator type="fieldexpression">
-			<param name="expression">password.password==password2</param>
+			<param name="expression">registForm.password==registForm.password2</param>
 			<message>确认密码和密码不一致</message>
 		</field-validator>
 	</field>
-	<field name="user.sex">
+	<field name="registForm.sex">
 		<field-validator type="fieldexpression">
-			<param name="expression">user.sex=="1" || user.sex=="2"</param>
+			<param name="expression">registForm.sex=="1" || registForm.sex=="2"</param>
 			<message>请确定您的性别</message>
 		</field-validator>
 	</field>
@@ -35,7 +35,7 @@
 			<message>生日必须在${min}到${max}之间</message>
 		</field-validator>
 	</field>
-	<field name="user.email">
+	<field name="registForm.email">
 		<field-validator type="email">
 			<message>输入的邮箱格式不正确</message>
 		</field-validator>
