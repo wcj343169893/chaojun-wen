@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -71,6 +72,8 @@ public class UserServiceImpl implements IUserService {
 		ServletActionContext.getRequest().getSession().removeAttribute(
 				"userexist");
 		User user = new User();
+		user.setRegistDate(new Date());
+		user.setScore(0);
 		user.setUserName(registForm.getUserName());
 		user.setBirthday(registForm.getBirthday());
 		Password password = new Password();
@@ -188,7 +191,7 @@ public class UserServiceImpl implements IUserService {
 		} else {
 			Password password = user.getPassword();
 			password.setPassword(editPwdForm.getNewPwd());
-			//password.setUser(user);
+			// password.setUser(user);
 			user.setPassword(password);
 			return userDao.updateUser(user);
 		}
