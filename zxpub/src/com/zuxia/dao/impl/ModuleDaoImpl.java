@@ -16,6 +16,8 @@ package com.zuxia.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.zuxia.dao.IModuleDao;
@@ -63,8 +65,11 @@ public class ModuleDaoImpl extends HibernateDaoSupport implements IModuleDao {
 	 */
 	@Override
 	public List<Module> getModules() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = this.getSession();
+		String hql = "from Module";
+		Query query = session.createQuery(hql);
+		List<Module> modules=query.list();
+		return modules;
 	}
 
 	/**

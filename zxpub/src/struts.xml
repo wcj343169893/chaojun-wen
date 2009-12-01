@@ -12,18 +12,18 @@
 	<constant name="struts.custom.i18n.resources" value="globalMessage" />
 	<constant name="struts.action.extension" value="do,action"></constant>
 	<package name="zxpub" extends="struts-default">
-		<action name="regist" class="RegistAction">
+		<action name="regist" class="registAction">
 			<result name="input" type="redirect-action">registInit.do</result>
 			<result name="error" type="redirect-action">registInit.do</result>
 			<result name="success" type="redirect">/success.jsp</result>
 		</action>
-		<action name="login" class="LoginAction">
+		<action name="login" class="loginAction">
 			<result name="input">/login.jsp</result>
 			<result name="success" type="redirect">/success.jsp</result>
 			<result name="error">/login.jsp</result>
 			<result name="logout" type="redirect">/index.jsp</result>
 		</action>
-		<action name="*Note" class="NoteAction" method="{1}">
+		<action name="*Note" class="noteAction" method="{1}">
 			<result name="success">/index.jsp</result>
 		</action>
 		<!-- 生成验证码 -->
@@ -42,5 +42,9 @@
 		<action name="registInit" class="registInitAction">
 			<result name="scucess">/regist.jsp</result>
 		</action>
+		<action name="module" class="moduleAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="childModule" class="childModuleAction"></action>
 	</package>
 </struts>

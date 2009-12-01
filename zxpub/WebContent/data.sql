@@ -1,3 +1,15 @@
+/**管理员**/
+insert into user(USER_CD,USER_NAME,ROLE_CD,SEX)values(1,'admin',1,'男');
+insert into PASSWORD values(1,'admin');
+/**主版块**/
+insert into module values(1,'足下软件论坛 ',1);
+/**子版块**/
+insert into CHILD_MODULE values(1,1,'足下软件论坛新人发帖区',1,'20积分以上的会员请不要在此版区发帖。谢谢。 ');
+insert into CHILD_MODULE values(2,1,'JAVA技术讨论区',1,'本版块关于JAVA方向的技术  ');
+insert into CHILD_MODULE values(3,1,'.net技术讨论区',1,'将你们的市场调查上传 。谢谢。');
+insert into CHILD_MODULE values(4,1,'**国际大楼建设方案发布区',1,'仿照西方的国际大楼');
+insert into CHILD_MODULE values(5,1,'千手观音修复方案发布区',1,'保护我们国家的文化遗产，人人有责 ');
+insert into CHILD_MODULE values(6,1,'系统、软件疑问解答交流区',1,'电脑经常死机么？系统慢的要死么？您的软件使用疑难问题!来这里,还有软件和系统的使用心得等都可以无所不谈 ');
 /**安全问题**/
 insert into QUESTION_MASTER values(1,'无安全提问');
 insert into QUESTION_MASTER values(2,'母亲的名字');

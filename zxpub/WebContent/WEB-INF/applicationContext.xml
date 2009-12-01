@@ -76,18 +76,18 @@
 	<bean id="editPwdForm" class="com.zuxia.form.EditPwdForm"></bean>
 	<!-- *************action************* -->
 	<!-- RegistAction scope="prototype" 非单例模式-->
-	<bean id="RegistAction" class="com.zuxia.action.RegistAction"
+	<bean id="registAction" class="com.zuxia.action.RegistAction"
 		scope="prototype">
 		<property name="userService" ref="userServiceImpl" />
-		<property name="registForm" ref="registForm"/>
+		<property name="registForm" ref="registForm" />
 	</bean>
 	<!-- LoginAction -->
-	<bean id="LoginAction" class="com.zuxia.action.LoginAction">
+	<bean id="loginAction" class="com.zuxia.action.LoginAction">
 		<property name="userService" ref="userServiceImpl" />
 		<property name="user" ref="user" />
 		<property name="password" ref="password" />
 	</bean>
-	<bean id="NoteAction" class="com.zuxia.action.NoteAction">
+	<bean id="noteAction" class="com.zuxia.action.NoteAction">
 		<property name="noteService" ref="noteServiceImpl" />
 		<property name="note" ref="note"></property>
 	</bean>
@@ -99,7 +99,14 @@
 	<bean id="registInitAction" class="com.zuxia.action.RegistInitAction">
 		<property name="userService" ref="userServiceImpl" />
 	</bean>
-	<bean id="validateImageAction" class="com.zuxia.action.ValidateImageAction" scope="prototype"></bean>
+	<bean id="validateImageAction" class="com.zuxia.action.ValidateImageAction"
+		scope="prototype"></bean>
+	<bean id="moduleAction" class="com.zuxia.action.ModuleAction">
+		<property name="moduleService" ref="moduleServiceImpl" />
+	</bean>
+	<bean id="childModuleAction" class="com.zuxia.action.ChildModuleAction">
+		<property name="childModuleService" ref="childModuleServiceImpl" />
+	</bean>
 	<!-- 事物管理 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
