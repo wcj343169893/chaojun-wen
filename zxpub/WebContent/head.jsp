@@ -19,13 +19,13 @@
 <UL>
 	<c:choose>
 		<c:when test="${empty users}">
-			<LI id=memcp><A href="index.jsp">首页</A></LI>
+			<LI id=memcp><A href="welcome.jsp">首页</A></LI>
 			<LI id=memcp><a href="preRegist.jsp">注册</a></LI>
 			<LI id=memcp><A href="login.jsp">登录</A></LI>
 		</c:when>
 		<c:otherwise>
 			<LI id=memcp><CITE><A href="">${users.userName }</A> </CITE></LI>
-			<LI id=memcp><A href="index.jsp">首页</A></LI>
+			<LI id=memcp><A href="welcome.jsp">首页</A></LI>
 			<LI id=memcp><A href="login!out.do">退出</A></LI>
 			<LI id=memcp><A href="">积分管理</A></LI>
 			<LI id=memcp><A href="editUser.jsp">个人信息编辑</A></LI>
