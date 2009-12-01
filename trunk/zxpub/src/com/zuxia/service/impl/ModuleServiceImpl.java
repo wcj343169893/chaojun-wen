@@ -14,7 +14,10 @@
  */
 package com.zuxia.service.impl;
 
+import java.util.List;
+
 import com.zuxia.dao.IModuleDao;
+import com.zuxia.entity.Module;
 import com.zuxia.service.IModuleService;
 
 /**
@@ -43,6 +46,11 @@ public class ModuleServiceImpl implements IModuleService {
 	 */
 	public void setModuleDao(IModuleDao moduleDao) {
 		this.moduleDao = moduleDao;
+	}
+
+	@Override
+	public List<Module> getModules() {
+		return moduleDao.getModules();
 	}
 
 }

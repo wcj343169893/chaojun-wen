@@ -34,8 +34,9 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分区版主: <A class=notabs href="">lx7903</A>,
 					<A class=notabs href="http://bbs.thec.cn/space.php?username=zyawen">zyawen</A>
 				</SPAN>
+				<c:forEach items="${modules_db}" var="module">					
 				<H3>
-					<A href="#">■足下软件论坛</A>
+					<A href="module.jsp?mCd=${module.moduleCd }">■${module.moduleName }</A>
 				</H3>
 				<TABLE id=category_73 cellSpacing=0 cellPadding=0 summary=category73>
 					<THEAD class=category>
@@ -61,15 +62,17 @@
 						</c:choose>
 						</TR>
 					</THEAD>
+					<c:forEach items="${module.childModule}" var="childModule">
+						
 					<TBODY id=forum102>
 						<TR>
 							<TH class=new>
 								<H2>
-									<A href="http://bbs.thec.cn/forumdisplay.php? fid=102">足下软件论坛新人发帖区</A><EM>
+									<A href="childModule.jsp?cmCd=${childModule.childModuleCd }">${childModule.childModuleName }</A><EM>
 										(今日: 53)</EM>
 								</H2>
 								<P>
-									20积分以上的会员请不要在此版区发帖。谢谢。
+									${childModule.moduleComment }
 								</P>
 								<P class=moderators>
 									版主:
@@ -103,247 +106,10 @@
 							</c:choose>
 							
 						</TR>
-					</TBODY>
-					<TBODY id=forum102>
-						<TR>
-							<TH class=new>
-								<H2>
-									<A href="http://bbs.thec.cn/forumdisplay.php? fid=102">JAVA技术讨论区</A><EM>
-										(今日: 53)</EM>
-								</H2>
-								<P>
-									本版块关于JAVA方向的技术
-								</P>
-								<P class=moderators>
-									版主:
-									<A class=notabs href="">btmir2</A>,
-									<A class=notabs href="">wb0606</A>,
-									<A class=notabs href="">wangziqi</A>,
-									<A class=notabs href="">fqqk2007</A>
-								</P>
-							</TH>
-							<TD class=nums>
-								22258
-							</TD>
-							<TD class=nums>
-								125130
-							</TD>
-							<TD class=lastpost>
-								<A
-									href="http://bbs.thec.cn/redirect.php? tid=437115&amp;goto=lastpost#lastpost">方案
-									...</A>
-								<CITE>by <A
-									href="http://bbs.thec.cn/space.php?username=%B2%DD% BD%E6">草芥</A>
-									- 2009-4-23 12:30</CITE>
-							</TD>
-							
-						</TR>
-					</TBODY>
-					<TBODY id=forum102>
-						<TR>
-							<TH class=new>
-								<H2>
-									<A href="http://bbs.thec.cn/forumdisplay.php? fid=102">.net技术讨论区</A><EM>
-										(今日: 53)</EM>
-								</H2>
-								<P>
-									将你们的市场调查上传
-								</P>
-								<P class=moderators>
-									版主:
-									<A class=notabs href="">btmir2</A>,
-									<A class=notabs href="">wb0606</A>,
-									<A class=notabs href="">wangziqi</A>,
-									<A class=notabs href="">fqqk2007</A>
-								</P>
-							</TH>
-							<TD class=nums>
-								22258
-							</TD>
-							<TD class=nums>
-								125130
-							</TD>
-							<TD class=lastpost>
-								<A
-									href="http://bbs.thec.cn/redirect.php? tid=437115&amp;goto=lastpost#lastpost">方案
-									...</A>
-								<CITE>by <A
-									href="http://bbs.thec.cn/space.php?username=%B2%DD% BD%E6">草芥</A>
-									- 2009-4-23 12:30</CITE>
-							</TD>
-						</TR>
-					</TBODY>
-					<TBODY id=forum102>
-						<TR>
-							<TH class=new>
-								<H2>
-									<A href="http://bbs.thec.cn/forumdisplay.php? fid=102">**国际大楼建设方案发布区</A><EM>
-										(今日: 53)</EM>
-								</H2>
-								<P>
-									仿照西方的国际大楼
-								</P>
-								<P class=moderators>
-									版主:
-									<A class=notabs href="">btmir2</A>,
-									<A class=notabs href="">wb0606</A>,
-									<A class=notabs href="">wangziqi</A>,
-									<A class=notabs href="">fqqk2007</A>
-								</P>
-							</TH>
-							<TD class=nums>
-								22258
-							</TD>
-							<TD class=nums>
-								125130
-							</TD>
-							<TD class=lastpost>
-								<A
-									href="http://bbs.thec.cn/redirect.php? tid=437115&amp;goto=lastpost#lastpost">方案
-									...</A>
-								<CITE>by <A
-									href="http://bbs.thec.cn/space.php?username=%B2%DD% BD%E6">草芥</A>
-									- 2009-4-23 12:30</CITE>
-							</TD>
-						</TR>
-					</TBODY>
-					<TBODY id=forum102>
-						<TR>
-							<TH class=new>
-								<H2>
-									<A href="http://bbs.thec.cn/forumdisplay.php? fid=102">千手观音修复方案发布区</A><EM>
-										(今日: 53)</EM>
-								</H2>
-								<P>
-									保护我们国家的文化遗产，人人有责
-								</P>
-								<P class=moderators>
-									版主:
-									<A class=notabs href="">btmir2</A>,
-									<A class=notabs href="">wb0606</A>,
-									<A class=notabs href="">wangziqi</A>,
-									<A class=notabs href="">fqqk2007</A>
-								</P>
-							</TH>
-							<TD class=nums>
-								22258
-							</TD>
-							<TD class=nums>
-								125130
-							</TD>
-							<TD class=lastpost>
-								<A
-									href="http://bbs.thec.cn/redirect.php? tid=437115&amp;goto=lastpost#lastpost">方案
-									...</A>
-								<CITE>by <A
-									href="http://bbs.thec.cn/space.php?username=%B2%DD% BD%E6">草芥</A>
-									- 2009-4-23 12:30</CITE>
-							</TD>
-						</TR>
-					</TBODY>
-					<TBODY id=forum102>
-						<TR>
-							<TH class=new>
-								<H2>
-									<A href="http://bbs.thec.cn/forumdisplay.php? fid=102">客户关系管理方案发布区</A><EM>
-										(今日: 53)</EM>
-								</H2>
-								<P>
-									本版块关于客户关系管理的方案
-								</P>
-								<P class=moderators>
-									版主:
-									<A class=notabs href="">btmir2</A>,
-									<A class=notabs href="">wb0606</A>,
-									<A class=notabs href="">wangziqi</A>,
-									<A class=notabs href="">fqqk2007</A>
-								</P>
-							</TH>
-							<TD class=nums>
-								22258
-							</TD>
-							<TD class=nums>
-								125130
-							</TD>
-							<TD class=lastpost>
-								<A
-									href="http://bbs.thec.cn/redirect.php? tid=437115&amp;goto=lastpost#lastpost">方案
-									...</A>
-								<CITE>by <A
-									href="http://bbs.thec.cn/space.php?username=%B2%DD% BD%E6">草芥</A>
-									- 2009-4-23 12:30</CITE>
-							</TD>
-						</TR>
-					</TBODY>
-					<TBODY id=forum102>
-						<TR>
-							<TH class=new>
-								<H2>
-									<A href="http://bbs.thec.cn/forumdisplay.php? fid=102">物流管理方案发布区</A><EM>
-										(今日: 53)</EM>
-								</H2>
-								<P>
-									本版块关于物流管理方案
-								</P>
-								<P class=moderators>
-									版主:
-									<A class=notabs href="">btmir2</A>,
-									<A class=notabs href="">wb0606</A>,
-									<A class=notabs href="">wangziqi</A>,
-									<A class=notabs href="">fqqk2007</A>
-								</P>
-							</TH>
-							<TD class=nums>
-								22258
-							</TD>
-							<TD class=nums>
-								125130
-							</TD>
-							<TD class=lastpost>
-								<A
-									href="http://bbs.thec.cn/redirect.php? tid=437115&amp;goto=lastpost#lastpost">方案
-									...</A>
-								<CITE>by <A
-									href="http://bbs.thec.cn/space.php?username=%B2%DD% BD%E6">草芥</A>
-									- 2009-4-23 12:30</CITE>
-							</TD>
-						</TR>
-					</TBODY>
-					<TBODY id=forum102>
-						<TR>
-							<TH class=new>
-								<H2>
-									<A href="http://bbs.thec.cn/forumdisplay.php? fid=102">养猪场管理方案发布区</A><EM>
-										(今日: 53)</EM>
-								</H2>
-								<P>
-									本版块关于养猪的方案
-								</P>
-								<P class=moderators>
-									版主:
-									<A class=notabs href="">btmir2</A>,
-									<A class=notabs href="">wb0606</A>,
-									<A class=notabs href="">wangziqi</A>,
-									<A class=notabs href="">fqqk2007</A>
-								</P>
-							</TH>
-							<TD class=nums>
-								22258
-							</TD>
-							<TD class=nums>
-								125130
-							</TD>
-							<TD class=lastpost>
-								<A
-									href="http://bbs.thec.cn/redirect.php? tid=437115&amp;goto=lastpost#lastpost">方案
-									...</A>
-								<CITE>by <A
-									href="http://bbs.thec.cn/space.php?username=%B2%DD% BD%E6">草芥</A>
-									- 2009-4-23 12:30</CITE>
-							</TD>
-						</TR>
-					</TBODY>
+					</TBODY>				
+					</c:forEach>
 				</TABLE>
+				</c:forEach>
 			</DIV>
 			<DIV id=ad_intercat_73></DIV>
 			<DIV id=ad_intercat_2></DIV>
