@@ -13,6 +13,8 @@
 	src="${pageContext.request.contextPath}/js/setday.js"></script>
 	<script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/pro_city.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1[1].2.1.pack.js"></script>
+<script language="javascript" src="${pageContext.request.contextPath}/js/showPic.js"></script> 
 </head>
 <body onload="setProvince(${users.province.provinceCd }),setCity(${users.city.cityCd })">
 		<DIV class=wrap>
@@ -87,8 +89,8 @@
 										</LABEL>
 									</TH>
 									<TD>
-										<img alt="${users.userName }的头像" src="${pageContext.request.contextPath}/head/${users.photoPath}" width="40px" height="30px" > <INPUT name="editUserForm.photo" tabindex="6" type="file">
-									</TD>
+										<img alt="${users.userName }的头像" id="head" src="${pageContext.request.contextPath}/head/${users.photoPath}" width="40px" height="30px" > <INPUT id="f1" name="editUserForm.photo" tabindex="6" type="file">
+									<div id="large" style="width: 140px;height: 140px"></div></TD>
 								</TR>
 								<TR>
 									<TH>

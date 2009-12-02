@@ -37,4 +37,10 @@ public class NoteServiceImpl implements INoteService {
 		return noteDao.insertNote(note);
 	}
 
+	@Override
+	public Note getOneNote(int noteCd) {
+		return noteDao.getNoteByCd(noteCd);
+
+	}
+
 }

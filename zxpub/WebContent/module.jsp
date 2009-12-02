@@ -28,16 +28,17 @@
 						<input type="text" style="width: 20px" />
 						&nbsp;&nbsp;GO&nbsp;
 					</DIV>
+					<c:if test="${!empty users}">
 					<SPAN class=postbtn id=newspecial
 						onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu(this.id)"><A
 						title=参与竞价
 						href="addNote.jsp?mCd=${param.mCd }&cmCd=${param.cmCd }"><IMG
 								alt=发布新贴 src="img/newtopic.gif">
-					</A> </SPAN>
+					</A> </SPAN></c:if>
 				</DIV>
 				<DIV class="mainbox threadlist">
 					<H1>
-						<A class=bold href="http://bbs.thec.cn/forumdisplay.php?fid=102">足下软件论坛新人发帖区</A>
+						<A class=bold href="#">${requestScope.childModules_db.childModuleName }</A>
 					</H1>
 					<FORM name=moderate
 						action=topicadmin.php?action=moderate&amp;fid=102 method=post>
@@ -65,6 +66,7 @@
 									</TD>
 								</TR>
 							</THEAD>
+							<c:forEach items="${requestScope.childModules_db.notes }" var="note">							
 							<TBODY>
 								<TR>
 									<TD class=folder>
@@ -75,14 +77,13 @@
 									</TD>
 									<TH>
 										<A
-											href="http://bbs.thec.cn/viewthread.php?tid=428157&amp;extra=page%3D1&amp;frombbs=1"
-											target=_blank>足下软件论坛</A>
+											href="showNote.do?noteCd=${note.noteCd}"><c:out value="${note.title}" /></A>
 									</TH>
 									<TD class=author>
 										<CITE><A
-											href="http://bbs.thec.cn/space.php?action=viewpro&amp;uid=1696">zyawen</A>
+											href="http://bbs.thec.cn/space.php?action=viewpro&amp;uid=1696"><c:out value="${note.user.userName}" /></A>
 										</CITE>
-										<EM>2009-3-9</EM>
+										<EM>${note.publishDate }</EM>
 									</TD>
 									<TD class=nums>
 										-
@@ -92,6 +93,7 @@
 									</TD>
 								</TR>
 							</TBODY>
+								</c:forEach>
 							<TBODY id=stickthread_81915>
 								<TR>
 									<TD class=folder>
