@@ -8,11 +8,6 @@
 <title>信息提交成功</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/style_10.css" />
-	<script type="text/javascript">
-		function openoldwindow(){
-			window.open("welcome.jsp");
-		}
-	</script>
 	<base target="_parent">
 </head>
 <body>
@@ -32,7 +27,7 @@
 	<P class="STYLE2"><span class="STYLE3">信息提交成功！</span></P>
 	</center>
 	<center><input type="button" value="确 定"
-		style="height: 20px; width: 40px; font-size: 10px" onClick="openoldwindow();"></center>
+		style="height: 20px; width: 40px; font-size: 10px" onclick="javascript:window.location.href='welcome.jsp'"></center>
 	</DIV>
 	<!-- 尾 --> 
 	<iframe width=100% height=113px src="cauda.jsp" frameborder=0>

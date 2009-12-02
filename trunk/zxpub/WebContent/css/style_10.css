@@ -349,6 +349,9 @@ TABLE {
 .replybtn {
 	FLOAT: right
 }
+.replybtn {
+	MARGIN-LEFT: 10px; CURSOR: pointer
+}
 .postbtn {
 	MARGIN-LEFT: 10px; CURSOR: pointer
 }
@@ -2216,3 +2219,4 @@ BUTTON.insmsg {
 .errorMessage{
 	color: red;
 }
+#large{position:absolute;display:none;z-index:999;}

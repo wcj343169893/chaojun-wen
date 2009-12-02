@@ -12,4 +12,12 @@ public interface INoteService {
 	 * @return
 	 */
 	public boolean addNote(Note note);
+	/**
+	 * getNote方法概述
+	 * 
+	 *获取一个note
+	 * @param noteCd
+	 * @return
+	 */
+	public Note getOneNote(int noteCd);
 }

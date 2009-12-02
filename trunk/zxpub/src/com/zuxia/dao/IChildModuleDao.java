@@ -30,9 +30,18 @@ public interface IChildModuleDao {
 
 	public boolean updateChildModule(ChildModule childModule);
 
-	public boolean deleteChildModule(int childModuleCd);
+	public boolean deleteChildModule(int mCd);
 
 	public List<ChildModule> getChildModules();
 
-	public Module getChildModuleByCd(Integer childModuleCd);
+	/**
+	 * getChildModulesByMCd方法概述 根据主版块查询子版块
+	 * 
+	 * @param mCd
+	 *            主版块cd
+	 * @return
+	 */
+	public List<ChildModule> getChildModulesByMCd(int mCd);
+
+	public ChildModule getChildModuleByCmCd(Integer cmCd);
 }

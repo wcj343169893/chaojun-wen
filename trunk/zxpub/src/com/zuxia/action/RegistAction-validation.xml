@@ -24,7 +24,7 @@
 	</field>
 	<field name="registForm.sex">
 		<field-validator type="fieldexpression">
-			<param name="expression">registForm.sex=="1" || registForm.sex=="2"</param>
+			<param name="expression">registForm.sex=="男" || registForm.sex=="女"</param>
 			<message>请确定您的性别</message>
 		</field-validator>
 	</field>

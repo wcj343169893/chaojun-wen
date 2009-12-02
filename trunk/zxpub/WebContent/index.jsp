@@ -68,7 +68,7 @@
 						<TR>
 							<TH class=new>
 								<H2>
-									<A href="module.jsp?mCd=${module.moduleCd }&cmCd=${childModule.childModuleCd }">${childModule.childModuleName }</A><EM>
+									<A href="childModule.do?mCd=${module.moduleCd }&cmCd=${childModule.childModuleCd }">${childModule.childModuleName }</A><EM>
 										(今日: 53)</EM>
 								</H2>
 								<P>

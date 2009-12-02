@@ -25,6 +25,26 @@ public class NoteAction extends ActionSupport {
 	private static final long serialVersionUID = -188481902986946432L;
 	private INoteService noteService;
 	private Note note;
+	private int noteCd;
+
+	/**
+	 * noteCd属性的get方法
+	 * 
+	 * @return the noteCd
+	 */
+	public int getNoteCd() {
+		return noteCd;
+	}
+
+	/**
+	 * noteCd属性的set方法
+	 * 
+	 * @param noteCd
+	 *            the noteCd to set
+	 */
+	public void setNoteCd(int noteCd) {
+		this.noteCd = noteCd;
+	}
 
 	/**
 	 * note属性的get方法
@@ -89,5 +109,10 @@ public class NoteAction extends ActionSupport {
 	public String delete() throws Exception {
 		// TODO Auto-generated method stub
 		return super.execute();
+	}
+
+	public String show() throws Exception {
+		ServletActionContext.getRequest().setAttribute("note", noteService.getOneNote(noteCd));
+		return "showNote";
 	}
 }

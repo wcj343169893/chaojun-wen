@@ -14,7 +14,10 @@
  */
 package com.zuxia.service.impl;
 
+import java.util.List;
+
 import com.zuxia.dao.IChildModuleDao;
+import com.zuxia.entity.ChildModule;
 import com.zuxia.service.IChildModuleService;
 
 /**
@@ -43,6 +46,18 @@ public class ChildModuleServiceImpl implements IChildModuleService {
 	 */
 	public void setChildModuleDao(IChildModuleDao childModuleDao) {
 		this.childModuleDao = childModuleDao;
+	}
+
+	@Override
+	public List<ChildModule> getChildModules() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ChildModule getChildModulesByCmCd(int cmCd) {
+		return childModuleDao.getChildModuleByCmCd(cmCd);
+
 	}
 
 }

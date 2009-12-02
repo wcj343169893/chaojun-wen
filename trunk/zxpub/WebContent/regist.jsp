@@ -6,10 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
+<title>注册</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/style_10.css" />
-<script src="${pageContext.request.contextPath}/js/common.js"
+	<style type="text/css">
+    #large{position:absolute;display:none;z-index:999;}
+	</style>
+	<script src="${pageContext.request.contextPath}/js/common.js"
 	type="text/javascript"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/setday.js"></script>
@@ -84,6 +87,9 @@ var ispass=false;
 		}
 	}
 </script>
+<style type="text/css">
+    #large{position:absolute;display:none;z-index:999;}
+</style>
 </head>
 <body onload="setProvince(0),setCity(0)">
 <DIV class=wrap><!-- *************头************* --> <iframe
@@ -130,9 +136,9 @@ var ispass=false;
 	</tr>
 	<tr>
 		<th>性别</th>
-		<td><label> <input type="radio" name="registForm.sex" value="1"
+		<td><label> <input type="radio" name="registForm.sex" value="男"
 			checked="checked" tabindex="6" /> 男 </label> <label> <input
-			type="radio" name="registForm.sex" value="2" tabindex="18" /> 女 </label><s:fielderror>
+			type="radio" name="registForm.sex" value="女" tabindex="18" /> 女 </label><s:fielderror>
 			<s:param>registForm.sex</s:param>
 		</s:fielderror></td>
 	</tr>
@@ -194,7 +200,8 @@ var ispass=false;
 	</tr>
 	<tr>
 		<td><label for="alipay"> 用户头像 </label></td>
-		<td><input id="alipay" name="registForm.photo" type="file" tabindex="23" /></td>
+		<td><input id="alipay" name="registForm.photo" type="file" tabindex="23" />
+		</td>
 	</tr>
 	<tr>
 		<td valign="top"><label for="bio"> 自我介绍 </label></td>

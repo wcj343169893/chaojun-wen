@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,6 +11,8 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/style_10.css" />
 <script src="js/common.js" type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}js/jquery-1[1].2.1.pack.js"></script>
+<script language="javascript" src="${pageContext.request.contextPath}/js/showPic.js"></script> 
 </head>
 <body>
 	<div class=wrap>
@@ -24,7 +27,7 @@
 			<div class="wrap">
 				<FORM name=modactions method=post>
 					<DIV class=pages_btns>
-						<div style="width: 800px; height: 30px;">
+						<div class=pages>
 							第1/1页『首页』 『上一页』『下一页』『尾页』『定价』
 							<input type="text"
 								style="width: 20px; border: 1px solid #999999;" />
@@ -32,14 +35,16 @@
 								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
 								value="GO" />
 						</div>
-						<SPAN class=replybtn><IMG alt="" src="img/reply.gif" border=0></A> </SPAN>
+						<c:if test="${!empty users}">
+						<SPAN class=replybtn><a href="#"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
+						</c:if>
 					</DIV>
 					<INPUT type=hidden value=6b487188 name=formhash>
 					<DIV class="mainbox viewthread">
 						<div id="div01" style="background-color: #83B733; width: 100%">
 							<div id="01" style="float: left; width: 100%">
 								<h1>
-									大家来说说我的解决方案值多少钱?
+								<c:out value="${requestScope.note.title }" />	
 								</h1>
 							</div>
 						</div>
@@ -50,23 +55,24 @@
 									<TD class=postauthor>
 										<CITE><A class=dropmenu id=userinfo1556509
 											onmouseover=showMenu(this.id)
-											href="http://bbs.thec.cn/space.php?uid=77624" target=_blank>llhxd</A>
+											href="http://bbs.thec.cn/space.php?uid=77624"><c:out value="${requestScope.note.user.userName }" />	</A>
 										</CITE>
 										<DIV class=avatar>
-											<IMG height=95 alt="" src="img/77624.gif" width=95 border=0>
+											<img height=95 alt="" src="head/${requestScope.note.user.photoPath }" width=95 border=0>
 										</DIV>
+											<div id="large" style="width: 140px;height: 140px"></div>
 										<P>
 											<EM>版主</EM>
 										</P>
 										<P class=customstatus>
-											御龙剑客
+											<c:out value="${requestScope.note.module.user.userName }" />
 										</P>
 										<DL class=profile>
 											<DT>
 												UID
 											</DT>
 											<DD>
-												77624&nbsp;
+												${requestScope.note.user.userCd }&nbsp;
 											</DD>
 											<DT>
 												帖子
@@ -84,49 +90,32 @@
 												注册时间
 											</DT>
 											<DD>
-												2007-6-4&nbsp;
+												${requestScope.note.user.registDate }&nbsp;
 											</DD>
 											<DT>
 												最后登录
 											</DT>
 											<DD>
-												2009-4-20&nbsp;
+												${requestScope.note.user.lastLoginDate }&nbsp;
 											</DD>
 										</DL>
 									</TD>
 									<TD class=postcontent>
 										<DIV class=postinfo>
+										<fmt:formatDate value="${requestScope.note.publishDate}" var="pd" pattern="yyyy-MM-dd HH:mm:ss"/>
 											<STRONG id=postnum1556661 title=复制帖子链接到剪贴板
 												onclick="setcopy('http://bbs.thec.cn/viewthread.php?tid=382348&amp;page=1#pid1556661', '帖子链接已经复制到剪贴板')"></STRONG>
-											发表于 2008-6-25 21:45&nbsp;
+											发表于 ${pd }&nbsp;
 										</DIV>
 										<DIV id=ad_thread2_0></DIV>
 										<DIV class="postmessage defaultpost">
 											<DIV id=ad_thread3_0></DIV>
 											<DIV id=ad_thread4_0></DIV>
 											<H2>
-												大家来说说我的解决方案值多少钱?
+												<c:out value="${requestScope.note.title }" />
 											</H2>
 											<DIV class=t_msgfont id=postmessage_1556509>
-												我最近搞了一个软件，是关于人力资源管理系统的，软件的的解决方案我不知道要卖多少钱。
-												<BR>
-													请大家帮我说个价? 
-												<BR>
-												<BR>
-												<strong><h2>
-														解决方案目录
-													</h2> </strong>
-												<BR>
-												<strong>解决方案名称:</strong>&nbsp;人力资源管理系统.
-												<BR>
-												<br>
-												<strong>第一章:</strong>&nbsp;对公司的主要客户进行收集.
-												<br>
-												<strong>第二章:</strong>&nbsp;对员工的个人资料进行编辑.
-												<br>
-												<strong>第三章:</strong>&nbsp;对员工的个人薪资进行发放。
-												<br>
-												<strong>产品的最初定价:</strong>&nbsp;10000$
+												<c:out value="${requestScope.note.content }" />
 											</DIV>
 										</DIV>
 										<DIV></DIV>

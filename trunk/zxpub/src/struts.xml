@@ -13,18 +13,19 @@
 	<constant name="struts.action.extension" value="do,action"></constant>
 	<package name="zxpub" extends="struts-default">
 		<action name="regist" class="registAction">
-			<result name="input" type="redirectAction">registInit.do</result>
+			<result name="input" type="chain">registInit</result>
 			<result name="error" type="redirectAction">registInit.do</result>
 			<result name="success" type="redirect">/success.jsp</result>
 		</action>
 		<action name="login" class="loginAction">
 			<result name="input">/login.jsp</result>
-			<result name="success" type="redirect">/success.jsp</result>
+			<result name="success" type="redirect">/userDetails.jsp</result>
 			<result name="error">/login.jsp</result>
 			<result name="logout" type="redirectAction">module.do</result>
 		</action>
 		<action name="*Note" class="noteAction" method="{1}">
 			<result name="success" type="redirectAction">module.do</result>
+			<result name="showNote">/note.jsp</result>
 		</action>
 		<!-- 生成验证码 -->
 		<action name="validateImage" class="validateImageAction">
@@ -40,11 +41,14 @@
 			<result name="editPwd">/editPWD.jsp</result>
 		</action>
 		<action name="registInit" class="registInitAction">
+			<result name="input">/regist.jsp</result>
 			<result name="scucess">/regist.jsp</result>
 		</action>
 		<action name="module" class="moduleAction">
 			<result name="success">/index.jsp</result>
 		</action>
-		<action name="childModule" class="childModuleAction"></action>
+		<action name="childModule" class="childModuleAction">
+			<result name="success">/module.jsp</result>
+		</action>
 	</package>
 </struts>
