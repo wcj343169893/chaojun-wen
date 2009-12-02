@@ -34,7 +34,7 @@ public class NoteServiceImpl implements INoteService {
 
 	@Override
 	public boolean addNote(Note note) {
-		return noteDao.insertNote();
+		return noteDao.insertNote(note);
 	}
 
 }

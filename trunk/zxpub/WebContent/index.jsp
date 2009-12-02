@@ -28,7 +28,7 @@
 				<SPAN class=headactions>
 				<c:choose>
 					<c:when test="${!empty users}">
-				<a href="#">新增子模块</a>
+				<a href="addChildModule.jsp">新增子模块</a>
 					</c:when>
 				</c:choose>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分区版主: <A class=notabs href="">lx7903</A>,
@@ -68,7 +68,7 @@
 						<TR>
 							<TH class=new>
 								<H2>
-									<A href="childModule.jsp?cmCd=${childModule.childModuleCd }">${childModule.childModuleName }</A><EM>
+									<A href="module.jsp?mCd=${module.moduleCd }&cmCd=${childModule.childModuleCd }">${childModule.childModuleName }</A><EM>
 										(今日: 53)</EM>
 								</H2>
 								<P>
