@@ -29,10 +29,19 @@ public class ModuleAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
-		return super.execute();
+		ServletActionContext.getRequest().setAttribute("modules_db",
+				moduleService.getModules());
+		return "success";
 	}
 
+	/**
+	 * getModules方法概述
+	 * 
+	 *获取到所有的板块
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	public String getModules() throws Exception {
 		ServletActionContext.getRequest().setAttribute("modules_db",
 				moduleService.getModules());

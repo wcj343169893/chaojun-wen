@@ -19,7 +19,8 @@
 			</iframe>
 			<!-- *************网站导航地图************* -->
 			<form action="addNote.do" method="post">
-		
+			<input type="hidden" value="${param.mCd }" name="note.module.moduleCd">
+			<input type="hidden" value="${param.cmCd }" name="note.childModule.childModuleCd">
 			<DIV class="mainbox formbox">
 				<H1>
 					发新话题
@@ -33,7 +34,7 @@
 							<TD>
 								${users.userName }
 								<A
-									href="LogoutServlet">退出登录</A>]
+									href="login!out.do">退出登录</A>
 							</TD>
 						</TR>
 					</THEAD>

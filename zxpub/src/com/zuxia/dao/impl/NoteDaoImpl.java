@@ -2,6 +2,8 @@ package com.zuxia.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.zuxia.dao.INoteDao;
@@ -11,31 +13,39 @@ public class NoteDaoImpl extends HibernateDaoSupport implements INoteDao {
 
 	@Override
 	public boolean deleteNote() {
-		// TODO Auto-generated method stub
+		Session session = this.getSession();
 		return false;
 	}
 
 	@Override
 	public Note getNoteByCd(Integer noteCd) {
-		// TODO Auto-generated method stub
+		Session session = this.getSession();
 		return null;
 	}
 
 	@Override
 	public List<Note> getNotes() {
-		// TODO Auto-generated method stub
+		Session session = this.getSession();
 		return null;
 	}
 
 	@Override
-	public boolean insertNote() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean insertNote(Note note) {
+		boolean flag=false;
+		Session session = this.getSession();
+		try {
+			session.save(note);
+			flag=true;
+		} catch (HibernateException e) {
+			flag=false;
+			e.printStackTrace();
+		}
+		return flag;
 	}
 
 	@Override
 	public boolean updateNote() {
-		// TODO Auto-generated method stub
+		Session session = this.getSession();
 		return false;
 	}
 

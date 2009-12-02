@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
+<title>增加子版块</title>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/style_10.css" />
 </head>
+
 <body>
-<script type="text/javascript">
-	window.location = 'module.do';
-</script>
 </body>
 </html>

@@ -5,14 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@page import="java.util.*" %>
 <title>登录</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/style_10.css" />
 	<script type="text/javascript">
-function reloadVerifyCode(obj){  
-    obj.src = "<%=request.getContextPath()%>/validateImage.do";
-} 
-</script>
+	function reloadVerifyCode(obj){  
+	    obj.src = "<%=request.getContextPath()%>/validateImage.do";
+	} 
+	</script>	
 </head>
 <body><DIV class=wrap>
 			<!-- *************头************* -->
@@ -154,7 +155,7 @@ function reloadVerifyCode(obj){
 		<DIV id=ad_none style="DISPLAY: none">
 			<DIV id=ad_headerbanner_none>
 				<A href="http://10169.com/style/info/host.asp" target=_blank><IMG
-						src="http://bbs.thec.cn/bbsimg/gdata.gif" border=0> </A>
+						src="" border=0> </A>
 			</DIV>
 			<DIV class=ad_footerbanner id=ad_footerbanner1_none>
 				<DIV class=ad_footerbanner>
