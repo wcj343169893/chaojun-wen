@@ -1,15 +1,13 @@
 package com.zuxia.action;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.zuxia.entity.Note;
 import com.zuxia.entity.User;
-import com.zuxia.service.INoteService;
+import com.zuxia.form.FellowNoteForm;
+import com.zuxia.service.IFellowNoteService;
 
 /**
  * NoteAction概要说明
@@ -23,45 +21,50 @@ public class FellowNoteAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = -188481902986946432L;
-	private INoteService noteService;
-	private Note note;
 
 	/**
-	 * note属性的get方法
+	 * fellowNoteService属性概述
 	 * 
-	 * @return the note
 	 */
-	public Note getNote() {
-		return note;
+	private IFellowNoteService fellowNoteService;
+	private FellowNoteForm fellowNoteForm;
+
+	/**
+	 * fellowNoteService属性的get方法
+	 * 
+	 * @return the fellowNoteService
+	 */
+	public IFellowNoteService getFellowNoteService() {
+		return fellowNoteService;
 	}
 
 	/**
-	 * note属性的set方法
+	 * fellowNoteService属性的set方法
 	 * 
-	 * @param note
-	 *            the note to set
+	 * @param fellowNoteService
+	 *            the fellowNoteService to set
 	 */
-	public void setNote(Note note) {
-		this.note = note;
+	public void setFellowNoteService(IFellowNoteService fellowNoteService) {
+		this.fellowNoteService = fellowNoteService;
 	}
 
 	/**
-	 * noteService属性的get方法
+	 * fellowNoteForm属性的get方法
 	 * 
-	 * @return the noteService
+	 * @return the fellowNoteForm
 	 */
-	public INoteService getNoteService() {
-		return noteService;
+	public FellowNoteForm getFellowNoteForm() {
+		return fellowNoteForm;
 	}
 
 	/**
-	 * noteService属性的set方法
+	 * fellowNoteForm属性的set方法
 	 * 
-	 * @param noteService
-	 *            the noteService to set
+	 * @param fellowNoteForm
+	 *            the fellowNoteForm to set
 	 */
-	public void setNoteService(INoteService noteService) {
-		this.noteService = noteService;
+	public void setFellowNoteForm(FellowNoteForm fellowNoteForm) {
+		this.fellowNoteForm = fellowNoteForm;
 	}
 
 	/**
@@ -74,10 +77,8 @@ public class FellowNoteAction extends ActionSupport {
 	 */
 	public String add() throws Exception {
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		note.setUser((User) session.getAttribute("users"));
-		note.setPublishDate(new Date());
-		boolean flag = noteService.addNote(note);
-		System.out.println(flag);
+		fellowNoteService.addFellowNote(fellowNoteForm, (User) session
+				.getAttribute("users"));
 		return "success";
 	}
 

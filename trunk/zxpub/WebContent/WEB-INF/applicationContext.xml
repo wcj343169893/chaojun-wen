@@ -53,7 +53,6 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<!-- *************service************* -->
-	<!-- userService -->
 	<bean id="userServiceImpl" class="com.zuxia.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDaoImpl" />
 		<property name="questionMasterDao" ref="questionMasterDaoImpl" />
@@ -74,6 +73,7 @@
 	<bean id="registForm" class="com.zuxia.form.RegistForm"></bean>
 	<bean id="editUserForm" class="com.zuxia.form.EditUserForm"></bean>
 	<bean id="editPwdForm" class="com.zuxia.form.EditPwdForm"></bean>
+	<bean id="fellowNoteForm" class="com.zuxia.form.FellowNoteForm"></bean>
 	<!-- *************action************* -->
 	<!-- RegistAction scope="prototype" 非单例模式-->
 	<bean id="registAction" class="com.zuxia.action.RegistAction"
@@ -106,6 +106,10 @@
 	</bean>
 	<bean id="childModuleAction" class="com.zuxia.action.ChildModuleAction">
 		<property name="childModuleService" ref="childModuleServiceImpl" />
+	</bean>
+	<bean id="fellowNoteAction" class="com.zuxia.action.FellowNoteAction">
+		<property name="fellowNoteForm" ref="fellowNoteForm"/>
+		<property name="fellowNoteService" ref="fellowNoteServiceImpl" />
 	</bean>
 	<!-- 事物管理 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">

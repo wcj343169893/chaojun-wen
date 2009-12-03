@@ -26,6 +26,7 @@
 		<action name="*Note" class="noteAction" method="{1}">
 			<result name="success" type="redirectAction">module.do</result>
 			<result name="showNote">/note.jsp</result>
+			<result name="adderror"></result>
 		</action>
 		<!-- 生成验证码 -->
 		<action name="validateImage" class="validateImageAction">
@@ -49,6 +50,9 @@
 		</action>
 		<action name="childModule" class="childModuleAction">
 			<result name="success">/module.jsp</result>
+		</action>
+		<action name="*fellow" class="fellowNoteAction" method="{1}">
+			<result name="success" type="redirectAction">module.do</result>
 		</action>
 	</package>
 </struts>
