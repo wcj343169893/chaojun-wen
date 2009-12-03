@@ -97,7 +97,9 @@ public class NoteAction extends ActionSupport {
 		note.setUser((User) session.getAttribute("users"));
 		note.setPublishDate(new Date());
 		boolean flag = noteService.addNote(note);
-		System.out.println(flag);
+		if (!flag) {
+			return "adderror";
+		}
 		return "success";
 	}
 

@@ -11,8 +11,74 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/style_10.css" />
 <script src="js/common.js" type="text/javascript"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}js/jquery-1[1].2.1.pack.js"></script>
-<script language="javascript" src="${pageContext.request.contextPath}/js/showPic.js"></script> 
+<script type="text/javascript" src="fckeditor/fckconfig.js"></script>
+<script type="text/javascript" src="fckeditor/fckeditor.js"></script>
+<style type="text/css">
+#main {
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#middle {
+	display: none;
+	background-color: #cccccc;
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+	filter: alpha(opacity = 50);
+	position: absolute;
+}
+
+#show {
+	display: none;
+	width: 750px;
+	height: 520px;
+	position: absolute;
+	z-index: 3;
+	left: 200px;
+	top: 200px;
+}
+</style>
+<script type="text/javascript">
+	function show() {
+		document.getElementById("middle").style.display = "block";
+		document.getElementById("show").style.display = "block";
+		showFCK();
+	}
+	function show1() {
+		document.getElementById("middle").style.display = "none";
+		document.getElementById("show").style.display = "none";
+	}
+</script>
+<SCRIPT type=text/javascript>
+	function clear1() {
+		document.getElementById("posteditor_textarea").value = "";
+	}
+	function jiancha() {
+		var obj = document.getElementById("posteditor_textarea").value;
+		var mun1 = obj.length;
+		var mun = (40000 - mun1) / 2;
+		alert("您还可以输入" + parseInt(mun) + "个字");
+	}
+</SCRIPT>
+<script type="text/javascript">
+var oFCKeditor;
+	function showFCK() {
+		if (oFCKeditor==null) {
+		oFCKeditor = new FCKeditor('posteditor_textarea');
+		}
+		oFCKeditor.BasePath = '/zxpub/fckeditor/';
+		oFCKeditor.ToolbarSet = 'Basic';
+		oFCKeditor.Width = '100%';
+		oFCKeditor.Height = '250';
+		oFCKeditor.Value = '';
+		oFCKeditor.ReplaceTextarea();
+	}
+	//-->
+</script>
 </head>
 <body>
 	<div class=wrap>
@@ -36,7 +102,7 @@
 								value="GO" />
 						</div>
 						<c:if test="${!empty users}">
-						<SPAN class=replybtn><a href="#"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
+						<SPAN class=replybtn><a href="javascript:show()"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
 						</c:if>
 					</DIV>
 					<INPUT type=hidden value=6b487188 name=formhash>
@@ -60,7 +126,6 @@
 										<DIV class=avatar>
 											<img height=95 alt="" src="head/${requestScope.note.user.photoPath }" width=95 border=0>
 										</DIV>
-											<div id="large" style="width: 140px;height: 140px"></div>
 										<P>
 											<EM>版主</EM>
 										</P>
@@ -115,7 +180,7 @@
 												<c:out value="${requestScope.note.title }" />
 											</H2>
 											<DIV class=t_msgfont id=postmessage_1556509>
-												<c:out value="${requestScope.note.content }" />
+												<c:out escapeXml="true" value="${requestScope.note.content }" />
 											</DIV>
 										</DIV>
 										<DIV></DIV>
@@ -155,6 +220,7 @@
 							</TBODY>
 						</TABLE>
 					</DIV>
+					<c:forEach items="${requestScope.note.fellowNote }" var="fellowNote">
 					<DIV class="mainbox viewthread">
 						<TABLE id=pid1556661 cellSpacing=0 cellPadding=0
 							summary=pid1556661>
@@ -163,10 +229,10 @@
 									<TD class=postauthor>
 										<CITE><A class=dropmenu id=userinfo1556661
 											onmouseover=showMenu(this.id)
-											href="http://bbs.thec.cn/space.php?uid=88014" target=_blank>newname</A>
+											href="http://bbs.thec.cn/space.php?uid=88014" target=_blank>${fellowNote.user.userName }</A>
 										</CITE>
 										<DIV class=avatar>
-											<IMG height=120 alt="" src="img/88014.jpg" width=117 border=0>
+											<img height=95 alt="" src="head/${fellowNote.user.photoPath }" width=95 border=0>
 										</DIV>
 										<P class=customstatus>
 											小虫博客
@@ -176,7 +242,7 @@
 												UID
 											</DT>
 											<DD>
-												88014&nbsp;
+												${fellowNote.user.userCd }&nbsp;
 											</DD>
 											<DT>
 												帖子
@@ -194,13 +260,13 @@
 												注册时间
 											</DT>
 											<DD>
-												2007-9-20&nbsp;
+												${fellowNote.user.registDate }&nbsp;
 											</DD>
 											<DT>
 												最后登录
 											</DT>
 											<DD>
-												2009-2-14&nbsp;
+												${fellowNote.user.lastLoginDate }&nbsp;
 											</DD>
 										</DL>
 
@@ -209,16 +275,14 @@
 										<DIV class=postinfo>
 											<STRONG id=postnum1556661 title=复制帖子链接到剪贴板
 												onclick="setcopy('http://bbs.thec.cn/viewthread.php?tid=382348&amp;page=1#pid1556661', '帖子链接已经复制到剪贴板')"></STRONG>
-											发表于 2008-6-26 00:47
+											发表于${fellowNote.publishDate }
 										</DIV>
 										<DIV id=ad_thread2_1></DIV>
 										<DIV class="postmessage defaultpost">
 											<DIV id=ad_thread3_1></DIV>
 											<DIV id=ad_thread4_1></DIV>
 											<DIV class=t_msgfont id=postmessage_1556661>
-												我也不太清楚！
-												<BR>
-													你还是去问Google好了!! 
+											<c:out value="${fellowNote.flwContent }" escapeXml="false"></c:out>	
 											</DIV>
 										</DIV>
 										<DIV></DIV>
@@ -264,9 +328,10 @@
 							</TBODY>
 						</TABLE>
 					</DIV>
-
+</c:forEach>
 					<DIV class=pages_btns>
 						<div style="width: 800px; height: 30px;">
+
 							第1/1页『首页』 『上一页』『下一页』『尾页』『定价』
 							<input type="text"
 								style="width: 20px; border: 1px solid #999999;" />
@@ -274,15 +339,119 @@
 								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
 								value="GO" />
 						</div>
-						<SPAN class=replybtn><IMG alt="" src="img/reply.gif" border=0></A> </SPAN>
+						<c:if test="${!empty users}">
+						<SPAN class=replybtn><a href="javascript:show()"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
+						</c:if>
 					</DIV>
 				</FORM>
 			</div>
 		</div>
+		
 		<!-- 尾 -->
 		<iframe width=100% height=113px src="cauda.jsp" frameborder=0>
 		</iframe>
-		<!-- 尾 -->
+		<!-- 尾 -->           
+		<div id="middle"></div>
+			<div id="show">
+			<div>
+				<table width="100%">
+					<tr style="background-color: #51A200">
+						<td align="left">
+							&nbsp;
+							<b style="font-size: 12px; color: #FFFFFF;">回复页面</b>
+						</td>
+						<td align="right">
+							<a href="javascript:show1();"><img src="img/cloes3.bmp"
+									border="0" />
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<FORM id=postform
+				action="addfellow.do"
+				method=post>
+				<INPUT type=hidden value="${requestScope.note.noteCd }" name="fellowNoteForm.noteCd">
+				<DIV class="mainbox formbox"
+					style="border-top: none; margin-top: 0px">
+					<H1 align="left">
+						发表回复
+					</H1>
+					<TABLE cellSpacing=0 cellPadding=0 summary=发表回复>
+						<THEAD>
+						</THEAD>
+						<TBODY>
+							<TR>
+								<TH vAlign=top>
+									<LABEL for=posteditor_textarea>
+										内容
+									</LABEL>
+								</TH>
+								<TD>
+									<DIV>
+										<TABLE class=editor_text style="TABLE-LAYOUT: fixed"
+											cellSpacing=0 cellPadding=0 summary="Message Textarea">
+											<TBODY>
+												<TR>
+													<TD> 
+														<TEXTAREA class=autosave id="posteditor_textarea"
+															style="WIDTH: 99%; HEIGHT: 250px" tabIndex=100
+															name="fellowNoteForm.content" rows=10 cols=60></TEXTAREA>
+													</TD>
+												</TR>
+											</TBODY>
+											<tfoot>
 
-</body>
+												<tr style="background-color: #f7f7f7;">
+													<td>
+														<div class=editor_button align="right" id="">
+
+															<input type="button" onclick="jiancha()"
+																style="color: #009900; border: none; background-color: #f7f7f7;"
+																value="字数检查" />
+															<input type="button" onclick="clear1()"
+																style="color: #009900; border: none; background-color: #f7f7f7;"
+																value="清空内容" />
+														</div>
+													</td>
+												</tr>
+											</tfoot>
+										</TABLE>
+										<TABLE>
+										</TABLE>
+									</DIV>
+								</TD>
+							</TR>
+							<TR>
+								<TH>
+									<LABEL for=subject>
+										出价
+									</LABEL>
+								</TH>
+								<TD align="left">
+									<INPUT id=subject tabIndex=3 size=20 name=subject>
+										&nbsp;&nbsp;元 &nbsp;&nbsp;(可选)
+									<EM class=tips></EM>
+								</TD>
+							</TR>
+							<TR class=btns>
+								<TH>
+									&nbsp;
+								</TH>
+								<TD align="left">
+									<INPUT id=posteditor_mode type=hidden value=0 name=wysiwyg>
+									<INPUT id=fid type=hidden value=96 name=fid>
+									<BUTTON id=postsubmit tabIndex=300 type=submit
+										value="true">
+										发表回复
+									</BUTTON>
+								</TD>
+							</TR>
+						</TBODY>
+					</TABLE>
+				</DIV>
+
+			</FORM>
+		</div>
+	</body>
 </html>

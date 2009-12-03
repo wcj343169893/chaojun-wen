@@ -94,8 +94,10 @@
 										头像
 									</label>
 								</th>
-								<td><img id="head" width="70" height="70" src="${pageContext.request.contextPath}/head/${users.photoPath}">	
-								<div id="large" style="width: 140px;height: 140px"></div>	</td>
+								<td>
+								<img id="head" width="70" height="70" src="${pageContext.request.contextPath}/head/${users.photoPath}">	
+								<div id="large" style="width: 140px;height: 140px"></div>	
+								</td>
 							</tr>
 							<tr>
 								<th>

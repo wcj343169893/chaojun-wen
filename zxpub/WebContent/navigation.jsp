@@ -41,7 +41,7 @@
 	<c:otherwise>
 	<fmt:formatDate value="${users.lastLoginDate}" var="lastlog" pattern="yyyy-MM-dd HH:mm:ss"/>
 		<P>您上次访问是在: <EM>${lastlog }</EM> &nbsp;</P>
-		<DIV id=nav><A href="index.jsp">足下技术论坛</A> - <A href="#">XXXXXX</A> - <A
+		<DIV id=nav><A href="welcome.jsp">足下技术论坛</A> - <A href="#">XXXXXX</A> - <A
 			href="#">XXXXXX</A></DIV>
 	</c:otherwise>
 </c:choose></DIV>
