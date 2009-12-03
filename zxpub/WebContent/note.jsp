@@ -46,7 +46,6 @@
 	function show() {
 		document.getElementById("middle").style.display = "block";
 		document.getElementById("show").style.display = "block";
-		showFCK();
 	}
 	function show1() {
 		document.getElementById("middle").style.display = "none";
@@ -65,22 +64,17 @@
 	}
 </SCRIPT>
 <script type="text/javascript">
-var oFCKeditor;
 	function showFCK() {
-		if (oFCKeditor==null) {
-		oFCKeditor = new FCKeditor('posteditor_textarea');
-		}
+		var oFCKeditor = new FCKeditor('posteditor_textarea');
 		oFCKeditor.BasePath = '/zxpub/fckeditor/';
 		oFCKeditor.ToolbarSet = 'Basic';
 		oFCKeditor.Width = '100%';
 		oFCKeditor.Height = '250';
-		oFCKeditor.Value = '';
 		oFCKeditor.ReplaceTextarea();
 	}
-	//-->
 </script>
 </head>
-<body>
+<body onload="showFCK()">
 	<div class=wrap>
 			<!-- *************头************* -->
 			<iframe width=100% height=109px src="head.jsp" frameborder=0>
@@ -350,7 +344,7 @@ var oFCKeditor;
 		<!-- 尾 -->
 		<iframe width=100% height=113px src="cauda.jsp" frameborder=0>
 		</iframe>
-		<!-- 尾 -->           
+		<!-- 尾 -->
 		<div id="middle"></div>
 			<div id="show">
 			<div>
@@ -370,7 +364,7 @@ var oFCKeditor;
 			</div>
 			<FORM id=postform
 				action="addfellow.do"
-				method=post>
+				method=post onsubmit="return checkcontent()">
 				<INPUT type=hidden value="${requestScope.note.noteCd }" name="fellowNoteForm.noteCd">
 				<DIV class="mainbox formbox"
 					style="border-top: none; margin-top: 0px">
@@ -417,8 +411,17 @@ var oFCKeditor;
 												</tr>
 											</tfoot>
 										</TABLE>
-										<TABLE>
-										</TABLE>
+						<script type="text/javascript">
+							function checkcontent(){
+									var contents=document.getElementById("posteditor_textarea");
+									if (contents.value=="" ||contents.value=="<br />") {
+										alert("请不要回复空信息!");
+										return false;
+									} else {
+										return true;
+									}
+								}
+						</script>           
 									</DIV>
 								</TD>
 							</TR>
@@ -441,7 +444,7 @@ var oFCKeditor;
 								<TD align="left">
 									<INPUT id=posteditor_mode type=hidden value=0 name=wysiwyg>
 									<INPUT id=fid type=hidden value=96 name=fid>
-									<BUTTON id=postsubmit tabIndex=300 type=submit
+									<BUTTON id=postsubmit tabIndex=300 type=submit 
 										value="true">
 										发表回复
 									</BUTTON>
