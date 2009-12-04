@@ -16,6 +16,7 @@ package com.zuxia.service;
 
 import java.util.List;
 
+import com.zuxia.dto.ModuleDTO;
 import com.zuxia.entity.Module;
 
 /**
@@ -33,4 +34,5 @@ public interface IModuleService {
 	 * @return
 	 */
 	public List<Module> getModules();
+	public List<ModuleDTO> getModuleDTOList();
 }

@@ -366,6 +366,8 @@
 				action="addfellow.do"
 				method=post onsubmit="return checkcontent()">
 				<INPUT type=hidden value="${requestScope.note.noteCd }" name="fellowNoteForm.noteCd">
+				<INPUT type=hidden value="${requestScope.note.module.moduleCd }" name="fellowNoteForm.moduleCd">
+				<INPUT type=hidden value="${requestScope.note.childModule.childModuleCd }" name="fellowNoteForm.childModuleCd">
 				<DIV class="mainbox formbox"
 					style="border-top: none; margin-top: 0px">
 					<H1 align="left">
@@ -414,7 +416,7 @@
 						<script type="text/javascript">
 							function checkcontent(){
 									var contents=document.getElementById("posteditor_textarea");
-									if (contents.value=="" ||contents.value=="<br />") {
+									if (contents.value=="" || contents.value=="<br />") {
 										alert("请不要回复空信息!");
 										return false;
 									} else {

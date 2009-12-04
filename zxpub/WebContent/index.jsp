@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,16 +26,15 @@
 				</TBODY>
 			</TABLE>
 			<DIV class="mainbox forumlist">
+				<c:forEach items="${modules_db}" var="module">					
 				<SPAN class=headactions>
 				<c:choose>
 					<c:when test="${!empty users}">
 				<a href="addChildModule.jsp">新增子模块</a>
 					</c:when>
 				</c:choose>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分区版主: <A class=notabs href="">lx7903</A>,
-					<A class=notabs href="http://bbs.thec.cn/space.php?username=zyawen">zyawen</A>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分区版主: <A class=notabs href="">${module.user.userName }</A>
 				</SPAN>
-				<c:forEach items="${modules_db}" var="module">					
 				<H3>
 					<A href="module.jsp?mCd=${module.moduleCd }">■${module.moduleName }</A>
 				</H3>
@@ -76,17 +76,15 @@
 								</P>
 								<P class=moderators>
 									版主:
-									<A class=notabs href="">btmir2</A>,
-									<A class=notabs href="">wb0606</A>,
-									<A class=notabs href="">wangziqi</A>,
-									<A class=notabs href="">fqqk2007</A>
+									<A class=notabs href=""><c:out value="${childModule.user.userName}"></c:out></A>,
+									
 								</P>
 							</TH>
 							<TD class=nums>
-								22258
+								<c:out value="${fn:length(childModule.notes) }"></c:out>	
 							</TD>
 							<TD class=nums>
-								125130
+								<c:out value="${fn:length(childModule.notes)+fn:length(childModule.fellowNotes) }"></c:out>
 							</TD>
 							<TD class=lastpost>
 								<A

@@ -11,7 +11,7 @@
 	href="${pageContext.request.contextPath}/css/style_10.css" />
 	<script type="text/javascript">
 	function reloadVerifyCode(obj){  
-	    obj.src = "<%=request.getContextPath()%>/validateImage.do";
+	    obj.src = "<%=request.getContextPath()%>/validateImage.do?d="+new Date();
 	} 
 	</script>	
 </head>
@@ -45,7 +45,7 @@
 								</LABEL>
 								<TD>
 									<INPUT type="text" id="userName" tabIndex=2 maxLength=40
-										size=25 name="user.userName">
+										size=25 name="userName">
 									&nbsp;
 									<EM class=tips><A href="preRegist.jsp">注册</A>
 									</EM>
@@ -57,7 +57,7 @@
 								</TD>
 								<TD>
 									<INPUT type="password" id="userPwd" tabIndex=3 size=25
-										name="password.password">
+										name="password">
 									&nbsp;
 									<EM class=tips><A href="FindPWD.jsp">忘记密码</A> </EM>
 								</TD>

@@ -23,5 +23,9 @@
 			<key column="CHILD_MODULE_CD"></key>
 			<one-to-many class="com.zuxia.entity.Note" />
 		</bag>
+		<bag name="fellowNotes">
+			<key column="CHILD_MODULE_CD"></key>
+			<one-to-many class="com.zuxia.entity.FellowNote" />
+		</bag>
 	</class>
 </hibernate-mapping>

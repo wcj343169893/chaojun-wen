@@ -65,6 +65,7 @@
 	</bean>
 	<bean id="moduleServiceImpl" class="com.zuxia.service.impl.ModuleServiceImpl">
 		<property name="moduleDao" ref="moduleDaoImpl" />
+		<property name="childModuleDao" ref="childModuleDaoImpl" />
 	</bean>
 	<bean id="childModuleServiceImpl" class="com.zuxia.service.impl.ChildModuleServiceImpl">
 		<property name="childModuleDao" ref="childModuleDaoImpl" />
@@ -84,8 +85,6 @@
 	<!-- LoginAction -->
 	<bean id="loginAction" class="com.zuxia.action.LoginAction">
 		<property name="userService" ref="userServiceImpl" />
-		<property name="user" ref="user" />
-		<property name="password" ref="password" />
 	</bean>
 	<bean id="noteAction" class="com.zuxia.action.NoteAction">
 		<property name="noteService" ref="noteServiceImpl" />

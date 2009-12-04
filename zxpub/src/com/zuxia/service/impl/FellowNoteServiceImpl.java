@@ -3,7 +3,9 @@ package com.zuxia.service.impl;
 import java.util.Date;
 
 import com.zuxia.dao.IFellowNoteDao;
+import com.zuxia.entity.ChildModule;
 import com.zuxia.entity.FellowNote;
+import com.zuxia.entity.Module;
 import com.zuxia.entity.Note;
 import com.zuxia.entity.User;
 import com.zuxia.form.FellowNoteForm;
@@ -46,6 +48,14 @@ public class FellowNoteServiceImpl implements IFellowNoteService {
 		Note note = new Note();
 		note.setNoteCd(fellowNoteForm.getNoteCd());
 		fellowNote.setNote(note);
+		Module module = new Module();
+		module.setModuleCd(fellowNoteForm.getModuleCd());
+		fellowNote.setModule(module);
+
+		ChildModule childModule = new ChildModule();
+		childModule.setChildModuleCd(fellowNoteForm.getChildModuleCd());
+
+		fellowNote.setChildModule(childModule);
 		return fellowNotedao.insertFellowNote(fellowNote);
 
 	}
