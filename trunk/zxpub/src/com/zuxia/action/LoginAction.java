@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.zuxia.entity.Password;
+import com.zuxia.entity.City;
+import com.zuxia.entity.Province;
 import com.zuxia.entity.User;
 import com.zuxia.service.IUserService;
 
@@ -20,9 +21,37 @@ public class LoginAction extends ActionSupport {
 
 	private IUserService userService;
 
-	private User user;
+	private String userName;
+	private String password;
 
-	private Password password;
+	/**
+	 * userName属性的get方法
+	 * 
+	 * @return the userName
+	 */
+	public String getUserName() {
+		return userName;
+	}
+
+	/**
+	 * userName属性的set方法
+	 * 
+	 * @param userName
+	 *            the userName to set
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	/**
+	 * password属性的set方法
+	 * 
+	 * @param password
+	 *            the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	private String validateCode;
 
@@ -64,47 +93,9 @@ public class LoginAction extends ActionSupport {
 		this.userService = userService;
 	}
 
-	/**
-	 * user属性的get方法
-	 * 
-	 * @return the user
-	 */
-	public User getUser() {
-		return user;
-	}
-
-	/**
-	 * user属性的set方法
-	 * 
-	 * @param user
-	 *            the user to set
-	 */
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	/**
-	 * password属性的get方法
-	 * 
-	 * @return the password
-	 */
-	public Password getPassword() {
-		return password;
-	}
-
-	/**
-	 * password属性的set方法
-	 * 
-	 * @param password
-	 *            the password to set
-	 */
-	public void setPassword(Password password) {
-		this.password = password;
-	}
-
 	@Override
 	public String execute() throws Exception {
-		User u = userService.getUserByUserName(user.getUserName());
+		User u = userService.getUserByUserName(userName);
 		HttpServletRequest request = ServletActionContext.getRequest();
 		Object validate_session = request.getSession().getAttribute(
 				"validateCodeRecruit");
@@ -112,7 +103,7 @@ public class LoginAction extends ActionSupport {
 			request.getSession().setAttribute("logerror", "验证码错误");
 		} else if (u == null) {
 			request.getSession().setAttribute("logerror", "用户名不存在");
-		} else if (password.getPassword().equals(u.getPassword().getPassword())) {
+		} else if (password.equals(u.getPassword().getPassword())) {
 			// 修改用户登录时间
 			u.setLastLoginDate(new Date());
 			request.getSession().removeAttribute("logerror");

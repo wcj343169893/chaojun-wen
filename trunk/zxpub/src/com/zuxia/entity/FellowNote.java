@@ -20,6 +20,14 @@ public class FellowNote implements java.io.Serializable {
 	 */
 	private Note note;
 	/**
+	 * module属性概述 主版块
+	 */
+	private Module module;
+	/**
+	 * childModule属性概述 子版块
+	 */
+	private ChildModule childModule;
+	/**
 	 * user属性概述 跟贴用户CODE
 	 */
 	private User user;
@@ -119,6 +127,38 @@ public class FellowNote implements java.io.Serializable {
 	 */
 	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
+	}
+
+	/**
+	 * module属性的get方法
+	 * @return the module
+	 */
+	public Module getModule() {
+		return module;
+	}
+
+	/**
+	 * module属性的set方法
+	 * @param module the module to set
+	 */
+	public void setModule(Module module) {
+		this.module = module;
+	}
+
+	/**
+	 * childModule属性的get方法
+	 * @return the childModule
+	 */
+	public ChildModule getChildModule() {
+		return childModule;
+	}
+
+	/**
+	 * childModule属性的set方法
+	 * @param childModule the childModule to set
+	 */
+	public void setChildModule(ChildModule childModule) {
+		this.childModule = childModule;
 	}
 
 }

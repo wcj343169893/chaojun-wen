@@ -9,6 +9,10 @@
 			<column name="FELLOW_NOTE_CD" />
 			<generator class="native" />
 		</id>
+		<many-to-one name="module" class="com.zuxia.entity.Module"
+			column="MODULE_CD"></many-to-one>
+		<many-to-one name="childModule" class="com.zuxia.entity.ChildModule"
+			column="CHILD_MODULE_CD"></many-to-one>
 		<many-to-one name="note" class="com.zuxia.entity.Note"
 			column="OWNER_NOTE_CD"></many-to-one>
 		<many-to-one name="user" class="com.zuxia.entity.User"

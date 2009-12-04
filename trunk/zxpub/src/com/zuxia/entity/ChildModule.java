@@ -28,6 +28,29 @@ public class ChildModule implements java.io.Serializable {
 	 * notes属性概述 主贴
 	 */
 	private List<Note> notes = new ArrayList<Note>();
+	/**
+	 * fellowNotes属性概述 跟贴
+	 */
+	private List<FellowNote> fellowNotes = new ArrayList<FellowNote>();
+
+	/**
+	 * fellowNotes属性的get方法
+	 * 
+	 * @return the fellowNotes
+	 */
+	public List<FellowNote> getFellowNotes() {
+		return fellowNotes;
+	}
+
+	/**
+	 * fellowNotes属性的set方法
+	 * 
+	 * @param fellowNotes
+	 *            the fellowNotes to set
+	 */
+	public void setFellowNotes(List<FellowNote> fellowNotes) {
+		this.fellowNotes = fellowNotes;
+	}
 
 	/**
 	 * notes属性的get方法
