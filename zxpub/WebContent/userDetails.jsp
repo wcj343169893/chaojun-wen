@@ -9,8 +9,8 @@
 <title>用户详细信息</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/style_10.css" />
-	<script type="text/javascript" src="/zxpub/js/jquery-1[1].2.1.pack.js"></script>
-<script language="javascript" src="/zxpub/js/showPic.js"></script> 
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1[1].2.1.pack.js"></script>
+<script language="javascript" src="${pageContext.request.contextPath}/js/showPic.js"></script> 
 </head>
 <body><DIV class=wrap>
 			<!-- *************头************* -->
