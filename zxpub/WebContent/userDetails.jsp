@@ -29,7 +29,7 @@
 						<SPAN class=headactions><A href="个人贴子浏览后.html"
 							target=_blank>该用户的所有帖子</A> </SPAN>
 						<h1>
-							用户${users.userName }的个人信息
+							用户${userdetail.userName }的个人信息
 						</h1>
 						<table cellspacing="0" cellpadding="0">
 							<thead>
@@ -50,7 +50,7 @@
 									</label>
 								</th>
 								<td>
-									${users.userName }
+									${userdetail.userName }
 									<span id="checkusername">&nbsp;</span>
 								</td>
 								
@@ -61,7 +61,7 @@
 									性别
 								</th>
 								<td>
-									${users.sex }
+									${userdetail.sex }
 								</td>
 							</tr>
 							<tr>
@@ -71,7 +71,7 @@
 									</label>
 								</td>
 								<td>
-									${users.email }
+									${userdetail.email }
 								</td>
 							</tr>
 						</table>
@@ -95,7 +95,7 @@
 									</label>
 								</th>
 								<td>
-								<img id="head" width="70" height="70" src="${pageContext.request.contextPath}/head/${users.photoPath}">	
+								<img id="head" width="70" height="70" src="${pageContext.request.contextPath}/head/${userdetail.photoPath}">	
 								<div id="large" style="width: 140px;height: 140px"></div>	
 								</td>
 							</tr>
@@ -106,7 +106,7 @@
 									</label>
 								</th>
 								<td>
-								<fmt:formatDate var="birth" pattern="yyyy-MM-dd" value="${users.birthday}"></fmt:formatDate>
+								<fmt:formatDate var="birth" pattern="yyyy-MM-dd" value="${userdetail.birthday}"></fmt:formatDate>
 								${birth }
 								</td>
 							</tr>
@@ -118,7 +118,7 @@
 									</label>
 								</th>
 								<td>
-									${users.province.provinceCd}
+									${userdetail.province.provinceCd}
 								</td>
 							</tr>
 							<tr>
@@ -128,7 +128,7 @@
 									</label>
 								</th>
 								<td>
-									${users.city.cityCd }
+									${userdetail.city.cityCd }
 								</td>
 							</tr>
 							<tr>
@@ -138,16 +138,18 @@
 									</label>
 								</th>
 								<td>
-									${users.comment }
+									${userdetail.comment }
 								</td>
 							</tr>
 
 							<tr>
 								<th>
+								<c:if test="${users.userName==userdetail.userName}">
 									<button class="submit" type="button" Name="xiugaigerenxinxi" onclick="javascript:window.location.href='editUser.jsp'" value="true"
 										tabindex="100">
 										修改个人 信息
 									</button>
+								</c:if>
 								</th>
 								<td>
 									<button class="submit" type="button" Name="fanhui" value="true" onclick="javascript:window.location.href='welcome.jsp'"

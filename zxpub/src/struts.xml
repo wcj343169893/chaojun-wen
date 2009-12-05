@@ -19,11 +19,12 @@
 		</action>
 		<action name="login" class="loginAction">
 			<result name="input">/login.jsp</result>
-			<result name="success" type="redirect">/userDetails.jsp</result>
+			<result name="success" type="redirect">module.do</result>
 			<result name="error">/login.jsp</result>
 			<result name="logout" type="redirectAction">module.do</result>
 		</action>
 		<action name="*Note" class="noteAction" method="{1}">
+			<result name="input" type="redirectAction">module.do</result>
 			<result name="success" type="redirectAction">module.do</result>
 			<result name="showNote">/note.jsp</result>
 			<result name="adderror"></result>
@@ -53,6 +54,9 @@
 		</action>
 		<action name="*fellow" class="fellowNoteAction" method="{1}">
 			<result name="success" type="redirectAction">module.do</result>
+		</action>
+		<action name="userDetailInit" class="userDetailInitAction">
+			<result name="success">/userDetails.jsp</result>
 		</action>
 	</package>
 </struts>

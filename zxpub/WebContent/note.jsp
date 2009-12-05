@@ -66,7 +66,7 @@
 <script type="text/javascript">
 	function showFCK() {
 		var oFCKeditor = new FCKeditor('posteditor_textarea');
-		oFCKeditor.BasePath = '/zxpub/fckeditor/';
+		oFCKeditor.BasePath = '${pageContext.request.contextPath}/fckeditor/';
 		oFCKeditor.ToolbarSet = 'Basic';
 		oFCKeditor.Width = '100%';
 		oFCKeditor.Height = '250';
@@ -177,7 +177,6 @@
 												<c:out escapeXml="true" value="${requestScope.note.content }" />
 											</DIV>
 										</DIV>
-										<DIV></DIV>
 									</TD>
 								</TR>
 								<TR>
@@ -207,7 +206,11 @@
 									</TD>
 									<TD class=postcontent>
 										<DIV class=postactions>
-											<DIV id=ad_thread1_0></DIV>
+											<DIV id=ad_thread1_0>
+												<c:if test="${users.userName==requestScope.note.user.userName}">
+													<a href="#">修改</a>&nbsp;<a href="#">删除</a>
+												</c:if>
+											</DIV>
 										</DIV>
 									</TD>
 								</TR>
@@ -315,7 +318,11 @@
 									</TD>
 									<TD class=postcontent>
 										<DIV class=postactions>
-											<DIV id=ad_thread1_1></DIV>
+											<DIV id=ad_thread1_1>
+												<c:if test="${users.userName==requestScope.note.user.userName}">
+													<a href="#">修改</a>&nbsp;<a href="#">删除</a>
+												</c:if>
+											</DIV>
 										</DIV>
 									</TD>
 								</TR>

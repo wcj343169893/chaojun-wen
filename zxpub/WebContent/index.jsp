@@ -33,7 +33,7 @@
 				<a href="addChildModule.jsp">新增子模块</a>
 					</c:when>
 				</c:choose>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分区版主: <A class=notabs href="">${module.user.userName }</A>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分区版主: <A class=notabs href="userDetailInit.do?userName=${module.user.userName }">${module.user.userName }</A>
 				</SPAN>
 				<H3>
 					<A href="module.jsp?mCd=${module.moduleCd }">■${module.moduleName }</A>
@@ -63,7 +63,8 @@
 						</TR>
 					</THEAD>
 					<c:forEach items="${module.childModule}" var="childModule">
-						
+					<c:set value="${fn:length(childModule.notes) }" var="noteslength"></c:set>
+					<c:set value="${fn:length(childModule.fellowNotes)}" var="fellowslength"></c:set>
 					<TBODY id=forum102>
 						<TR>
 							<TH class=new>
@@ -76,31 +77,46 @@
 								</P>
 								<P class=moderators>
 									版主:
-									<A class=notabs href=""><c:out value="${childModule.user.userName}"></c:out></A>,
+									<A class=notabs href="userDetailInit.do?userName=${childModule.user.userName}"><c:out value="${childModule.user.userName}"></c:out></A>,
 									
 								</P>
 							</TH>
 							<TD class=nums>
-								<c:out value="${fn:length(childModule.notes) }"></c:out>	
+								<c:out value="${noteslength }"></c:out>	
 							</TD>
 							<TD class=nums>
-								<c:out value="${fn:length(childModule.notes)+fn:length(childModule.fellowNotes) }"></c:out>
+								<c:out value="${noteslength+fellowslength }"></c:out>
 							</TD>
 							<TD class=lastpost>
-								<A
-									href="http://bbs.thec.cn/redirect.php? tid=437115&amp;goto=lastpost#lastpost">方案
-									...</A>
-								<CITE>by <A
-									href="http://bbs.thec.cn/space.php?username=%B2%DD% BD%E6">草芥</A>
-									- 2009-4-23 12:30</CITE>
+							<c:choose>
+								<c:when test="${noteslength>0 }">
+								<c:forEach items="${childModule.notes}" var="lastnote" begin="${noteslength-1}" end="${noteslength}">
+									<A href="showNote.do?noteCd=${lastnote.noteCd }">${lastnote.title }</A>
+									<CITE>by <A
+										href="userDetailInit.do?userName=${lastnote.user.userName }">${lastnote.user.userName }</A>
+										${lastnote.publishDate }</CITE>
+								</c:forEach>
+								</c:when>
+								<c:otherwise>
+									此版块暂无帖子
+									<c:if test="${!empty users}">
+										<a href="addNote.jsp?mCd=${module.moduleCd }&cmCd=${childModule.childModuleCd }">点此发表</a>
+									</c:if>
+								</c:otherwise>
+							</c:choose>
 							</TD>
 							<c:choose>
-							<c:when test="${!empty users}">
+								<c:when test="${users.userName==childModule.user.userName}">
 								<td>
 									<a href="子模块修改.html" target="blank">修改</a>&nbsp;&nbsp;&nbsp;
 									<a>删除</a>
 								</td>
-							</c:when>
+								</c:when>
+								<c:otherwise>
+								<td>
+									&nbsp;
+								</td>
+								</c:otherwise>
 							</c:choose>
 							
 						</TR>

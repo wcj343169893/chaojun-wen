@@ -24,7 +24,7 @@
 			<LI id=memcp><A href="login.jsp">登录</A></LI>
 		</c:when>
 		<c:otherwise>
-			<LI id=memcp><CITE><A href="userDetails.jsp">${users.userName }</A> </CITE></LI>
+			<LI id=memcp><CITE><A href="userDetailInit.do?userName=${users.userName }">${users.userName }</A> </CITE></LI>
 			<LI id=memcp><A href="welcome.jsp">首页</A></LI>
 			<LI id=memcp><A href="login!out.do">退出</A></LI>
 			<LI id=memcp><A href="">积分管理</A></LI>

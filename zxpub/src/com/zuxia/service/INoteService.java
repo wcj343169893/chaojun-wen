@@ -1,6 +1,8 @@
 package com.zuxia.service;
 
 import com.zuxia.entity.Note;
+import com.zuxia.entity.User;
+import com.zuxia.form.AddNoteForm;
 
 public interface INoteService {
 	/**
@@ -12,10 +14,14 @@ public interface INoteService {
 	 * @return
 	 */
 	public boolean addNote(Note note);
+
+	public boolean addNote(AddNoteForm addNoteForm, User user);
+
 	/**
 	 * getNote方法概述
 	 * 
 	 *获取一个note
+	 * 
 	 * @param noteCd
 	 * @return
 	 */

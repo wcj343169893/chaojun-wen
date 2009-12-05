@@ -1,7 +1,11 @@
 package com.zuxia.service.impl;
 
 import com.zuxia.dao.INoteDao;
+import com.zuxia.entity.ChildModule;
+import com.zuxia.entity.Module;
 import com.zuxia.entity.Note;
+import com.zuxia.entity.User;
+import com.zuxia.form.AddNoteForm;
 import com.zuxia.service.INoteService;
 
 /**
@@ -41,6 +45,21 @@ public class NoteServiceImpl implements INoteService {
 	public Note getOneNote(int noteCd) {
 		return noteDao.getNoteByCd(noteCd);
 
+	}
+
+	@Override
+	public boolean addNote(AddNoteForm addNoteForm, User user) {
+		Note note = new Note();
+		note.setUser(user);
+		note.setTitle(addNoteForm.getTitle());
+		note.setContent(addNoteForm.getContent());
+		Module module = new Module();
+		module.setModuleCd(addNoteForm.getModuleCd());
+		note.setModule(module);
+		ChildModule childModule=new ChildModule();
+		childModule.setChildModuleCd(addNoteForm.getChildModuleCd());
+		note.setChildModule(childModule);
+		return noteDao.insertNote(note);
 	}
 
 }
