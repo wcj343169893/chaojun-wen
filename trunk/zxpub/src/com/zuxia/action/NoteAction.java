@@ -1,14 +1,12 @@
 package com.zuxia.action;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.zuxia.entity.Note;
 import com.zuxia.entity.User;
+import com.zuxia.form.AddNoteForm;
 import com.zuxia.service.INoteService;
 
 /**
@@ -24,7 +22,10 @@ public class NoteAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = -188481902986946432L;
 	private INoteService noteService;
-	private Note note;
+	private AddNoteForm addNoteForm;
+	/**
+	 * noteCd属性概述 note标识列
+	 */
 	private int noteCd;
 
 	/**
@@ -47,22 +48,22 @@ public class NoteAction extends ActionSupport {
 	}
 
 	/**
-	 * note属性的get方法
+	 * addNoteForm属性的get方法
 	 * 
-	 * @return the note
+	 * @return the addNoteForm
 	 */
-	public Note getNote() {
-		return note;
+	public AddNoteForm getAddNoteForm() {
+		return addNoteForm;
 	}
 
 	/**
-	 * note属性的set方法
+	 * addNoteForm属性的set方法
 	 * 
-	 * @param note
-	 *            the note to set
+	 * @param addNoteForm
+	 *            the addNoteForm to set
 	 */
-	public void setNote(Note note) {
-		this.note = note;
+	public void setAddNoteForm(AddNoteForm addNoteForm) {
+		this.addNoteForm = addNoteForm;
 	}
 
 	/**
@@ -93,10 +94,13 @@ public class NoteAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String add() throws Exception {
-		HttpSession session = ServletActionContext.getRequest().getSession();
-		note.setUser((User) session.getAttribute("users"));
-		note.setPublishDate(new Date());
-		boolean flag = noteService.addNote(note);
+		boolean flag = false;
+		if (addNoteForm.getTitle() != "" && addNoteForm.getContent() != "") {
+			HttpSession session = ServletActionContext.getRequest()
+					.getSession();
+			flag = noteService.addNote(this.addNoteForm, (User) session
+					.getAttribute("users"));
+		}
 		if (!flag) {
 			return "adderror";
 		}
@@ -114,7 +118,8 @@ public class NoteAction extends ActionSupport {
 	}
 
 	public String show() throws Exception {
-		ServletActionContext.getRequest().setAttribute("note", noteService.getOneNote(noteCd));
+		ServletActionContext.getRequest().setAttribute("note",
+				noteService.getOneNote(noteCd));
 		return "showNote";
 	}
 }

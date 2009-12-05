@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -81,15 +82,26 @@
 									</TH>
 									<TD class=author>
 										<CITE><A
-											href="http://bbs.thec.cn/space.php?action=viewpro&amp;uid=1696"><c:out value="${note.user.userName}" /></A>
+											href="userDetailInit.do?userName=${note.user.userName}"><c:out value="${note.user.userName}" /></A>
 										</CITE>
 										<EM>${note.publishDate }</EM>
 									</TD>
 									<TD class=nums>
-										-
+										<c:set value="${fn:length(note.fellowNote)}" var="fellowcont"></c:set>
+										${fellowcont }/100
 									</TD>
 									<TD class=lastpost>
-										-
+									<c:choose>
+										<c:when test="${fellowcont>0}">
+											<c:forEach items="${note.fellowNote}" var="fellowNote" begin="${fellowcont-1 }" end="${fellowcont}">
+												<CITE><A href="showNote.do?noteCd=${note.noteCd}">${fn:substring(fellowNote.flwContent,0,10) }</A>......<br/>
+												${fellowNote.publishDate }</CITE>
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
+											暂无
+										</c:otherwise>
+									</c:choose>
 									</TD>
 								</TR>
 							</TBODY>
