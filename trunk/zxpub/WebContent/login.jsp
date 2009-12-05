@@ -36,8 +36,8 @@
 						</THEAD>
 						<TBODY>
 							<TR>
-								<TD onclick=document.login.username.focus();>
-									<LABEL>
+								<TD>
+									<LABEL for="userName">
 										用户名
 									</LABEL>
 									<LABEL></LABEL>
@@ -76,10 +76,8 @@
 							<TR>
 								<TD></TD>
 								<TD>
-									<BUTTON onClick="check()" class="submit" type="submit"
-										id=loginsubmit tabIndex=6>
-										会员登录
-									</BUTTON>
+									<input onClick="check()" class="submit" type="submit"
+										id=loginsubmit tabIndex=6 value="会员登录" >
 								</TD>
 							</TR>
 						</TBODY>
