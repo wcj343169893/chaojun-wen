@@ -416,7 +416,7 @@
 						<script type="text/javascript">
 							function checkcontent(){
 									var contents=document.getElementById("posteditor_textarea");
-									if (contents.value=="" || contents.value=="<br />") {
+									if (contents.value=="") {
 										alert("请不要回复空信息!");
 										return false;
 									} else {
