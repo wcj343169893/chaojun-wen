@@ -29,7 +29,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements IUserDao {
 		Session session = this.getSession();
 		User user = null;
 		try {
-			String hql = "from User where USER_NAME=:userName";
+			String hql = "from User where userName=:userName";
 			Query query = session.createQuery(hql);
 			query.setParameter("userName", userName);
 			List<User> userList = query.list();
@@ -37,6 +37,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements IUserDao {
 				user = userList.get(0);
 			}
 		} catch (HibernateException e) {
+			e.printStackTrace();
 		}
 		return user;
 	}

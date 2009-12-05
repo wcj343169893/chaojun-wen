@@ -27,7 +27,7 @@
 <DIV id=foruminfo>
 <DIV id=userinfo><c:choose>
 	<c:when test="${empty users}">
-		<DIV id=nav>
+		<DIV id=nav> 
 		<FORM action="login.do" method="post"><INPUT maxLength="40" size="15"
 			value="用户名" name="userName"
 			onclick="clickusername(this);" onblur="if(this.value==''){this.value='用户名'}" tabIndex=1/>密码: <INPUT
