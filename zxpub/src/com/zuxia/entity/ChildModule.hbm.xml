@@ -3,8 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 	<!-- Generated 2009-11-25 11:12:28 by Hibernate Tools 3.2.4.GA -->
 <hibernate-mapping>
-	<class name="com.zuxia.entity.ChildModule" table="child_module"
-		catalog="zxpub">
+	<class name="com.zuxia.entity.ChildModule" table="child_module">
 		<id name="childModuleCd" type="java.lang.Integer">
 			<column name="CHILD_MODULE_CD" />
 			<generator class="native" />

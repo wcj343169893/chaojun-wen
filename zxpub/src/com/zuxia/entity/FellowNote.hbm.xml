@@ -3,8 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 	<!-- Generated 2009-11-25 11:12:28 by Hibernate Tools 3.2.4.GA -->
 <hibernate-mapping>
-	<class name="com.zuxia.entity.FellowNote" table="fellow_note"
-		catalog="zxpub">
+	<class name="com.zuxia.entity.FellowNote" table="fellow_note">
 		<id name="fellowNoteCd" type="java.lang.Integer">
 			<column name="FELLOW_NOTE_CD" />
 			<generator class="native" />

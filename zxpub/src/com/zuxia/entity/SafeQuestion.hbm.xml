@@ -3,8 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 	<!-- Generated 2009-11-25 11:12:28 by Hibernate Tools 3.2.4.GA -->
 <hibernate-mapping>
-	<class name="com.zuxia.entity.SafeQuestion" table="safe_question"
-		catalog="zxpub">
+	<class name="com.zuxia.entity.SafeQuestion" table="safe_question">
 		<id name="userCd" type="int">
 			<column name="USER_CD" />
 			<generator class="foreign">
