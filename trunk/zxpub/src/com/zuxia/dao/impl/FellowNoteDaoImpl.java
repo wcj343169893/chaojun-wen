@@ -14,14 +14,23 @@ public class FellowNoteDaoImpl extends HibernateDaoSupport implements
 
 	@Override
 	public boolean deleteFellowNote(int fellowNoteCd) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean flag = false;
+		Session session = this.getSession();
+		try {
+			session.delete(getFellowNoteByCd(fellowNoteCd));
+			flag = true;
+		} catch (HibernateException e) {
+			flag = false;
+			e.printStackTrace();
+		}
+		return flag;
 	}
 
 	@Override
 	public FellowNote getFellowNoteByCd(Integer fellowNoteCd) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = this.getSession();
+		return (FellowNote) session.get(FellowNote.class, fellowNoteCd);
+
 	}
 
 	@Override

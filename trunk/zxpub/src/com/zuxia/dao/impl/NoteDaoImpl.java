@@ -13,9 +13,17 @@ import com.zuxia.entity.Note;
 public class NoteDaoImpl extends HibernateDaoSupport implements INoteDao {
 
 	@Override
-	public boolean deleteNote() {
+	public boolean deleteNote(int noteCd) {
+		boolean flag = false;
 		Session session = this.getSession();
-		return false;
+		try {
+			session.delete(getNoteByCd(noteCd));
+			flag = true;
+		} catch (HibernateException e) {
+			flag = false;
+			e.printStackTrace();
+		}
+		return flag;
 	}
 
 	@Override
@@ -46,9 +54,17 @@ public class NoteDaoImpl extends HibernateDaoSupport implements INoteDao {
 	}
 
 	@Override
-	public boolean updateNote() {
+	public boolean updateNote(Note note) {
+		boolean flag = false;
 		Session session = this.getSession();
-		return false;
+		try {
+			session.saveOrUpdate(note);
+			flag = true;
+		} catch (HibernateException e) {
+			flag = false;
+			e.printStackTrace();
+		}
+		return flag;
 	}
 
 }

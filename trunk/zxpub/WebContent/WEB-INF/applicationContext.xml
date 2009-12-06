@@ -76,6 +76,8 @@
 	<bean id="editPwdForm" class="com.zuxia.form.EditPwdForm"></bean>
 	<bean id="fellowNoteForm" class="com.zuxia.form.FellowNoteForm"></bean>
 	<bean id="addNoteForm" class="com.zuxia.form.AddNoteForm"></bean>
+	<bean id="editNoteForm" class="com.zuxia.form.EditNoteForm"></bean>
+	<bean id="editFellowNoteForm" class="com.zuxia.form.EditFellowNoteForm"></bean>
 	<!-- *************action************* -->
 	<!-- RegistAction scope="prototype" 非单例模式-->
 	<bean id="registAction" class="com.zuxia.action.RegistAction"
@@ -89,6 +91,7 @@
 	<bean id="noteAction" class="com.zuxia.action.NoteAction">
 		<property name="noteService" ref="noteServiceImpl" />
 		<property name="addNoteForm" ref="addNoteForm"></property>
+		<property name="editNoteForm" ref="editNoteForm" />
 	</bean>
 	<bean id="editUserAction" class="com.zuxia.action.EditUserAction">
 		<property name="userService" ref="userServiceImpl" />
@@ -107,11 +110,12 @@
 		<property name="childModuleService" ref="childModuleServiceImpl" />
 	</bean>
 	<bean id="fellowNoteAction" class="com.zuxia.action.FellowNoteAction">
-		<property name="fellowNoteForm" ref="fellowNoteForm"/>
+		<property name="fellowNoteForm" ref="fellowNoteForm" />
 		<property name="fellowNoteService" ref="fellowNoteServiceImpl" />
+		<property name="editFellowNoteForm" ref="editFellowNoteForm" />
 	</bean>
 	<bean id="userDetailInitAction" class="com.zuxia.action.UserDetailInitAction">
-		<property name="userService" ref="userServiceImpl"/>
+		<property name="userService" ref="userServiceImpl" />
 	</bean>
 	<!-- 事物管理 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">

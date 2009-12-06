@@ -7,6 +7,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zuxia.entity.User;
 import com.zuxia.form.AddNoteForm;
+import com.zuxia.form.EditNoteForm;
 import com.zuxia.service.INoteService;
 
 /**
@@ -23,10 +24,31 @@ public class NoteAction extends ActionSupport {
 	private static final long serialVersionUID = -188481902986946432L;
 	private INoteService noteService;
 	private AddNoteForm addNoteForm;
+	private EditNoteForm editNoteForm;
+	private int noteCd;
+
+	/**
+	 * editNoteForm属性的get方法
+	 * 
+	 * @return the editNoteForm
+	 */
+	public EditNoteForm getEditNoteForm() {
+		return editNoteForm;
+	}
+
+	/**
+	 * editNoteForm属性的set方法
+	 * 
+	 * @param editNoteForm
+	 *            the editNoteForm to set
+	 */
+	public void setEditNoteForm(EditNoteForm editNoteForm) {
+		this.editNoteForm = editNoteForm;
+	}
+
 	/**
 	 * noteCd属性概述 note标识列
 	 */
-	private int noteCd;
 
 	/**
 	 * noteCd属性的get方法
@@ -107,16 +129,59 @@ public class NoteAction extends ActionSupport {
 		return "success";
 	}
 
+	/**
+	 * edit方法概述
+	 * 
+	 *修改帖子
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	public String edit() throws Exception {
-		// TODO Auto-generated method stub
-		return super.execute();
+		boolean flag = false;
+		if (addNoteForm.getTitle() != "" && addNoteForm.getContent() != "") {
+			HttpSession session = ServletActionContext.getRequest()
+					.getSession();
+			flag=noteService.editNote(editNoteForm, (User) session
+					.getAttribute("users"));
+		}
+		if (!flag) {
+			return "editerror";
+		}
+		return "success";
 	}
 
+	public String editInit() throws Exception {
+		ServletActionContext.getRequest().setAttribute("note",
+				noteService.getOneNote(noteCd));
+		return "editInit";
+	}
+
+	/**
+	 * delete方法概述
+	 * 
+	 *删除
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	public String delete() throws Exception {
-		// TODO Auto-generated method stub
-		return super.execute();
+		boolean flag = false;
+		flag = noteService.delteNote(noteCd);
+		if (!flag) {
+			return "deleteerror";
+		}
+		return "success";
 	}
 
+	/**
+	 * show方法概述
+	 * 
+	 * 显示
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	public String show() throws Exception {
 		ServletActionContext.getRequest().setAttribute("note",
 				noteService.getOneNote(noteCd));
