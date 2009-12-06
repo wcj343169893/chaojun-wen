@@ -27,7 +27,10 @@
 			<result name="input" type="redirectAction">module.do</result>
 			<result name="success" type="redirectAction">module.do</result>
 			<result name="showNote">/note.jsp</result>
-			<result name="adderror"></result>
+			<result name="adderror" type="redirectAction">module.do</result>
+			<result name="editerror" type="redirectAction">module.do</result>
+			<result name="deleteerror" type="redirectAction">module.do</result>
+			<result name="editInit">/editNote.jsp</result>
 		</action>
 		<!-- 生成验证码 -->
 		<action name="validateImage" class="validateImageAction">

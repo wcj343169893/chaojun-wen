@@ -8,6 +8,7 @@ import com.zuxia.entity.FellowNote;
 import com.zuxia.entity.Module;
 import com.zuxia.entity.Note;
 import com.zuxia.entity.User;
+import com.zuxia.form.EditFellowNoteForm;
 import com.zuxia.form.FellowNoteForm;
 import com.zuxia.service.IFellowNoteService;
 
@@ -58,5 +59,23 @@ public class FellowNoteServiceImpl implements IFellowNoteService {
 		fellowNote.setChildModule(childModule);
 		return fellowNotedao.insertFellowNote(fellowNote);
 
+	}
+
+	@Override
+	public boolean deleteFellowNote(int fellowNoteCd) {
+		return fellowNotedao.deleteFellowNote(fellowNoteCd);
+	}
+
+	@Override
+	public boolean editFellowNote(EditFellowNoteForm editFellowNoteForm,
+			User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public FellowNote getFellowNoteByCd(int fellowNoteCd) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

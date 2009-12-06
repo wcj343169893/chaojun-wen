@@ -50,7 +50,8 @@
 			}
 	</script>
 </head>
-<body onload="showFCK()"><DIV class=wrap>
+<body onload="showFCK()">
+	<DIV class=wrap>
 			<!-- *************头************* -->
 			<iframe width=100% height=109px src="head.jsp" frameborder=0>
 			</iframe>

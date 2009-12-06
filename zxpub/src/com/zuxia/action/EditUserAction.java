@@ -14,9 +14,6 @@
  */
 package com.zuxia.action;
 
-import org.apache.jasper.tagplugins.jstl.core.If;
-import org.aspectj.weaver.patterns.IfPointcut.IfFalsePointcut;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.zuxia.form.EditPwdForm;
 import com.zuxia.form.EditUserForm;

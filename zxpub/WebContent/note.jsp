@@ -174,7 +174,7 @@
 												<c:out value="${requestScope.note.title }" />
 											</H2>
 											<DIV class=t_msgfont id=postmessage_1556509>
-												<c:out escapeXml="true" value="${requestScope.note.content }" />
+												<c:out escapeXml="false" value="${requestScope.note.content }" />
 											</DIV>
 										</DIV>
 									</TD>
@@ -208,7 +208,7 @@
 										<DIV class=postactions>
 											<DIV id=ad_thread1_0>
 												<c:if test="${users.userName==requestScope.note.user.userName}">
-													<a href="#">修改</a>&nbsp;<a href="#">删除</a>
+													<a href="editInitNote.do?noteCd=${requestScope.note.noteCd }">修改</a>&nbsp;<a href="deleteNote.do?noteCd=${requestScope.note.noteCd }">删除</a>
 												</c:if>
 											</DIV>
 										</DIV>
@@ -319,8 +319,8 @@
 									<TD class=postcontent>
 										<DIV class=postactions>
 											<DIV id=ad_thread1_1>
-												<c:if test="${users.userName==requestScope.note.user.userName}">
-													<a href="#">修改</a>&nbsp;<a href="#">删除</a>
+												<c:if test="${users.userName==fellowNote.user.userName}">
+													<a href="editInitfellow.do?fellowNoteCd=${fellowNote.fellowNoteCd }">修改</a>&nbsp;<a href="deletefellow.do?fellowNoteCd=${fellowNote.fellowNoteCd }">删除</a>
 												</c:if>
 											</DIV>
 										</DIV>

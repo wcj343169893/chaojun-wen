@@ -6,6 +6,7 @@ import com.zuxia.entity.Module;
 import com.zuxia.entity.Note;
 import com.zuxia.entity.User;
 import com.zuxia.form.AddNoteForm;
+import com.zuxia.form.EditNoteForm;
 import com.zuxia.service.INoteService;
 
 /**
@@ -56,10 +57,31 @@ public class NoteServiceImpl implements INoteService {
 		Module module = new Module();
 		module.setModuleCd(addNoteForm.getModuleCd());
 		note.setModule(module);
-		ChildModule childModule=new ChildModule();
+		ChildModule childModule = new ChildModule();
 		childModule.setChildModuleCd(addNoteForm.getChildModuleCd());
 		note.setChildModule(childModule);
 		return noteDao.insertNote(note);
+	}
+
+	@Override
+	public boolean delteNote(int noteCd) {
+		return noteDao.deleteNote(noteCd);
+
+	}
+
+	@Override
+	public boolean editNote(EditNoteForm editNoteForm, User user) {
+		Note note = this.getOneNote(editNoteForm.getNoteCd());
+		note.setUser(user);
+		note.setTitle(editNoteForm.getTitle());
+		note.setContent(editNoteForm.getContent());
+		Module module = new Module();
+		module.setModuleCd(editNoteForm.getModuleCd());
+		note.setModule(module);
+		ChildModule childModule = new ChildModule();
+		childModule.setChildModuleCd(editNoteForm.getChildModuleCd());
+		note.setChildModule(childModule);
+		return noteDao.updateNote(note);
 	}
 
 }

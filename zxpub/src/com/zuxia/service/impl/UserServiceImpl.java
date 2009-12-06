@@ -73,7 +73,7 @@ public class UserServiceImpl implements IUserService {
 				"userexist");
 		User user = new User();
 		user.setRegistDate(new Date());
-		user.setScore(0);
+		user.setScore(2);
 		user.setUserName(registForm.getUserName());
 		user.setBirthday(registForm.getBirthday());
 		Password password = new Password();
