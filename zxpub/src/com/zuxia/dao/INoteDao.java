@@ -13,5 +13,34 @@ public interface INoteDao {
 
 	public List<Note> getNotes();
 
+	/**
+	 * getNotes方法概述 分页显示
+	 * 
+	 * @param moduleCd
+	 * @param childModuleCd
+	 * @param page
+	 * @return
+	 */
+	public List<Note> getNotes(int moduleCd, int childModuleCd, int page);
+
 	public Note getNoteByCd(Integer noteCd);
+
+	/**
+	 * getLastNote 获取此版块下的最后一条帖子
+	 * 
+	 * 
+	 * @param moduleCd
+	 * @param childModuleCd
+	 * @return
+	 */
+	public Note getLastNote(int moduleCd, int childModuleCd);
+
+	/**
+	 * getNoteCount方法概述 查询此版块下的帖子数
+	 * 
+	 * @param moduleCd
+	 * @param childModuleCd
+	 * @return
+	 */
+	public int getNoteCount(int moduleCd, int childModuleCd);
 }

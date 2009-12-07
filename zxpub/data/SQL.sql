@@ -28,7 +28,8 @@ MODULE_CD INT,
 CHILD_MODULE_CD INT,
 TITLE VARCHAR(40),
 CONTENT VARCHAR (4000),
-PUBLISH_DATE DATE
+PUBLISH_DATE DATE,
+point int
 );
 
 /*----------------建数FELLOW_NOTE(3跟贴)表----------------------*/

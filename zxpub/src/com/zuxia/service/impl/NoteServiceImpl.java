@@ -1,6 +1,11 @@
 package com.zuxia.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.zuxia.dao.IFellowNoteDao;
 import com.zuxia.dao.INoteDao;
+import com.zuxia.dto.NoteDTO;
 import com.zuxia.entity.ChildModule;
 import com.zuxia.entity.Module;
 import com.zuxia.entity.Note;
@@ -17,6 +22,7 @@ import com.zuxia.service.INoteService;
  */
 public class NoteServiceImpl implements INoteService {
 	private INoteDao noteDao;
+	private IFellowNoteDao fellowNoteDao;
 
 	/**
 	 * noteDao属性的get方法
@@ -37,6 +43,25 @@ public class NoteServiceImpl implements INoteService {
 		this.noteDao = noteDao;
 	}
 
+	/**
+	 * fellowNoteDao属性的get方法
+	 * 
+	 * @return the fellowNoteDao
+	 */
+	public IFellowNoteDao getFellowNoteDao() {
+		return fellowNoteDao;
+	}
+
+	/**
+	 * fellowNoteDao属性的set方法
+	 * 
+	 * @param fellowNoteDao
+	 *            the fellowNoteDao to set
+	 */
+	public void setFellowNoteDao(IFellowNoteDao fellowNoteDao) {
+		this.fellowNoteDao = fellowNoteDao;
+	}
+
 	@Override
 	public boolean addNote(Note note) {
 		return noteDao.insertNote(note);
@@ -44,7 +69,10 @@ public class NoteServiceImpl implements INoteService {
 
 	@Override
 	public Note getOneNote(int noteCd) {
-		return noteDao.getNoteByCd(noteCd);
+		Note note = noteDao.getNoteByCd(noteCd);
+		note.setPoint(note.getPoint() + 1);
+		noteDao.updateNote(note);
+		return note;
 
 	}
 
@@ -60,6 +88,7 @@ public class NoteServiceImpl implements INoteService {
 		ChildModule childModule = new ChildModule();
 		childModule.setChildModuleCd(addNoteForm.getChildModuleCd());
 		note.setChildModule(childModule);
+		note.setPoint(0);
 		return noteDao.insertNote(note);
 	}
 
@@ -84,4 +113,19 @@ public class NoteServiceImpl implements INoteService {
 		return noteDao.updateNote(note);
 	}
 
+	@Override
+	public List<NoteDTO> getNoteDTOs(int moduleCd, int childModuleCd) {
+		List<NoteDTO> noteDTOs = new ArrayList<NoteDTO>();
+		List<Note> notes = noteDao.getNotes(moduleCd, childModuleCd, 1);
+		for (Note note : notes) {
+			NoteDTO noteDTO = new NoteDTO();
+			noteDTO.setNote(note);
+			noteDTO.setLastFellowNote(fellowNoteDao.getLastFellowNote(note
+					.getNoteCd()));
+			noteDTO.setReplayCount(fellowNoteDao.getFellowNoteCount(note
+					.getNoteCd()));
+			noteDTOs.add(noteDTO);
+		}
+		return noteDTOs;
+	}
 }

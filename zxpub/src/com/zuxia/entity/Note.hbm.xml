@@ -20,6 +20,9 @@
         <property name="publishDate" type="date">
             <column name="PUBLISH_DATE" length="0" />
         </property>
+        <property name="point">
+        	<column name="point"></column>
+        </property>
         <bag name="fellowNote">
         	<key column="OWNER_NOTE_CD"></key>
         	<one-to-many class="com.zuxia.entity.FellowNote"/>

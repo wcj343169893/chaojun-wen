@@ -59,6 +59,7 @@
 	</bean>
 	<bean id="noteServiceImpl" class="com.zuxia.service.impl.NoteServiceImpl">
 		<property name="noteDao" ref="noteDaoImpl" />
+		<property name="fellowNoteDao" ref="fellowNoteDaoImpl" />
 	</bean>
 	<bean id="fellowNoteServiceImpl" class="com.zuxia.service.impl.FellowNoteServiceImpl">
 		<property name="fellowNotedao" ref="fellowNoteDaoImpl" />
@@ -66,6 +67,8 @@
 	<bean id="moduleServiceImpl" class="com.zuxia.service.impl.ModuleServiceImpl">
 		<property name="moduleDao" ref="moduleDaoImpl" />
 		<property name="childModuleDao" ref="childModuleDaoImpl" />
+		<property name="noteDao" ref="noteDaoImpl"/>
+		<property name="fellowNoteDao" ref="fellowNoteDaoImpl"/>
 	</bean>
 	<bean id="childModuleServiceImpl" class="com.zuxia.service.impl.ChildModuleServiceImpl">
 		<property name="childModuleDao" ref="childModuleDaoImpl" />
