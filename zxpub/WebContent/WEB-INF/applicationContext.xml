@@ -106,7 +106,7 @@
 	</bean>
 	<bean id="validateImageAction" class="com.zuxia.action.ValidateImageAction"
 		scope="prototype"></bean>
-	<bean id="moduleAction" class="com.zuxia.action.ModuleAction">
+	<bean id="indexInitAction" class="com.zuxia.action.IndexInitAction">
 		<property name="moduleService" ref="moduleServiceImpl" />
 	</bean>
 	<bean id="childModuleAction" class="com.zuxia.action.ChildModuleAction">
@@ -119,6 +119,10 @@
 	</bean>
 	<bean id="userDetailInitAction" class="com.zuxia.action.UserDetailInitAction">
 		<property name="userService" ref="userServiceImpl" />
+	</bean>
+	<bean id="noteInitAction" class="com.zuxia.action.NoteInitAction">
+		<property name="noteService" ref="noteServiceImpl"/>
+		<property name="childModuleService" ref="childModuleServiceImpl"/>
 	</bean>
 	<!-- 事物管理 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">

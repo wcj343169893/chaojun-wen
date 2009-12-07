@@ -8,7 +8,7 @@
 </head>
 <body>
 <script type="text/javascript">
-	window.location = "module.do";
+	window.location = "indexInit.do";
 </script>
 </body>
 </html>

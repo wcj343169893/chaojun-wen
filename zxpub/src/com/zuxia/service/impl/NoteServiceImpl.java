@@ -114,9 +114,9 @@ public class NoteServiceImpl implements INoteService {
 	}
 
 	@Override
-	public List<NoteDTO> getNoteDTOs(int moduleCd, int childModuleCd) {
+	public List<NoteDTO> getNoteDTOs(int moduleCd, int childModuleCd, int page) {
 		List<NoteDTO> noteDTOs = new ArrayList<NoteDTO>();
-		List<Note> notes = noteDao.getNotes(moduleCd, childModuleCd, 1);
+		List<Note> notes = noteDao.getNotes(moduleCd, childModuleCd, page);
 		for (Note note : notes) {
 			NoteDTO noteDTO = new NoteDTO();
 			noteDTO.setNote(note);

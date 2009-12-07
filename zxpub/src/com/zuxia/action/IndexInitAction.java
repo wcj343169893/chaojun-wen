@@ -5,7 +5,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zuxia.service.IModuleService;
 
-public class ModuleAction extends ActionSupport {
+public class IndexInitAction extends ActionSupport {
 	private IModuleService moduleService;
 
 	/**
@@ -29,22 +29,8 @@ public class ModuleAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		ServletActionContext.getRequest().setAttribute("modules_db",
-				moduleService.getModules());
-		return "success";
-	}
-
-	/**
-	 * getModules方法概述
-	 * 
-	 *获取到所有的板块
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public String getModules() throws Exception {
-		ServletActionContext.getRequest().setAttribute("modules_db",
-				moduleService.getModules());
+		ServletActionContext.getRequest().setAttribute("moduleDTOList",
+				moduleService.getModuleDTOList());
 		return "success";
 	}
 }
