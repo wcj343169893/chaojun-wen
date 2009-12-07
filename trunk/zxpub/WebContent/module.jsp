@@ -39,7 +39,7 @@
 				</DIV>
 				<DIV class="mainbox threadlist">
 					<H1>
-						<A class=bold href="#">${requestScope.childModules_db.childModuleName }</A>
+						<A class=bold href="#">${childModule.childModuleName }</A>
 					</H1>
 					<FORM name=moderate
 						action=topicadmin.php?action=moderate&amp;fid=102 method=post>
@@ -67,7 +67,16 @@
 									</TD>
 								</TR>
 							</THEAD>
-							<c:forEach items="${requestScope.childModules_db.notes }" var="note">							
+							<c:if test="${empty noteDTOs}">
+							<tbody>
+								<tr>
+									<td colspan="6">
+									<div align="center">暂无帖子</div>
+									</td>
+								</tr>
+							</tbody>
+							</c:if>
+							<c:forEach items="${noteDTOs}" var="noteDTO">							
 							<TBODY>
 								<TR>
 									<TD class=folder>
@@ -78,25 +87,22 @@
 									</TD>
 									<TH>
 										<A
-											href="showNote.do?noteCd=${note.noteCd}"><c:out value="${note.title}" /></A>
+											href="showNote.do?noteCd=${noteDTO.note.noteCd}"><c:out value="${noteDTO.note.title}" /></A>
 									</TH>
 									<TD class=author>
 										<CITE><A
-											href="userDetailInit.do?userName=${note.user.userName}"><c:out value="${note.user.userName}" /></A>
+											href="userDetailInit.do?userName=${noteDTO.note.user.userName}"><c:out value="${noteDTO.note.user.userName}" /></A>
 										</CITE>
-										<EM>${note.publishDate }</EM>
+										<EM>${noteDTO.note.publishDate }</EM>
 									</TD>
 									<TD class=nums>
-										<c:set value="${fn:length(note.fellowNote)}" var="fellowcont"></c:set>
-										${fellowcont }/${note.point }
+										${noteDTO.replayCount }/${noteDTO.note.point }
 									</TD>
 									<TD class=lastpost>
 									<c:choose>
-										<c:when test="${fellowcont>0}">
-											<c:forEach items="${note.fellowNote}" var="fellowNote" begin="${fellowcont-1 }" end="${fellowcont}">
-												<CITE><A href="showNote.do?noteCd=${note.noteCd}">${fn:substring(fellowNote.flwContent,0,10) }</A>......<br/>
-												${fellowNote.publishDate }</CITE>
-											</c:forEach>
+										<c:when test="${!empty noteDTO.lastFellowNote}">
+												<CITE><A href="showNote.do?noteCd=${noteDTO.note.noteCd}">${fn:substring(noteDTO.lastFellowNote.flwContent,0,10) }</A>......<br/>
+												${noteDTO.lastFellowNote.publishDate }</CITE>
 										</c:when>
 										<c:otherwise>
 											暂无

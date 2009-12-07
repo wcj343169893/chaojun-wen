@@ -64,7 +64,7 @@ public class FellowNoteDaoImpl extends HibernateDaoSupport implements
 	@Override
 	public FellowNote getLastFellowNote(int noteCd) {
 		Session session = this.getSession();
-		String hql = "from FellowNote fellowNote where fellowNote.fellowNoteCd=:noteCd  order by note.publishDate desc";
+		String hql = "from FellowNote fellowNote where fellowNote.note.noteCd=:noteCd  order by fellowNote.publishDate desc";
 		Query query = session.createQuery(hql);
 		query.setParameter("noteCd", noteCd);
 		query.setFirstResult(0);
@@ -79,13 +79,21 @@ public class FellowNoteDaoImpl extends HibernateDaoSupport implements
 
 	@Override
 	public long getFellowNoteCount(int noteCd) {
-		// TODO Auto-generated method stub
-		return 0;
+		Session session = this.getSession();
+		String hql = "select count(*) from FellowNote fellowNote where fellowNote.note.noteCd=:noteCd";
+		Query query = session.createQuery(hql);
+		query.setParameter("noteCd", noteCd);
+		List<Object> obj = query.list();
+		int count = 0;
+		if (obj != null && obj.size() > 0) {
+			count = Integer.valueOf(obj.get(0).toString());
+		}
+		return count;
 	}
 
 	@Override
 	public long getFellowNoteCount(int moduleCd, int childModuleCd) {
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
 

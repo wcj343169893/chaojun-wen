@@ -10,10 +10,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/style_10.css" />
 </head>
-<body onkeydown=
-	if (event.keyCode == 27)
-		return false;;
->
+<body>
 <DIV class=wrap><!-- *************头************* --> <iframe
 	width=100% height=109px src="head.jsp" frameborder=0> </iframe> <!-- *************头************* -->
 <!-- *************网站导航地图************* --> <iframe width=100% height=48px
@@ -24,16 +21,16 @@
 		<TR></TR>
 	</TBODY>
 </TABLE>
-<DIV class="mainbox forumlist"><c:forEach items="${modules_db}"
-	var="module">
+<DIV class="mainbox forumlist"><c:forEach items="${moduleDTOList}"
+	var="moduleDTO">
 	<SPAN class=headactions> <c:choose>
 		<c:when test="${users.roleCd==1}">
 			<a href="addChildModule.jsp">新增子模块</a>
 		</c:when>
 	</c:choose> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分区版主: <A class=notabs
-		href="userDetailInit.do?userName=${module.user.userName }">${module.user.userName
+		href="userDetailInit.do?userName=${moduleDTO.module.user.userName }">${moduleDTO.module.user.userName
 	}</A> </SPAN>
-	<H3>■${module.moduleName }</H3>
+	<H3>■${moduleDTO.module.moduleName }</H3>
 	<TABLE id=category_73 cellSpacing=0 cellPadding=0 summary=category73>
 		<THEAD class=category>
 			<TR>
@@ -48,45 +45,40 @@
 				</c:choose>
 			</TR>
 		</THEAD>
-		<c:forEach items="${module.childModule}" var="childModule">
-			<c:set value="${fn:length(childModule.notes) }" var="noteslength"></c:set>
-			<c:set value="${fn:length(childModule.fellowNotes)}"
-				var="fellowslength"></c:set>
+		<c:forEach items="${moduleDTO.childModuleDTOList}" var="childModuleDTO">
 			<TBODY id=forum102>
 				<TR>
 					<TH class=new>
 					<H2><A
-						href="childModule.do?mCd=${module.moduleCd }&cmCd=${childModule.childModuleCd }">${childModule.childModuleName
+						href="noteInit.do?mCd=${moduleDTO.module.moduleCd }&cmCd=${childModuleDTO.childModule.childModuleCd }&p=1">${childModuleDTO.childModule.childModuleName
 					}</A><EM> (今日: 53)</EM></H2>
-					<P>${childModule.moduleComment }</P>
+					<P>${childModuleDTO.childModule.moduleComment }</P>
 					<P class=moderators>版主: <A class=notabs
-						href="userDetailInit.do?userName=${childModule.user.userName}"><c:out
-						value="${childModule.user.userName}"></c:out></A>,</P>
+						href="userDetailInit.do?userName=${childModuleDTO.childModule.user.userName}"><c:out
+						value="${childModuleDTO.childModule.user.userName}"></c:out></A>,</P>
 					</TH>
-					<TD class=nums><c:out value="${noteslength }"></c:out></TD>
-					<TD class=nums><c:out value="${noteslength+fellowslength }"></c:out>
+					<TD class=nums><c:out value="${childModuleDTO.noteCount }"></c:out></TD>
+					<TD class=nums><c:out value="${childModuleDTO.noteCount+childModuleDTO.fellowNoteCount}"></c:out>
 					</TD>
 					<TD class=lastpost><c:choose>
-						<c:when test="${noteslength>0 }">
-							<c:forEach items="${childModule.notes}" var="lastnote"
-								begin="${noteslength-1}" end="${noteslength}">
-								<A href="showNote.do?noteCd=${lastnote.noteCd }">${lastnote.title
+						<c:when test="${childModuleDTO.noteCount>0 }">
+							
+								<A href="showNote.do?noteCd=${childModuleDTO.lastNote.noteCd }">${childModuleDTO.lastNote.title
 								}</A>
 								<CITE>by <A
-									href="userDetailInit.do?userName=${lastnote.user.userName }">${lastnote.user.userName
-								}</A> ${lastnote.publishDate }</CITE>
-							</c:forEach>
+									href="userDetailInit.do?userName=${childModuleDTO.lastNote.user.userName }">${childModuleDTO.lastNote.user.userName
+								}</A> ${childModuleDTO.lastNote.publishDate }</CITE>
 						</c:when>
 						<c:otherwise>
 									此版块暂无帖子
 									<c:if test="${!empty users}">
 								<a
-									href="addNote.jsp?mCd=${module.moduleCd }&cmCd=${childModule.childModuleCd }">点此发表</a>
+									href="addNote.jsp?mCd=${moduleDTO.module.moduleCd }&cmCd=${childModuleDTO.childModule.childModuleCd }">点此发表</a>
 							</c:if>
 						</c:otherwise>
 					</c:choose></TD>
 					<c:choose>
-						<c:when test="${users.userName==childModule.user.userName}">
+						<c:when test="${users.userName==childModuleDTO.childModule.user.userName}">
 							<td><a href="子模块修改.html" target="blank">修改</a>&nbsp;&nbsp;&nbsp;
 							<a>删除</a></td>
 						</c:when>

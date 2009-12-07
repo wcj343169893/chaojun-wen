@@ -54,5 +54,5 @@ public interface INoteService {
 	 *            ×Ó°æ¿éCd
 	 * @return
 	 */
-	public List<NoteDTO> getNoteDTOs(int moduleCd, int childModuleCd);
+	public List<NoteDTO> getNoteDTOs(int moduleCd, int childModuleCd,int page);
 }
