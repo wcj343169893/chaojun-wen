@@ -32,6 +32,7 @@ public class Note implements java.io.Serializable {
 	private String title;
 	private String content;
 	private Date publishDate;
+	private int point;
 	/**
 	 * fellowNote属性概述 跟帖
 	 */
@@ -187,6 +188,25 @@ public class Note implements java.io.Serializable {
 	 */
 	public void setFellowNote(List<FellowNote> fellowNote) {
 		this.fellowNote = fellowNote;
+	}
+
+	/**
+	 * point属性的get方法
+	 * 
+	 * @return the point
+	 */
+	public int getPoint() {
+		return point;
+	}
+
+	/**
+	 * point属性的set方法
+	 * 
+	 * @param point
+	 *            the point to set
+	 */
+	public void setPoint(int point) {
+		this.point = point;
 	}
 
 }

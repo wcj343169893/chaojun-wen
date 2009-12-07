@@ -14,4 +14,10 @@ public interface IFellowNoteDao {
 	public List<FellowNote> getFellowNotes();
 
 	public FellowNote getFellowNoteByCd(Integer fellowNoteCd);
+
+	public FellowNote getLastFellowNote(int noteCd);
+
+	public long getFellowNoteCount(int noteCd);
+
+	public long getFellowNoteCount(int moduleCd, int childModuleCd);
 }

@@ -54,7 +54,7 @@ public class ChildModuleDaoImpl extends HibernateDaoSupport implements
 		Session session = this.getSession();
 		List<ChildModule> childModules = null;
 		try {
-			String hql = "from ChildModule where moduleCd=:mCd";
+			String hql = "from ChildModule where module.moduleCd=:mCd";
 			Query query = session.createQuery(hql);
 			query.setParameter("mCd", mCd);
 			childModules = query.list();

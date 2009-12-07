@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.zuxia.dao.IChildModuleDao;
+import com.zuxia.dao.IFellowNoteDao;
 import com.zuxia.dao.IModuleDao;
 import com.zuxia.dao.INoteDao;
 import com.zuxia.dto.ChileModuleDTO;
@@ -35,6 +36,46 @@ import com.zuxia.service.IModuleService;
 public class ModuleServiceImpl implements IModuleService {
 	private IModuleDao moduleDao;
 	private IChildModuleDao childModuleDao;
+	private INoteDao noteDao;
+	private IFellowNoteDao fellowNoteDao;
+
+	/**
+	 * noteDao属性的get方法
+	 * 
+	 * @return the noteDao
+	 */
+	public INoteDao getNoteDao() {
+		return noteDao;
+	}
+
+	/**
+	 * noteDao属性的set方法
+	 * 
+	 * @param noteDao
+	 *            the noteDao to set
+	 */
+	public void setNoteDao(INoteDao noteDao) {
+		this.noteDao = noteDao;
+	}
+
+	/**
+	 * fellowNoteDao属性的get方法
+	 * 
+	 * @return the fellowNoteDao
+	 */
+	public IFellowNoteDao getFellowNoteDao() {
+		return fellowNoteDao;
+	}
+
+	/**
+	 * fellowNoteDao属性的set方法
+	 * 
+	 * @param fellowNoteDao
+	 *            the fellowNoteDao to set
+	 */
+	public void setFellowNoteDao(IFellowNoteDao fellowNoteDao) {
+		this.fellowNoteDao = fellowNoteDao;
+	}
 
 	/**
 	 * moduleDao属性的get方法
@@ -93,12 +134,9 @@ public class ModuleServiceImpl implements IModuleService {
 				ChileModuleDTO childModuleDTO = new ChileModuleDTO();
 				childModuleDTO.setChildModule(childModule);
 				childModuleDTO.setNoteCount(notesize);
-				childModuleDTO.setFellowNoteCount(childModule.getFellowNotes()
-						.size());
-				if (notesize > 0) {
-					childModuleDTO.setLastNote(childModule.getNotes().get(
-							notesize - 1));
-				}
+				childModuleDTO.setFellowNoteCount(fellowNoteDao.getFellowNoteCount(module.getModuleCd(), childModule.getChildModuleCd()));
+				childModuleDTO.setLastNote(noteDao.getLastNote(module
+						.getModuleCd(), childModule.getChildModuleCd()));
 				childModuleDTOList.add(childModuleDTO);
 			}
 			moduleDTO.setModule(module);

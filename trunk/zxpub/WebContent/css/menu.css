@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+.indentmenu {
+	font: bold 13px Arial;
+	width: 100%;
+	overflow: hidden;
+}
+
+.indentmenu ul li {
+	display: inline;
+}
+
+.indentmenu ul li a {
+	float: right;
+	color: white;
+	padding: 5px 11px;
+	text-decoration: none;
+	border-right: 0px solid #564c66;
+}
+
+.indentmenu ul li a:visited {
+	color: white;
+}

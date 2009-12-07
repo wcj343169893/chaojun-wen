@@ -170,7 +170,7 @@ var ispass=false;
 		<th><label for="questionid"> 安全提问 </label></th>
 		<td><select id="questionid"
 			name="registForm.questionCd" tabindex="13">
-			<c:forEach items="${requestScope.questionMasters}" var="qm">
+			<c:forEach items="${questionMasters}" var="qm">
 			<option value="${qm.questionCd }">${qm.question }</option>
 			</c:forEach>
 		</select> 如果您启用安全提问，登录时需填入相应的项目才能登录</td>

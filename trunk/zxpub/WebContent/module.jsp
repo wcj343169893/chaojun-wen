@@ -88,7 +88,7 @@
 									</TD>
 									<TD class=nums>
 										<c:set value="${fn:length(note.fellowNote)}" var="fellowcont"></c:set>
-										${fellowcont }/100
+										${fellowcont }/${note.point }
 									</TD>
 									<TD class=lastpost>
 									<c:choose>

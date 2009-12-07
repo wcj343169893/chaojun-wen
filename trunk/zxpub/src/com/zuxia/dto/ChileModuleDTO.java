@@ -5,8 +5,8 @@ import com.zuxia.entity.Note;
 
 public class ChileModuleDTO {
 	private ChildModule childModule;
-	private int noteCount;
-	private int fellowNoteCount;
+	private long noteCount;
+	private long fellowNoteCount;
 	private Note lastNote;
 
 	/**
@@ -33,7 +33,7 @@ public class ChileModuleDTO {
 	 * 
 	 * @return the noteCount
 	 */
-	public int getNoteCount() {
+	public long getNoteCount() {
 		return noteCount;
 	}
 
@@ -43,7 +43,7 @@ public class ChileModuleDTO {
 	 * @param noteCount
 	 *            the noteCount to set
 	 */
-	public void setNoteCount(int noteCount) {
+	public void setNoteCount(long noteCount) {
 		this.noteCount = noteCount;
 	}
 
@@ -52,7 +52,7 @@ public class ChileModuleDTO {
 	 * 
 	 * @return the fellowNoteCount
 	 */
-	public int getFellowNoteCount() {
+	public long getFellowNoteCount() {
 		return fellowNoteCount;
 	}
 
@@ -62,7 +62,7 @@ public class ChileModuleDTO {
 	 * @param fellowNoteCount
 	 *            the fellowNoteCount to set
 	 */
-	public void setFellowNoteCount(int fellowNoteCount) {
+	public void setFellowNoteCount(long fellowNoteCount) {
 		this.fellowNoteCount = fellowNoteCount;
 	}
 

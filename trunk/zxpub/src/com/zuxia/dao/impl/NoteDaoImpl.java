@@ -67,4 +67,49 @@ public class NoteDaoImpl extends HibernateDaoSupport implements INoteDao {
 		return flag;
 	}
 
+	@Override
+	public Note getLastNote(int moduleCd, int childModuleCd) {
+		Session session = this.getSession();
+		String hql = "from Note note where note.module.moduleCd=:moduleCd and note.childModule.childModuleCd=:childModuleCd order by note.publishDate desc";
+		Query query = session.createQuery(hql);
+		query.setParameter("moduleCd", moduleCd);
+		query.setParameter("childModuleCd", childModuleCd);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+		List<Note> notes = query.list();
+		Note note = null;
+		if (notes != null && notes.size() > 0) {
+			note = notes.get(0);
+		}
+		return note;
+	}
+
+	@Override
+	public List<Note> getNotes(int moduleCd, int childModuleCd, int page) {
+		Session session = this.getSession();
+		String hql = "from Note note where note.module.moduleCd=:moduleCd and note.childModule.childModuleCd=:childModuleCd order by note.publishDate desc";
+		Query query = session.createQuery(hql);
+		query.setParameter("moduleCd", moduleCd);
+		query.setParameter("childModuleCd", childModuleCd);
+		query.setFirstResult((page - 1) * 10);
+		query.setMaxResults(10);
+		List<Note> notes = query.list();
+		return notes;
+	}
+
+	@Override
+	public int getNoteCount(int moduleCd, int childModuleCd) {
+		Session session = this.getSession();
+		String hql = "select count(*) from Note note where note.module.moduleCd=:moduleCd and note.childModule.childModuleCd=:childModuleCd order by note.publishDate desc";
+		Query query = session.createQuery(hql);
+		query.setParameter("moduleCd", moduleCd);
+		query.setParameter("childModuleCd", childModuleCd);
+		List<Object> obj = query.list();
+		int count = 0;
+		if (obj != null) {
+			count = Integer.parseInt(obj.toString());
+		}
+		return count;
+	}
+
 }
