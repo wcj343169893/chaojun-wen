@@ -11,9 +11,9 @@
 			<property name="hibernate.connection.username">zxpub</property>
 		-->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.password">123456</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/zxpub</property>
-		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">71475380</property>
+		<property name="hibernate.connection.url">jdbc:mysql://221.203.168.165:3306/udb_zxpub</property>
+		<property name="hibernate.connection.username">zxpub</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<mapping resource="com/zuxia/entity/ChildModule.hbm.xml" />
 		<mapping resource="com/zuxia/entity/City.hbm.xml" />
