@@ -17,7 +17,7 @@ public class NoteTest extends TestCase {
 				"WebContent/WEB-INF/applicationContext.xml"));
 		INoteService noteService = (INoteService) beanFactory
 				.getBean("noteServiceImpl");
-		List<NoteDTO> noteDTOs = noteService.getNoteDTOs(1, 1);
+		List<NoteDTO> noteDTOs = noteService.getNoteDTOs(1, 1, 1);
 		for (NoteDTO noteDTO : noteDTOs) {
 			System.out.println(noteDTO.getNote().getNoteCd()
 					+ noteDTO.getNote().getTitle() + noteDTO.getReplayCount());
