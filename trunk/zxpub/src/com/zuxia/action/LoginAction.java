@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.zuxia.entity.City;
-import com.zuxia.entity.Province;
 import com.zuxia.entity.User;
 import com.zuxia.service.IUserService;
 

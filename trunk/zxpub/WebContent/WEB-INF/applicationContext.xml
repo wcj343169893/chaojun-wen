@@ -67,8 +67,8 @@
 	<bean id="moduleServiceImpl" class="com.zuxia.service.impl.ModuleServiceImpl">
 		<property name="moduleDao" ref="moduleDaoImpl" />
 		<property name="childModuleDao" ref="childModuleDaoImpl" />
-		<property name="noteDao" ref="noteDaoImpl"/>
-		<property name="fellowNoteDao" ref="fellowNoteDaoImpl"/>
+		<property name="noteDao" ref="noteDaoImpl" />
+		<property name="fellowNoteDao" ref="fellowNoteDaoImpl" />
 	</bean>
 	<bean id="childModuleServiceImpl" class="com.zuxia.service.impl.ChildModuleServiceImpl">
 		<property name="childModuleDao" ref="childModuleDaoImpl" />
@@ -120,9 +120,16 @@
 	<bean id="userDetailInitAction" class="com.zuxia.action.UserDetailInitAction">
 		<property name="userService" ref="userServiceImpl" />
 	</bean>
-	<bean id="noteInitAction" class="com.zuxia.action.NoteInitAction">
-		<property name="noteService" ref="noteServiceImpl"/>
-		<property name="childModuleService" ref="childModuleServiceImpl"/>
+	<bean id="noteBrowseInitAction" class="com.zuxia.action.NoteBrowseInitAction">
+		<property name="noteService" ref="noteServiceImpl" />
+		<property name="childModuleService" ref="childModuleServiceImpl" />
+	</bean>
+	<bean id="noteDetailInitAction" class="com.zuxia.action.NoteDetailInitAction">
+		<property name="noteService" ref="noteServiceImpl" />
+	</bean>
+	<bean id="noteBrowserAction" class="com.zuxia.action.NoteBrowserAction">
+		<property name="noteService" ref="noteServiceImpl" />
+		<property name="childModuleService" ref="childModuleServiceImpl" />
 	</bean>
 	<!-- 事物管理 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">

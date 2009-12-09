@@ -3,15 +3,45 @@ package com.zuxia.action;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.zuxia.common.PageInfo;
 import com.zuxia.service.IChildModuleService;
 import com.zuxia.service.INoteService;
 
-public class NoteInitAction extends ActionSupport {
+/**
+ * NoteBrowseInitAction 帖子一览
+ * 
+ * 
+ * @author 文朝军
+ */
+public class NoteBrowseInitAction extends ActionSupport {
+	/**
+	 * serialVersionUID属性概述
+	 * 
+	 */
+	private static final long serialVersionUID = -3091169422319968791L;
 	private INoteService noteService;
 	private IChildModuleService childModuleService;
 	private int mCd;
 	private int cmCd;
-	private int p;
+
+	/**
+	 * noteService属性的get方法
+	 * 
+	 * @return the noteService
+	 */
+	public INoteService getNoteService() {
+		return noteService;
+	}
+
+	/**
+	 * noteService属性的set方法
+	 * 
+	 * @param noteService
+	 *            the noteService to set
+	 */
+	public void setNoteService(INoteService noteService) {
+		this.noteService = noteService;
+	}
 
 	/**
 	 * childModuleService属性的get方法
@@ -70,50 +100,18 @@ public class NoteInitAction extends ActionSupport {
 		this.cmCd = cmCd;
 	}
 
-	/**
-	 * p属性的get方法
-	 * 
-	 * @return the p
-	 */
-	public int getP() {
-		return p;
-	}
-
-	/**
-	 * p属性的set方法
-	 * 
-	 * @param p
-	 *            the p to set
-	 */
-	public void setP(int p) {
-		this.p = p;
-	}
-
-	/**
-	 * noteService属性的get方法
-	 * 
-	 * @return the noteService
-	 */
-	public INoteService getNoteService() {
-		return noteService;
-	}
-
-	/**
-	 * noteService属性的set方法
-	 * 
-	 * @param noteService
-	 *            the noteService to set
-	 */
-	public void setNoteService(INoteService noteService) {
-		this.noteService = noteService;
-	}
-
 	@Override
 	public String execute() throws Exception {
+		PageInfo pageInfo = new PageInfo();
+		pageInfo.setCurrentPage(1);
+		pageInfo.setPageSize(3);
+		ServletActionContext.getRequest().getSession().setAttribute("childModuleCd", this.cmCd);
+		ServletActionContext.getRequest().getSession().setAttribute("mduleCd", this.mCd);
 		ServletActionContext.getRequest().setAttribute("noteDTOs",
-				noteService.getNoteDTOs(mCd, cmCd, p));
+				noteService.getNoteDTOs(mCd, cmCd, pageInfo));
 		ServletActionContext.getRequest().setAttribute("childModule",
 				childModuleService.getChildModulesByCmCd(cmCd));
+		ServletActionContext.getRequest().getSession().setAttribute("noteBrowsePageInfo", pageInfo);
 		return "success";
 	}
 }

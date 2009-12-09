@@ -2,7 +2,9 @@ package com.zuxia.service;
 
 import java.util.List;
 
+import com.zuxia.common.PageInfo;
 import com.zuxia.dto.NoteDTO;
+import com.zuxia.dto.NoteDetailsDTO;
 import com.zuxia.entity.Note;
 import com.zuxia.entity.User;
 import com.zuxia.form.AddNoteForm;
@@ -20,7 +22,7 @@ public interface INoteService {
 	public boolean addNote(AddNoteForm addNoteForm, User user);
 
 	/**
-	 * getNote 获取一个note
+	 * getNote 获取一个note 并修改点击
 	 * 
 	 * @param noteCd
 	 * @return
@@ -46,15 +48,27 @@ public interface INoteService {
 	 */
 	public boolean editNote(EditNoteForm editNoteForm, User user);
 
+	public boolean editNote(Note note);
+
 	/**
-	 * getNoteDTOs 获取noteDTO
+	 * getNoteDTOs 初始化note一览表
 	 * 
 	 * 
 	 * @param moduleCd
-	 *            主版块Cd
 	 * @param childModuleCd
-	 *            子版块Cd
+	 * @param pageInfo
 	 * @return
 	 */
-	public List<NoteDTO> getNoteDTOs(int moduleCd, int childModuleCd, int page);
+	public List<NoteDTO> getNoteDTOs(int moduleCd, int childModuleCd,
+			PageInfo pageInfo);
+
+	/**
+	 * getNoteDetailsDTO 获取note的详细信息和跟帖
+	 * 
+	 * 
+	 * @param noteCd
+	 * @param pageInfo
+	 * @return
+	 */
+	public NoteDetailsDTO getNoteDetailsDTO(int noteCd, PageInfo pageInfo);
 }

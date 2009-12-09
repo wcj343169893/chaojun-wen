@@ -2,6 +2,7 @@ package com.zuxia.dao;
 
 import java.util.List;
 
+import com.zuxia.common.PageInfo;
 import com.zuxia.entity.Note;
 
 public interface INoteDao {
@@ -22,6 +23,7 @@ public interface INoteDao {
 	 * @return
 	 */
 	public List<Note> getNotes(int moduleCd, int childModuleCd, int page);
+	public List<Note> getNotes(int moduleCd, int childModuleCd, PageInfo pageInfo);
 
 	public Note getNoteByCd(Integer noteCd);
 

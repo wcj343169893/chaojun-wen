@@ -5,6 +5,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.zuxia.common.EPage;
+import com.zuxia.common.PageInfo;
 import com.zuxia.entity.User;
 import com.zuxia.form.AddNoteForm;
 import com.zuxia.form.EditNoteForm;
@@ -25,8 +27,26 @@ public class NoteAction extends ActionSupport {
 	private INoteService noteService;
 	private AddNoteForm addNoteForm;
 	private EditNoteForm editNoteForm;
-	private int noteCd;
-	private int page;
+	private int gotoPage;
+
+	/**
+	 * gotoPage属性的get方法
+	 * 
+	 * @return the gotoPage
+	 */
+	public int getGotoPage() {
+		return gotoPage;
+	}
+
+	/**
+	 * gotoPage属性的set方法
+	 * 
+	 * @param gotoPage
+	 *            the gotoPage to set
+	 */
+	public void setGotoPage(int gotoPage) {
+		this.gotoPage = gotoPage;
+	}
 
 	/**
 	 * editNoteForm属性的get方法
@@ -45,29 +65,6 @@ public class NoteAction extends ActionSupport {
 	 */
 	public void setEditNoteForm(EditNoteForm editNoteForm) {
 		this.editNoteForm = editNoteForm;
-	}
-
-	/**
-	 * noteCd属性概述 note标识列
-	 */
-
-	/**
-	 * noteCd属性的get方法
-	 * 
-	 * @return the noteCd
-	 */
-	public int getNoteCd() {
-		return noteCd;
-	}
-
-	/**
-	 * noteCd属性的set方法
-	 * 
-	 * @param noteCd
-	 *            the noteCd to set
-	 */
-	public void setNoteCd(int noteCd) {
-		this.noteCd = noteCd;
 	}
 
 	/**
@@ -106,25 +103,6 @@ public class NoteAction extends ActionSupport {
 	 */
 	public void setNoteService(INoteService noteService) {
 		this.noteService = noteService;
-	}
-
-	/**
-	 * page属性的get方法
-	 * 
-	 * @return the page
-	 */
-	public int getPage() {
-		return page;
-	}
-
-	/**
-	 * page属性的set方法
-	 * 
-	 * @param page
-	 *            the page to set
-	 */
-	public void setPage(int page) {
-		this.page = page;
 	}
 
 	/**
@@ -172,8 +150,11 @@ public class NoteAction extends ActionSupport {
 	}
 
 	public String editInit() throws Exception {
-		ServletActionContext.getRequest().setAttribute("note",
-				noteService.getOneNote(noteCd));
+		ServletActionContext.getRequest().setAttribute(
+				"note",
+				noteService.getOneNote(Integer.valueOf(ServletActionContext
+						.getRequest().getSession().getAttribute("noteCd")
+						.toString())));
 		return "editInit";
 	}
 
@@ -187,24 +168,57 @@ public class NoteAction extends ActionSupport {
 	 */
 	public String delete() throws Exception {
 		boolean flag = false;
-		flag = noteService.delteNote(noteCd);
+		flag = noteService.delteNote(Integer.valueOf(ServletActionContext
+				.getRequest().getSession().getAttribute("noteCd").toString()));
 		if (!flag) {
 			return "deleteerror";
 		}
 		return "success";
 	}
 
-	/**
-	 * show方法概述
-	 * 
-	 * 显示
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public String show() throws Exception {
-		ServletActionContext.getRequest().setAttribute("note",
-				noteService.getOneNote(noteCd, page));
+	public String nextPage() throws Exception {
+		anyOnePage(1, EPage.next);
 		return "showNote";
+	}
+
+
+	public String backPage() throws Exception {
+		anyOnePage(-1, EPage.back);
+		return "showNote";
+	}
+
+	public String firstPage() throws Exception {
+		anyOnePage(1, EPage.first);
+		return "showNote";
+	}
+
+	public String lastPage() throws Exception {
+		anyOnePage(1, EPage.last);
+		return "showNote";
+	}
+
+	public String goPage() throws Exception {
+		anyOnePage(gotoPage, EPage.go);
+		return "showNote";
+	}
+
+	public void anyOnePage(int pages, EPage epage) {
+		PageInfo pageInfo = (PageInfo) ServletActionContext.getRequest()
+				.getSession().getAttribute("noteDetailsPageInfo");
+		if (epage.equals(EPage.back) || epage.equals(EPage.next)) {
+			pageInfo.setCurrentPage(pageInfo.getCurrentPage() + pages);
+		} else if (epage.equals(EPage.first)) {
+			pageInfo.setCurrentPage(1);
+		} else if (epage.equals(EPage.last)) {
+			pageInfo.setCurrentPage(pageInfo.getPageCount());
+		} else {
+			pageInfo.setCurrentPage(pages);
+		}
+		int noteCd = Integer.valueOf(ServletActionContext.getRequest()
+				.getSession().getAttribute("noteCd").toString());
+		ServletActionContext.getRequest().setAttribute("noteDetailsDTO",
+				noteService.getNoteDetailsDTO(noteCd, pageInfo));
+		ServletActionContext.getRequest().getSession().setAttribute(
+				"noteDetailsPageInfo", pageInfo);
 	}
 }

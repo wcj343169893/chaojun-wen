@@ -50,7 +50,7 @@
 				<TR>
 					<TH class=new>
 					<H2><A
-						href="noteInit.do?mCd=${moduleDTO.module.moduleCd }&cmCd=${childModuleDTO.childModule.childModuleCd }&p=1">${childModuleDTO.childModule.childModuleName
+						href="noteBrowseInit.do?mCd=${moduleDTO.module.moduleCd }&cmCd=${childModuleDTO.childModule.childModuleCd }&p=1">${childModuleDTO.childModule.childModuleName
 					}</A><EM> (今日: 53)</EM></H2>
 					<P>${childModuleDTO.childModule.moduleComment }</P>
 					<P class=moderators>版主: <A class=notabs
@@ -63,7 +63,7 @@
 					<TD class=lastpost><c:choose>
 						<c:when test="${childModuleDTO.noteCount>0 }">
 							
-								<A href="showNote.do?noteCd=${childModuleDTO.lastNote.noteCd }">${childModuleDTO.lastNote.title
+								<A href="noteDetailInit.do?noteCd=${childModuleDTO.lastNote.noteCd }">${childModuleDTO.lastNote.title
 								}</A>
 								<CITE>by <A
 									href="userDetailInit.do?userName=${childModuleDTO.lastNote.user.userName }">${childModuleDTO.lastNote.user.userName

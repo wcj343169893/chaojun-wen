@@ -1,7 +1,9 @@
 package com.zuxia.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
+import com.zuxia.common.PageInfo;
 import com.zuxia.dao.IFellowNoteDao;
 import com.zuxia.entity.ChildModule;
 import com.zuxia.entity.FellowNote;
@@ -77,5 +79,10 @@ public class FellowNoteServiceImpl implements IFellowNoteService {
 	public FellowNote getFellowNoteByCd(int fellowNoteCd) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<FellowNote> getFellowNotes(int noteCd, PageInfo pageInfo) {
+		return fellowNotedao.getFellowNotes(noteCd, pageInfo);
 	}
 }

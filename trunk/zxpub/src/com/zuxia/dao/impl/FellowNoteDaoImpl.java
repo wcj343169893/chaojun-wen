@@ -7,6 +7,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.zuxia.common.PageInfo;
+import com.zuxia.common.PageSearchUtil;
 import com.zuxia.dao.IFellowNoteDao;
 import com.zuxia.entity.FellowNote;
 import com.zuxia.entity.Note;
@@ -93,8 +95,17 @@ public class FellowNoteDaoImpl extends HibernateDaoSupport implements
 
 	@Override
 	public long getFellowNoteCount(int moduleCd, int childModuleCd) {
-
-		return 0;
+		Session session = this.getSession();
+		String hql = "select count(*) from FellowNote fellowNote where fellowNote.module.moduleCd=:moduleCd and fellowNote.childModule.childModuleCd=:childModuleCd";
+		Query query = session.createQuery(hql);
+		query.setParameter("moduleCd", moduleCd);
+		query.setParameter("childModuleCd", childModuleCd);
+		List<Object> obj = query.list();
+		int count = 0;
+		if (obj != null && obj.size() > 0) {
+			count = Integer.valueOf(obj.get(0).toString());
+		}
+		return count;
 	}
 
 	@Override
@@ -107,6 +118,16 @@ public class FellowNoteDaoImpl extends HibernateDaoSupport implements
 		query.setMaxResults(10);
 		List<FellowNote> fellowNotes = query.list();
 		return fellowNotes;
+	}
+
+	@Override
+	public List<FellowNote> getFellowNotes(int noteCd, PageInfo pageInfo) {
+		Session session = this.getSession();
+		String hql = "from FellowNote fellowNote where fellowNote.note.noteCd=?";
+		Object[] objectArray = new Object[] { noteCd };
+		List<FellowNote> resultList = PageSearchUtil.getPageList(session,
+				pageInfo, hql, objectArray);
+		return resultList;
 	}
 
 }
