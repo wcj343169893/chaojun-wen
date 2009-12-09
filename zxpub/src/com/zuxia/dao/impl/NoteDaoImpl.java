@@ -7,6 +7,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.zuxia.common.PageInfo;
+import com.zuxia.common.PageSearchUtil;
 import com.zuxia.dao.INoteDao;
 import com.zuxia.entity.Note;
 
@@ -110,6 +112,16 @@ public class NoteDaoImpl extends HibernateDaoSupport implements INoteDao {
 			count = Integer.parseInt(obj.toString());
 		}
 		return count;
+	}
+
+	@Override
+	public List<Note> getNotes(int moduleCd, int childModuleCd,
+			PageInfo pageInfo) {
+		Session session = this.getSession();
+		String hql = "from Note note where note.module.moduleCd=? and note.childModule.childModuleCd=?";
+		Object[] objectArray = new Object[] { moduleCd, childModuleCd };
+		List pageList = PageSearchUtil.getPageList(session, pageInfo, hql, objectArray);
+		return pageList;
 	}
 
 }

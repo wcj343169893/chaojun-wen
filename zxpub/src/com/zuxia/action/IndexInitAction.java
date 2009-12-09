@@ -6,6 +6,11 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.zuxia.service.IModuleService;
 
 public class IndexInitAction extends ActionSupport {
+	/**
+	 * serialVersionUID Ù–‘∏≈ ˆ
+	 * 
+	 */
+	private static final long serialVersionUID = 6097902945696632625L;
 	private IModuleService moduleService;
 
 	/**

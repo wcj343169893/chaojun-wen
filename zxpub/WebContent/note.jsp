@@ -85,13 +85,13 @@
 			</iframe>
 			<!-- *************网站导航地图************* -->
 			<div class="wrap">
-				<FORM name=modactions method=post>
+				<FORM name=modactions action="goPageNote.do" method=post>
 					<DIV class=pages_btns>
-						<div class=pages>
-							第1/1页『首页』 『上一页』『下一页』『尾页』『定价』
+						<div>
+							第${noteDetailsPageInfo.currentPage }/${noteDetailsPageInfo.pageCount }页『<a href="firstPageNote.do">首页</a>』 『<a href="backPageNote.do">上一页</a>』『<a href="nextPageNote.do">下一页</a>』『<a href="lastPageNote.do">尾页</a>』
 							<input type="text"
-								style="width: 20px; border: 1px solid #999999;" />
-							<input type="button"
+								style="width: 20px; border: 1px solid #999999;" name="gotoPage"/>
+							<input type="submit"
 								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
 								value="GO" />
 						</div>
@@ -99,12 +99,13 @@
 						<SPAN class=replybtn><a href="javascript:show()"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
 						</c:if>
 					</DIV>
+				</FORM>
 					<INPUT type=hidden value=6b487188 name=formhash>
 					<DIV class="mainbox viewthread">
 						<div id="div01" style="background-color: #83B733; width: 100%">
 							<div id="01" style="float: left; width: 100%">
 								<h1>
-								<c:out value="${requestScope.note.title }" />	
+								<c:out value="${noteDetailsDTO.note.title }" />	
 								</h1>
 							</div>
 						</div>
@@ -115,23 +116,23 @@
 									<TD class=postauthor>
 										<CITE><A class=dropmenu id=userinfo1556509
 											onmouseover=showMenu(this.id)
-											href="http://bbs.thec.cn/space.php?uid=77624"><c:out value="${requestScope.note.user.userName }" />	</A>
+											href="http://bbs.thec.cn/space.php?uid=77624"><c:out value="${noteDetailsDTO.note.user.userName }" />	</A>
 										</CITE>
 										<DIV class=avatar>
-											<img height=95 alt="" src="head/${requestScope.note.user.photoPath }" width=95 border=0>
+											<img height=95 alt="" src="head/${noteDetailsDTO.note.user.photoPath }" width=95 border=0>
 										</DIV>
 										<P>
 											<EM>版主</EM>
 										</P>
 										<P class=customstatus>
-											<c:out value="${requestScope.note.module.user.userName }" />
+											<c:out value="${noteDetailsDTO.note.module.user.userName }" />
 										</P>
 										<DL class=profile>
 											<DT>
 												UID
 											</DT>
 											<DD>
-												${requestScope.note.user.userCd }&nbsp;
+												${noteDetailsDTO.note.user.userCd }&nbsp;
 											</DD>
 											<DT>
 												帖子
@@ -149,19 +150,19 @@
 												注册时间
 											</DT>
 											<DD>
-												${requestScope.note.user.registDate }&nbsp;
+												${noteDetailsDTO.note.user.registDate }&nbsp;
 											</DD>
 											<DT>
 												最后登录
 											</DT>
 											<DD>
-												${requestScope.note.user.lastLoginDate }&nbsp;
+												${noteDetailsDTO.note.user.lastLoginDate }&nbsp;
 											</DD>
 										</DL>
 									</TD>
 									<TD class=postcontent>
 										<DIV class=postinfo>
-										<fmt:formatDate value="${requestScope.note.publishDate}" var="pd" pattern="yyyy-MM-dd HH:mm:ss"/>
+										<fmt:formatDate value="${noteDetailsDTO.note.publishDate}" var="pd" pattern="yyyy-MM-dd HH:mm:ss"/>
 											<STRONG id=postnum1556661 title=复制帖子链接到剪贴板
 												onclick="setcopy('http://bbs.thec.cn/viewthread.php?tid=382348&amp;page=1#pid1556661', '帖子链接已经复制到剪贴板')"></STRONG>
 											发表于 ${pd }&nbsp;
@@ -171,7 +172,7 @@
 											<DIV id=ad_thread3_0></DIV>
 											<DIV id=ad_thread4_0></DIV>
 											<H2>
-												<c:out value="${requestScope.note.title }" />
+												<c:out value="${noteDetailsDTO.note.title }" />
 											</H2>
 											<DIV class=t_msgfont id=postmessage_1556509>
 												<c:out escapeXml="false" value="${requestScope.note.content }" />
@@ -207,8 +208,8 @@
 									<TD class=postcontent>
 										<DIV class=postactions>
 											<DIV id=ad_thread1_0>
-												<c:if test="${users.userName==requestScope.note.user.userName}">
-													<a href="editInitNote.do?noteCd=${requestScope.note.noteCd }">修改</a>&nbsp;<a href="deleteNote.do?noteCd=${requestScope.note.noteCd }">删除</a>
+												<c:if test="${users.userName==noteDetailsDTO.note.user.userName}">
+													<a href="editInitNote.do?noteCd=${noteDetailsDTO.note.noteCd }">修改</a>&nbsp;<a href="deleteNote.do?noteCd=${noteDetailsDTO.note.noteCd }">删除</a>
 												</c:if>
 											</DIV>
 										</DIV>
@@ -217,7 +218,7 @@
 							</TBODY>
 						</TABLE>
 					</DIV>
-					<c:forEach items="${requestScope.note.fellowNote }" var="fellowNote">
+					<c:forEach items="${noteDetailsDTO.fellowNotes }" var="fellowNote">
 					<DIV class="mainbox viewthread">
 						<TABLE id=pid1556661 cellSpacing=0 cellPadding=0
 							summary=pid1556661>
@@ -331,20 +332,27 @@
 					</DIV>
 </c:forEach>
 					<DIV class=pages_btns>
-						<div style="width: 800px; height: 30px;">
-
-							第1/1页『首页』 『上一页』『下一页』『尾页』『定价』
-							<input type="text"
-								style="width: 20px; border: 1px solid #999999;" />
-							<input type="button"
-								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
-								value="GO" />
-						</div>
+						<div class="wrap">
+							<FORM name=modactions action="goPageNote.do" method=post>
+								<DIV class=pages_btns>
+									<div>
+										第${noteDetailsPageInfo.currentPage }/${noteDetailsPageInfo.pageCount }页『<a href="firstPageNote.do">首页</a>』 『<a href="backPageNote.do">上一页</a>』『<a href="nextPageNote.do">下一页</a>』『<a href="lastPageNote.do">尾页</a>』
+										<input type="text"
+											style="width: 20px; border: 1px solid #999999;" name="gotoPage"/>
+										<input type="submit"
+											style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
+											value="GO" />
+									</div>
+									<c:if test="${!empty users}">
+									<SPAN class=replybtn><a href="javascript:show()"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
+									</c:if>
+								</DIV>
+							</FORM>
 						<c:if test="${!empty users}">
 						<SPAN class=replybtn><a href="javascript:show()"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
 						</c:if>
 					</DIV>
-				</FORM>
+			
 			</div>
 		</div>
 		

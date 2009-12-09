@@ -2,6 +2,7 @@ package com.zuxia.dao;
 
 import java.util.List;
 
+import com.zuxia.common.PageInfo;
 import com.zuxia.entity.FellowNote;
 
 public interface IFellowNoteDao {
@@ -20,5 +21,15 @@ public interface IFellowNoteDao {
 	public long getFellowNoteCount(int noteCd);
 
 	public long getFellowNoteCount(int moduleCd, int childModuleCd);
-	public List<FellowNote> getFellowNotes(int noteCd,int page);
+
+	public List<FellowNote> getFellowNotes(int noteCd, int page);
+
+	/**
+	 * getFellowNotes ∑÷“≥œ‘ æ
+	 * 
+	 * @param noteCd
+	 * @param pageInfo
+	 * @return
+	 */
+	public List<FellowNote> getFellowNotes(int noteCd, PageInfo pageInfo);
 }

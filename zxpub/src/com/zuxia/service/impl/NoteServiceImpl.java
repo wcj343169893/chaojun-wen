@@ -3,9 +3,11 @@ package com.zuxia.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.zuxia.common.PageInfo;
 import com.zuxia.dao.IFellowNoteDao;
 import com.zuxia.dao.INoteDao;
 import com.zuxia.dto.NoteDTO;
+import com.zuxia.dto.NoteDetailsDTO;
 import com.zuxia.entity.ChildModule;
 import com.zuxia.entity.Module;
 import com.zuxia.entity.Note;
@@ -114,9 +116,9 @@ public class NoteServiceImpl implements INoteService {
 	}
 
 	@Override
-	public List<NoteDTO> getNoteDTOs(int moduleCd, int childModuleCd, int page) {
+	public List<NoteDTO> getNoteDTOs(int moduleCd, int childModuleCd,PageInfo pageInfo) {
 		List<NoteDTO> noteDTOs = new ArrayList<NoteDTO>();
-		List<Note> notes = noteDao.getNotes(moduleCd, childModuleCd, page);
+		List<Note> notes = noteDao.getNotes(moduleCd, childModuleCd, pageInfo);
 		for (Note note : notes) {
 			NoteDTO noteDTO = new NoteDTO();
 			noteDTO.setNote(note);
@@ -133,5 +135,19 @@ public class NoteServiceImpl implements INoteService {
 	public Note getOneNote(int noteCd, int page) {
 		// ´ýÍê³É
 		return getOneNote(noteCd);
+	}
+
+	@Override
+	public NoteDetailsDTO getNoteDetailsDTO(int noteCd, PageInfo pageInfo) {
+		NoteDetailsDTO noteDetailsDTO = new NoteDetailsDTO();
+		noteDetailsDTO.setNote(noteDao.getNoteByCd(noteCd));
+		noteDetailsDTO.setFellowNotes(fellowNoteDao.getFellowNotes(noteCd,
+				pageInfo));
+		return noteDetailsDTO;
+	}
+
+	@Override
+	public boolean editNote(Note note) {
+		return noteDao.updateNote(note);
 	}
 }

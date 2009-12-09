@@ -23,14 +23,16 @@
 			<!-- *************网站导航地图************* -->
 			<div class="wrap">
 				<DIV class=pages_btns>
-					<DIV class=pages >
-						&nbsp;第1/1页&nbsp;&nbsp;『首页』&nbsp;&nbsp;
-						『<span onclick="alert('上一页')">上一页</span>』&nbsp;&nbsp;『<span>下一页</span>』&nbsp;&nbsp;『尾页』&nbsp;&nbsp;
-						<input type="text" style="width: 20px" />
-						<input type="button"
+				<form action="noteBrowser!goPage.do" method="post">
+					<DIV>
+						&nbsp;第${noteBrowsePageInfo.currentPage }/${noteBrowsePageInfo.pageCount }页&nbsp;&nbsp;『<a href="noteBrowser!firstPage.do">首页</a>』&nbsp;&nbsp;
+						『<a href="noteBrowser!backPage.do">上一页</a>』&nbsp;&nbsp;『<a href="noteBrowser!nextPage.do">下一页</a>』&nbsp;&nbsp;『<a href="noteBrowser!lastPage.do">尾页</a>』&nbsp;&nbsp;
+						<input type="text" style="width: 20px" name="gotoPage"/>
+						<input type="submit"
 								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
 								value="GO" />
 					</DIV>
+					</form>
 					<c:if test="${!empty users}">
 					<SPAN class=postbtn id=newspecial
 						onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu(this.id)"><A
@@ -89,7 +91,7 @@
 									</TD>
 									<TH>
 										<A
-											href="showNote.do?noteCd=${noteDTO.note.noteCd}"><c:out value="${noteDTO.note.title}" /></A>
+											href="noteDetailInit.do?noteCd=${noteDTO.note.noteCd}"><c:out value="${noteDTO.note.title}" /></A>
 									</TH>
 									<TD class=author>
 										<CITE><A
@@ -103,7 +105,7 @@
 									<TD class=lastpost>
 									<c:choose>
 										<c:when test="${!empty noteDTO.lastFellowNote}">
-												<CITE><A href="showNote.do?noteCd=${noteDTO.note.noteCd}">${fn:substring(noteDTO.lastFellowNote.flwContent,0,10) }</A>......<br/>
+												<CITE><A href="noteDetailInit.do?noteCd=${noteDTO.note.noteCd}">${fn:substring(noteDTO.lastFellowNote.flwContent,0,10) }</A>......<br/>
 												${noteDTO.lastFellowNote.publishDate }</CITE>
 										</c:when>
 										<c:otherwise>
@@ -118,12 +120,16 @@
 					</FORM>
 				</DIV>
 				<DIV class=pages_btns>
-					<DIV class=pages>
-						&nbsp;第1/1页&nbsp;&nbsp;『首页』&nbsp;&nbsp;
-						『上一页』&nbsp;&nbsp;『下一页』&nbsp;&nbsp;『尾页』&nbsp;&nbsp;
-						<input type="text" style="width: 20px" />
-						&nbsp;&nbsp;GO&nbsp;
+					<form action="noteBrowser!goPage.do" method="post">
+					<DIV>
+						&nbsp;第${noteBrowsePageInfo.currentPage }/${noteBrowsePageInfo.pageCount }页&nbsp;&nbsp;『<a href="noteBrowser!firstPage.do">首页</a>』&nbsp;&nbsp;
+						『<a href="noteBrowser!backPage.do">上一页</a>』&nbsp;&nbsp;『<a href="noteBrowser!nextPage.do">下一页</a>』&nbsp;&nbsp;『<a href="noteBrowser!lastPage.do">尾页</a>』&nbsp;&nbsp;
+						<input type="text" style="width: 20px" name="gotoPage"/>
+						<input type="submit"
+								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
+								value="GO" />
 					</DIV>
+					</form>
 						<c:if test="${!empty users}">
 					<SPAN class=postbtn id=newspecial
 						onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu(this.id)"><A

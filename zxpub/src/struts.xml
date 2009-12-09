@@ -32,7 +32,7 @@
 			<result name="deleteerror" type="redirectAction">indexInit</result>
 			<result name="editInit">/editNote.jsp</result>
 		</action>
-		<action name="noteInit" class="noteInitAction">
+		<action name="noteBrowseInit" class="noteBrowseInitAction">
 			<result name="success">/module.jsp</result>
 		</action>
 		<!-- 生成验证码 -->
@@ -63,6 +63,12 @@
 		</action>
 		<action name="userDetailInit" class="userDetailInitAction">
 			<result name="success">/userDetails.jsp</result>
+		</action>
+		<action name="noteDetailInit" class="noteDetailInitAction">
+			<result name="success">/note.jsp</result>
+		</action>
+		<action name="noteBrowser" class="noteBrowserAction">
+			<result name="success">/module.jsp</result>
 		</action>
 	</package>
 </struts>
