@@ -20,4 +20,5 @@ public interface IFellowNoteDao {
 	public long getFellowNoteCount(int noteCd);
 
 	public long getFellowNoteCount(int moduleCd, int childModuleCd);
+	public List<FellowNote> getFellowNotes(int noteCd,int page);
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>分割条js</title>
+</head>
+<script language="javascript">
+/*鼠标移动到分割条上*/
+function over()
+{
+ //该函数用于改变鼠标的样式，未实现
+}
+function $(_sId)
+{
+ return document.getElementById(_sId);
+}
+function moveStart (event, _sId){
+  var oObj = $(_sId);
+  oObj.onmousemove = mousemove;
+  oObj.onmouseup = mouseup;
+  oObj.setCapture ? oObj.setCapture() : function(){};
+  oEvent = window.event ? window.event : event;
+  var dragData = {x : oEvent.clientX, y : oEvent.clientY};//记录鼠标的起始点坐标
+  var backData = {x : parseInt(oObj.style.top), y : parseInt(oObj.style.left)};//记录控件的起始位置
+
+function mousemove(){
+   var oEvent = window.event ? window.event : event;
+   var iTop = oEvent.clientY - dragData["y"] + parseInt(oObj.style.top);
+   oObj.style.top = iTop;//确定分割条的位置
+   /*
+     下面开始确定上下框的尺寸以及位置
+   */   
+   var a1=$("a1");
+   var a2=$("a2");
+   //首先要得到鼠标移动的量
+   var iTopx=oEvent.clientY - dragData["y"];
+   //控制上部分的控件尺寸
+   a1.style.height=parseInt(a1.style.height)+iTopx;
+   //现在需要控制下部分控件的位置以及尺寸，具体的办法是：
+   //1、控件上下移动；2、控件尺寸增减
+   a2.style.top=parseInt(a2.style.top)+iTopx;
+   a2.style.height=parseInt(a2.style.height)-iTopx;
+   //更改鼠标的坐标
+   dragData = {x: oEvent.clientX, y: oEvent.clientY};   
+  }
+  
+function mouseup(){
+   var oEvent = window.event ? window.event : event;
+   oObj.onmousemove = null;//释放事件，非常有用
+   oObj.onmouseup = null;//释放事件，非常有用
+/*下面的语句用于释放鼠标捕获的事件，由于以上的mouseMove和mouseUp事件是在程序中动态赋予的，所以在使用结束以后要释放捕获的事件，否则设计的所有的控件都将获得原函数的属性！拿这个程序来说就是，开始只有分割条才有上下移动的功能，但是在monseup函数中如果不执行该语句，那么上下的两个框都将获得这个上下移动的功能！这个很重要～～～*/
+   oObj.releaseCapture ? oObj.releaseCapture() : function(){};
+  }
+ } 
+</script>
+<body>
+  <iframe id="a2" style="position:absolute;height:258px;background-color:#CCCCCC;width:1000px;top:252px;left:13px;" src="head.jsp">  </iframe>
+
+  <hr align="left" width="1000"  id="fgt" style="position:absolute; top:242px; left:15px; height:5px; background-color: #000000; layer-background-color: #000000; border: 1px none #000000; width: 1000px;" onmousedown="moveStart(event,'fgt');" name="fgt"/>
+  
+    <iframe id="a1" style="position:absolute;height:223px;width:1000px;top:11px;left:14px;" src="cauda.jsp">  </iframe>
+</body>
+</html>

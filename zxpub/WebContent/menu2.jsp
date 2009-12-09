@@ -4,47 +4,23 @@
 <html>
 <head>
 <title>²Ëµ¥</title>
-<script src="menu.js">
+<script type="text/javascript" src="js/jquery-1[1].2.1.pack.js"></script>
+<script type="text/javascript">
+	function mouse_x(){
+		 var oEvent = window.event ? window.event : event;
+		  var iTopx=oEvent.clientX;
+		alert("X"+iTopx);
+		}
+	function mouse_y(){
+		 var oEvent = window.event ? window.event : event;
+		  var iTopx=oEvent.clientY;
+		alert("Y"+iTopx);
+		}
 </script>
-	
-<style>
-body{
-width: 1000px;
-}
-
-*{
-font-size: 12px;
-text-decoration: none;
-}
-a:visited{
-color: blue;
-}
-
-a:hover{
-color: red;
-}
-
-#menu {
-	width: 100%;
-	border: 1px dashed #ccc;
-	margin-bottom: 10px;
-}
-
-#menu_list {
-	width: 30%;
-	float: left;
-	border: 1px dashed #ccc;
-}
-
-#content_div {
-	width: 69%;
-	float: right;
-	border: 1px dashed #ccc;
-}
-</style>
 </head>
 <body>
-<div id="menu_list"></div>
-<div id="content_div">µã»÷×ó±ß¼ÓÔØ</div>
+<div
+	style="background-color: red; height: 150; width: 150px; cursor: pointer"
+	id="m"></div>
 </body>
 </html>

@@ -97,4 +97,16 @@ public class FellowNoteDaoImpl extends HibernateDaoSupport implements
 		return 0;
 	}
 
+	@Override
+	public List<FellowNote> getFellowNotes(int noteCd, int page) {
+		Session session = this.getSession();
+		String hql = "from FellowNote fellowNote where fellowNote.note.noteCd=:noteCd";
+		Query query = session.createQuery(hql);
+		query.setParameter("noteCd", noteCd);
+		query.setFirstResult((page - 1) * 10);
+		query.setMaxResults(10);
+		List<FellowNote> fellowNotes = query.list();
+		return fellowNotes;
+	}
+
 }

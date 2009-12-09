@@ -9,9 +9,6 @@
 <title>注册</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/style_10.css" />
-	<style type="text/css">
-    #large{position:absolute;display:none;z-index:999;}
-	</style>
 	<script src="${pageContext.request.contextPath}/js/common.js"
 	type="text/javascript"></script>
 <script type="text/javascript"

@@ -23,11 +23,13 @@
 			<!-- *************网站导航地图************* -->
 			<div class="wrap">
 				<DIV class=pages_btns>
-					<DIV class=pages>
+					<DIV class=pages >
 						&nbsp;第1/1页&nbsp;&nbsp;『首页』&nbsp;&nbsp;
-						『上一页』&nbsp;&nbsp;『下一页』&nbsp;&nbsp;『尾页』&nbsp;&nbsp;
+						『<span onclick="alert('上一页')">上一页</span>』&nbsp;&nbsp;『<span>下一页</span>』&nbsp;&nbsp;『尾页』&nbsp;&nbsp;
 						<input type="text" style="width: 20px" />
-						&nbsp;&nbsp;GO&nbsp;
+						<input type="button"
+								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
+								value="GO" />
 					</DIV>
 					<c:if test="${!empty users}">
 					<SPAN class=postbtn id=newspecial

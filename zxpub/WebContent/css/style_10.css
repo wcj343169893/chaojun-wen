@@ -361,6 +361,9 @@ TABLE {
 .pages {
 	BORDER-RIGHT: #d1e7a9 1px solid; BORDER-TOP: #d1e7a9 1px solid; BACKGROUND: #f7f7f7; FLOAT: left; OVERFLOW: hidden; BORDER-LEFT: #d1e7a9 1px solid; COLOR: #000000; LINE-HEIGHT: 26px; BORDER-BOTTOM: #d1e7a9 1px solid; HEIGHT: 24px
 }
+.pages span{
+		cursor: pointer
+	}
 .threadflow {
 	BORDER-RIGHT: #d1e7a9 1px solid; BORDER-TOP: #d1e7a9 1px solid; BACKGROUND: #f7f7f7; FLOAT: left; OVERFLOW: hidden; BORDER-LEFT: #d1e7a9 1px solid; COLOR: #000000; LINE-HEIGHT: 26px; BORDER-BOTTOM: #d1e7a9 1px solid; HEIGHT: 24px
 }

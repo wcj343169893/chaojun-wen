@@ -26,6 +26,7 @@ public class NoteAction extends ActionSupport {
 	private AddNoteForm addNoteForm;
 	private EditNoteForm editNoteForm;
 	private int noteCd;
+	private int page;
 
 	/**
 	 * editNoteForm属性的get方法
@@ -108,6 +109,25 @@ public class NoteAction extends ActionSupport {
 	}
 
 	/**
+	 * page属性的get方法
+	 * 
+	 * @return the page
+	 */
+	public int getPage() {
+		return page;
+	}
+
+	/**
+	 * page属性的set方法
+	 * 
+	 * @param page
+	 *            the page to set
+	 */
+	public void setPage(int page) {
+		this.page = page;
+	}
+
+	/**
 	 * addNote方法概述
 	 * 
 	 *增加帖子
@@ -142,7 +162,7 @@ public class NoteAction extends ActionSupport {
 		if (addNoteForm.getTitle() != "" && addNoteForm.getContent() != "") {
 			HttpSession session = ServletActionContext.getRequest()
 					.getSession();
-			flag=noteService.editNote(editNoteForm, (User) session
+			flag = noteService.editNote(editNoteForm, (User) session
 					.getAttribute("users"));
 		}
 		if (!flag) {
@@ -184,7 +204,7 @@ public class NoteAction extends ActionSupport {
 	 */
 	public String show() throws Exception {
 		ServletActionContext.getRequest().setAttribute("note",
-				noteService.getOneNote(noteCd));
+				noteService.getOneNote(noteCd, page));
 		return "showNote";
 	}
 }
