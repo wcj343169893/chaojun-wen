@@ -128,4 +128,10 @@ public class NoteServiceImpl implements INoteService {
 		}
 		return noteDTOs;
 	}
+
+	@Override
+	public Note getOneNote(int noteCd, int page) {
+		// ´ýÍê³É
+		return getOneNote(noteCd);
+	}
 }

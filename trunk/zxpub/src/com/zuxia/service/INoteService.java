@@ -27,6 +27,8 @@ public interface INoteService {
 	 */
 	public Note getOneNote(int noteCd);
 
+	public Note getOneNote(int noteCd, int page);
+
 	/**
 	 * delteNote É¾³ý
 	 * 
@@ -54,5 +56,5 @@ public interface INoteService {
 	 *            ×Ó°æ¿éCd
 	 * @return
 	 */
-	public List<NoteDTO> getNoteDTOs(int moduleCd, int childModuleCd,int page);
+	public List<NoteDTO> getNoteDTOs(int moduleCd, int childModuleCd, int page);
 }

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script language="javascript">
+  function $(_sId){return document.getElementById(_sId);}
+
+function moveStart (event, _sId){
+  var oObj = $(_sId);
+  oObj.onmousemove = mousemove;
+  oObj.onmouseup = mouseup;
+  oObj.setCapture ? oObj.setCapture() : function(){};
+  oEvent = window.event ? window.event : event;//获取鼠标移动事件
+  var dragData = {x : oEvent.clientX, y : oEvent.clientY};//记录鼠标的起始点坐标
+  var backData = {x : parseInt(oObj.style.top), y : parseInt(oObj.style.left)};//记录控件的起始位置
+  var middleData = {x : dragData.x - backData.y,y : dragData.y - backData.x };//记录鼠标位置与控件位置的相对值
+  $("message").innerHTML="控件:"+backData.x+"."+backData.y+"   鼠标:"+dragData.y+"."+dragData.x+"   中间:"+middleData.x+"."+middleData.y;
+function mousemove(){
+   var oEvent = window.event ? window.event : event;
+   var iLeft = oEvent.clientX - dragData["x"] + parseInt(oObj.style.left);
+   var iTop = oEvent.clientY - dragData["y"] + parseInt(oObj.style.top);
+   oObj.style.left = iLeft;
+   oObj.style.top = iTop;
+   dragData = {x: oEvent.clientX, y: oEvent.clientY};   
+  }
+  
+function mouseup(){
+   var oEvent = window.event ? window.event : event;
+   oObj.onmousemove = null;
+   oObj.onmouseup = null;
+   if(oEvent.clientX < 1 || oEvent.clientY < 1 || oEvent.clientX > document.body.clientWidth || oEvent.clientY >     
+
+document.body.clientHeight){
+     oObj.style.top = dragData.y-middleData.y;//构造控件最终的X坐标
+     oObj.style.left = dragData.x-middleData.x;//构造控件最终的Y坐标
+   }
+   oObj.releaseCapture ? oObj.releaseCapture() : function(){};
+  }
+ } 
+ 
+ /*
+ 使用JS动态创建元素（此例创建的DIV，其他元素的创建方式大同小异）
+ */
+ function createEle()
+ {
+  var div_box = document.createElement("DIV");
+  div_box.id = "box";
+  div_box.style.position="absolute";
+  div_box.style.top=100;
+  div_box.style.left=100;
+ div_box.style.width=100;
+  div_box.style.height=100;
+  div_box.style.background = "#FFFF00";
+  div_box.style.visibility = "visible";
+  div_box.innerHTML="test";
+  document.body.appendChild(div_box);//将创建好的元素添加到页面中
+ }
+</script>
+<style type="text/css">
+	div{
+		cursor: move;
+	}
+</style>
+</head>
+<body>
+<div id="mov" style="position:absolute;height:50px;width:300px;background-color:#FF33ff;top:162px;left:35px;" 
+onMouseDown="javascript:moveStart(event,'mov');"></div>
+
+<div style="position:absolute;height:101px;background-color:#CCCCCC;width:101px;top:31px;left:317px;" id="textID" onMouseDown="javascript:moveStart(event,'textID');"></div>
+
+<p>
+  <input name="text" type="text" id="rr" style="position:absolute; width:101px; top:74px; left:10px; height: 22px;" onMouseDown="moveStart(event,'rr');">
+</p><p>
+  <input name="button" type="button" id="aa" onClick="createEle();" value="创建可移动的div" >
+</p>
+<span id="message"></span>
+</body>
+</html>
+
