@@ -18,7 +18,7 @@
 			</iframe>
 			<!-- *************头************* -->
 			<!-- *************网站导航地图************* -->
-			<iframe width=100% height=48px src="navigation.jsp" frameborder=0>
+			<iframe width=100% height=48px src="navigation.jsp" frameborder=0 scrolling="no">
 			</iframe>
 			<!-- *************网站导航地图************* -->
 			<div class="wrap">
@@ -31,8 +31,6 @@
 						<input type="submit"
 								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
 								value="GO" />
-					</DIV>
-					</form>
 					<c:if test="${!empty users}">
 					<SPAN class=postbtn id=newspecial
 						onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu(this.id)"><A
@@ -40,6 +38,8 @@
 						href="addNote.jsp?mCd=${param.mCd }&cmCd=${param.cmCd }"><IMG
 								alt=发布新贴 src="img/newtopic.gif">
 					</A> </SPAN></c:if>
+					</DIV>
+					</form>
 				</DIV>
 				<DIV class="mainbox threadlist">
 					<H1>
@@ -128,8 +128,6 @@
 						<input type="submit"
 								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
 								value="GO" />
-					</DIV>
-					</form>
 						<c:if test="${!empty users}">
 					<SPAN class=postbtn id=newspecial
 						onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu(this.id)"><A
@@ -137,6 +135,8 @@
 						href="addNote.jsp?mCd=${param.mCd }&cmCd=${param.cmCd }"><IMG
 								alt=发布新贴 src="img/newtopic.gif">
 					</A> </SPAN></c:if>
+					</DIV>
+					</form>
 				</DIV>
 			</div>
 		</div>

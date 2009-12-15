@@ -14,7 +14,7 @@
 <DIV class=wrap><!-- *************头************* --> <iframe
 	width=100% height=109px src="head.jsp" frameborder=0> </iframe> <!-- *************头************* -->
 <!-- *************网站导航地图************* --> <iframe width=100% height=48px
-	src="navigation.jsp" frameborder=0> </iframe> <!-- *************网站导航地图************* -->
+	src="navigation.jsp" frameborder=0 scrolling="no"> </iframe> <!-- *************网站导航地图************* -->
 <DIV id=ad_text></DIV>
 <TABLE class=portalbox cellSpacing=1 cellPadding=0 summary=HeadBox>
 	<TBODY>

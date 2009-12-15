@@ -1,6 +1,7 @@
 package com.zuxia.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.zuxia.common.PageInfo;
@@ -82,6 +83,7 @@ public class NoteServiceImpl implements INoteService {
 	public boolean addNote(AddNoteForm addNoteForm, User user) {
 		Note note = new Note();
 		note.setUser(user);
+		note.setPublishDate(new Date());
 		note.setTitle(addNoteForm.getTitle());
 		note.setContent(addNoteForm.getContent());
 		Module module = new Module();
