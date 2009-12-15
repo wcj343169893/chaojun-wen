@@ -181,7 +181,6 @@ public class NoteAction extends ActionSupport {
 		return "showNote";
 	}
 
-
 	public String backPage() throws Exception {
 		anyOnePage(-1, EPage.back);
 		return "showNote";

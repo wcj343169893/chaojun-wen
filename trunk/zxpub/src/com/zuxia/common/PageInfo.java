@@ -5,26 +5,26 @@ import java.io.Serializable;
 public class PageInfo implements Serializable {
 	private static final long serialVersionUID = 7126509565385142115L;
 	/**
-	 * recordCount 记录总数
+	 * recordCount 记录总数 默认为0
 	 * 
 	 */
-	private int recordCount;
+	private int recordCount = 0;
 	/**
-	 * pageSize 每页面最大记录数(需要设置)
+	 * pageSize 每页面最大记录数(需要设置) 默认为10条
 	 * 
 	 */
-	private int pageSize;
+	private int pageSize = 10;
 	/**
-	 * pageCount 总页数
+	 * pageCount 总页数 默认为1条
 	 * 
 	 */
-	private int pageCount;
+	private int pageCount = 1;
 
 	/**
-	 * currentPage 当前是第几页(需要设置)
+	 * currentPage 当前是第几页(需要设置) 默认为1条
 	 * 
 	 */
-	private int currentPage;
+	private int currentPage = 1;
 
 	/**
 	 * startRecord 开始记录数
@@ -42,7 +42,8 @@ public class PageInfo implements Serializable {
 	}
 
 	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
+		this.currentPage = currentPage<=this.pageCount?currentPage:this.pageCount;//判断，如果请求的页数大于总页数，则设置为总页数
+		//之前则会出现10/2，请求页码大于总页码
 		compute();
 	}
 
@@ -93,7 +94,7 @@ public class PageInfo implements Serializable {
 
 	private void compute() {
 		if (recordCount == 0 || pageSize == 0 || currentPage == 0) {
-			pageCount = 0;
+			pageCount = 1;// 如果没有跟帖，0-->会出现1/0,会出现 1-->1/1
 			startRecord = 0;
 			endRecrod = 0;
 		} else {

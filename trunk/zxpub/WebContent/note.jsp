@@ -13,6 +13,11 @@
 <script src="js/common.js" type="text/javascript"></script>
 <script type="text/javascript" src="fckeditor/fckconfig.js"></script>
 <script type="text/javascript" src="fckeditor/fckeditor.js"></script>
+<script type="text/javascript">
+	if(window.jQuery){jQuery(function(){
+		(function(){ jQuery('form#postform').bind('submit', function(event, ui){if(jQuery('textarea#posteditor_textarea').val() == ''){setTimeout(function(){window.alert('请不要回复空信息')}, 0)}});})();
+	})};
+</script>
 <style type="text/css">
 #main {
 	z-index: 0;
@@ -39,13 +44,15 @@
 	position: absolute;
 	z-index: 3;
 	left: 200px;
-	top: 200px;
+	top: 100px;
 }
 </style>
 <script type="text/javascript">
 	function show() {
+		/**设置禁止滚动条滚动**/
 		document.getElementById("middle").style.display = "block";
 		document.getElementById("show").style.display = "block";
+		
 	}
 	function show1() {
 		document.getElementById("middle").style.display = "none";
@@ -81,7 +88,7 @@
 			</iframe>
 			<!-- *************头************* -->
 			<!-- *************网站导航地图************* -->
-			<iframe width=100% height=48px src="navigation.jsp" frameborder=0>
+			<iframe width=100% height=48px src="navigation.jsp" frameborder=0 scrolling="no">
 			</iframe>
 			<!-- *************网站导航地图************* -->
 			<div class="wrap">
@@ -94,10 +101,10 @@
 							<input type="submit"
 								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
 								value="GO" />
-						</div>
 						<c:if test="${!empty users}">
 						<SPAN class=replybtn><a href="javascript:show()"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
 						</c:if>
+						</div>
 					</DIV>
 				</FORM>
 					<INPUT type=hidden value=6b487188 name=formhash>
@@ -175,7 +182,7 @@
 												<c:out value="${noteDetailsDTO.note.title }" />
 											</H2>
 											<DIV class=t_msgfont id=postmessage_1556509>
-												<c:out escapeXml="false" value="${requestScope.note.content }" />
+												<c:out escapeXml="false" value="${noteDetailsDTO.note.content }" />
 											</DIV>
 										</DIV>
 									</TD>
@@ -335,24 +342,18 @@
 						<div class="wrap">
 							<FORM name=modactions action="goPageNote.do" method=post>
 								<DIV class=pages_btns>
-									<div>
 										第${noteDetailsPageInfo.currentPage }/${noteDetailsPageInfo.pageCount }页『<a href="firstPageNote.do">首页</a>』 『<a href="backPageNote.do">上一页</a>』『<a href="nextPageNote.do">下一页</a>』『<a href="lastPageNote.do">尾页</a>』
 										<input type="text"
 											style="width: 20px; border: 1px solid #999999;" name="gotoPage"/>
 										<input type="submit"
 											style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
 											value="GO" />
-									</div>
 									<c:if test="${!empty users}">
 									<SPAN class=replybtn><a href="javascript:show()"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
 									</c:if>
 								</DIV>
 							</FORM>
-						<c:if test="${!empty users}">
-						<SPAN class=replybtn><a href="javascript:show()"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
-						</c:if>
 					</DIV>
-			
 			</div>
 		</div>
 		
@@ -380,9 +381,9 @@
 			<FORM id=postform
 				action="addfellow.do"
 				method=post onsubmit="return checkcontent()">
-				<INPUT type=hidden value="${requestScope.note.noteCd }" name="fellowNoteForm.noteCd">
-				<INPUT type=hidden value="${requestScope.note.module.moduleCd }" name="fellowNoteForm.moduleCd">
-				<INPUT type=hidden value="${requestScope.note.childModule.childModuleCd }" name="fellowNoteForm.childModuleCd">
+				<INPUT type=hidden value="${requestScope.noteDetailsDTO.note.noteCd }" name="fellowNoteForm.noteCd">
+				<INPUT type=hidden value="${requestScope.noteDetailsDTO.note.module.moduleCd }" name="fellowNoteForm.moduleCd">
+				<INPUT type=hidden value="${requestScope.noteDetailsDTO.note.childModule.childModuleCd }" name="fellowNoteForm.childModuleCd">
 				<DIV class="mainbox formbox"
 					style="border-top: none; margin-top: 0px">
 					<H1 align="left">
@@ -428,17 +429,6 @@
 												</tr>
 											</tfoot>
 										</TABLE>
-						<script type="text/javascript">
-							function checkcontent(){
-									var contents=document.getElementById("posteditor_textarea");
-									if (contents.value=="") {
-										alert("请不要回复空信息!");
-										return false;
-									} else {
-										return true;
-									}
-								}
-						</script>           
 									</DIV>
 								</TD>
 							</TR>
@@ -472,6 +462,7 @@
 				</DIV>
 
 			</FORM>
+		</div>
 		</div>
 	</body>
 </html>
