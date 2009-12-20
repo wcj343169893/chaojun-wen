@@ -2,6 +2,7 @@ package com.zuxia.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -21,8 +22,15 @@ public class ChildModuleDaoImpl extends HibernateDaoSupport implements
 
 	@Override
 	public boolean deleteChildModule(int childModuleCd) {
-		// TODO Auto-generated method stub
-		return false;
+		Session session = this.getSession();
+		boolean flag = false;
+		try {
+			session.delete(this.getChildModuleByCmCd(childModuleCd));
+			flag = true;
+		} catch (HibernateException e) {
+			flag = false;
+		}
+		return flag;
 	}
 
 	@Override
@@ -39,14 +47,28 @@ public class ChildModuleDaoImpl extends HibernateDaoSupport implements
 
 	@Override
 	public boolean insertChildModule(ChildModule childModule) {
-		// TODO Auto-generated method stub
-		return false;
+		Session session = this.getSession();
+		boolean flag = false;
+		try {
+			session.save(childModule);
+			flag = true;
+		} catch (HibernateException e) {
+			flag = false;
+		}
+		return flag;
 	}
 
 	@Override
 	public boolean updateChildModule(ChildModule childModule) {
-		// TODO Auto-generated method stub
-		return false;
+		Session session = this.getSession();
+		boolean flag = false;
+		try {
+			session.saveOrUpdate(childModule);
+			flag = true;
+		} catch (HibernateException e) {
+			flag = false;
+		}
+		return flag;
 	}
 
 	@Override

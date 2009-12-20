@@ -134,9 +134,13 @@ public class ModuleServiceImpl implements IModuleService {
 				ChileModuleDTO childModuleDTO = new ChileModuleDTO();
 				childModuleDTO.setChildModule(childModule);
 				childModuleDTO.setNoteCount(notesize);
-				childModuleDTO.setFellowNoteCount(fellowNoteDao.getFellowNoteCount(module.getModuleCd(), childModule.getChildModuleCd()));
+				childModuleDTO.setFellowNoteCount(fellowNoteDao
+						.getFellowNoteCount(module.getModuleCd(), childModule
+								.getChildModuleCd()));
 				childModuleDTO.setLastNote(noteDao.getLastNote(module
 						.getModuleCd(), childModule.getChildModuleCd()));
+				childModuleDTO.setTodayCount(noteDao
+						.getNoteCountInToday(childModule.getChildModuleCd()));
 				childModuleDTOList.add(childModuleDTO);
 			}
 			moduleDTO.setModule(module);

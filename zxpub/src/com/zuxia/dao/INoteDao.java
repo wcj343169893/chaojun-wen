@@ -45,4 +45,12 @@ public interface INoteDao {
 	 * @return
 	 */
 	public int getNoteCount(int moduleCd, int childModuleCd);
+	/**
+	 * getNoteCountInToday方法概述 今日发帖
+	 * 
+	 *
+	 * @param childModuleCd
+	 * @return
+	 */
+	public int getNoteCountInToday(int childModuleCd);
 }

@@ -28,6 +28,26 @@ public class NoteAction extends ActionSupport {
 	private AddNoteForm addNoteForm;
 	private EditNoteForm editNoteForm;
 	private int gotoPage;
+	private int noteCd;
+
+	/**
+	 * noteCd属性的get方法
+	 * 
+	 * @return the noteCd
+	 */
+	public int getNoteCd() {
+		return noteCd;
+	}
+
+	/**
+	 * noteCd属性的set方法
+	 * 
+	 * @param noteCd
+	 *            the noteCd to set
+	 */
+	public void setNoteCd(int noteCd) {
+		this.noteCd = noteCd;
+	}
 
 	/**
 	 * gotoPage属性的get方法
@@ -168,8 +188,7 @@ public class NoteAction extends ActionSupport {
 	 */
 	public String delete() throws Exception {
 		boolean flag = false;
-		flag = noteService.delteNote(Integer.valueOf(ServletActionContext
-				.getRequest().getSession().getAttribute("noteCd").toString()));
+		flag = noteService.delteNote(noteCd);
 		if (!flag) {
 			return "deleteerror";
 		}

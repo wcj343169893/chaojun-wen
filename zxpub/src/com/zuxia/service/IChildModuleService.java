@@ -14,4 +14,7 @@ public interface IChildModuleService {
 	public List<ChildModule> getChildModules();
 
 	public ChildModule getChildModulesByCmCd(int cmCd);
+	public boolean addChildModule(ChildModule childModule);
+	public boolean deleteChildModule(int cmCd);
+	public boolean updateChildModule(ChildModule childModule);
 }

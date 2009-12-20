@@ -61,4 +61,20 @@ public class ChildModuleServiceImpl implements IChildModuleService {
 
 	}
 
+	@Override
+	public boolean addChildModule(ChildModule childModule) {
+		return childModuleDao.insertChildModule(childModule);
+	}
+
+	@Override
+	public boolean deleteChildModule(int cmCd) {
+		return childModuleDao.deleteChildModule(cmCd);
+	}
+
+	@Override
+	public boolean updateChildModule(ChildModule childModule) {
+		return childModuleDao.updateChildModule(childModule);
+
+	}
+
 }

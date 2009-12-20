@@ -6,6 +6,7 @@ import com.zuxia.entity.Note;
 public class ChileModuleDTO {
 	private ChildModule childModule;
 	private long noteCount;
+	private long todayCount;// 今日帖子数
 	private long fellowNoteCount;
 	private Note lastNote;
 
@@ -26,6 +27,25 @@ public class ChileModuleDTO {
 	 */
 	public void setChildModule(ChildModule childModule) {
 		this.childModule = childModule;
+	}
+
+	/**
+	 * todayCount属性的get方法
+	 * 
+	 * @return the todayCount
+	 */
+	public long getTodayCount() {
+		return todayCount;
+	}
+
+	/**
+	 * todayCount属性的set方法
+	 * 
+	 * @param todayCount
+	 *            the todayCount to set
+	 */
+	public void setTodayCount(long todayCount) {
+		this.todayCount = todayCount;
 	}
 
 	/**

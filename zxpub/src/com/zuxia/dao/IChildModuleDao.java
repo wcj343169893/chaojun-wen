@@ -30,7 +30,7 @@ public interface IChildModuleDao {
 
 	public boolean updateChildModule(ChildModule childModule);
 
-	public boolean deleteChildModule(int mCd);
+	public boolean deleteChildModule(int cmCd);
 
 	public List<ChildModule> getChildModules();
 

@@ -9,17 +9,16 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet Filter implementation class Popedom
+ * Servlet Filter implementation class SessionFileter
  */
-public class Popedom implements Filter {
+public class SessionFileter implements Filter {
 
 	/**
 	 * Default constructor.
 	 */
-	public Popedom() {
+	public SessionFileter() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -35,8 +34,10 @@ public class Popedom implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-		HttpServletResponse re = (HttpServletResponse) response;
-		re.sendRedirect("welcome.jsp");
+		HttpServletRequest requ = (HttpServletRequest) request;
+		if (requ.getSession().getAttribute("users") == null) {
+			requ.getRequestDispatcher("welcome.jsp").forward(request, response);
+		}
 		chain.doFilter(request, response);
 	}
 

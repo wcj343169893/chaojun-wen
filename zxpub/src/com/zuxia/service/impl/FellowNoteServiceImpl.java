@@ -71,14 +71,16 @@ public class FellowNoteServiceImpl implements IFellowNoteService {
 	@Override
 	public boolean editFellowNote(EditFellowNoteForm editFellowNoteForm,
 			User user) {
-		// TODO Auto-generated method stub
-		return false;
+		FellowNote fellowNote = fellowNotedao
+				.getFellowNoteByCd(editFellowNoteForm.getFellowNoteCd());
+		fellowNote.setFlwContent(editFellowNoteForm.getContent());
+		return fellowNotedao.updateFellowNote(fellowNote);
+
 	}
 
 	@Override
 	public FellowNote getFellowNoteByCd(int fellowNoteCd) {
-		// TODO Auto-generated method stub
-		return null;
+		return fellowNotedao.getFellowNoteByCd(fellowNoteCd);
 	}
 
 	@Override

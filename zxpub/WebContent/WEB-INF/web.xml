@@ -28,6 +28,13 @@
 		<filter-name>Popedom</filter-name>
 		<filter-class>com.zuxia.fileter.Popedom</filter-class>
 	</filter>
+	<filter>
+		<description>
+		</description>
+		<display-name>SessionFileter</display-name>
+		<filter-name>SessionFileter</filter-name>
+		<filter-class>com.zuxia.fileter.SessionFileter</filter-class>
+	</filter>
 
 
 	<filter-mapping>
@@ -58,6 +65,18 @@
 		<filter-name>Popedom</filter-name>
 		<url-pattern>/userDetails.jsp</url-pattern>
 	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SessionFileter</filter-name>
+		<url-pattern>/SessionFileter</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SessionFileter</filter-name>
+		<url-pattern>/editChildModule.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SessionFileter</filter-name>
+		<url-pattern>/addChildModule.jsp</url-pattern>
+	</filter-mapping>
 	<!-- 装载sping配置文件 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -67,4 +86,12 @@
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>preRegist.jsp</welcome-file>
 	</welcome-file-list>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404error.html</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500error.html</location>
+	</error-page>
 </web-app>
