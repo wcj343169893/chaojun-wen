@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,11 +24,11 @@
 </TABLE>
 <DIV class="mainbox forumlist"><c:forEach items="${moduleDTOList}"
 	var="moduleDTO">
-	<SPAN class=headactions> <c:choose>
-		<c:when test="${users.roleCd==1}">
-			<a href="addChildModule.jsp">新增子模块</a>
-		</c:when>
-	</c:choose> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分区版主: <A class=notabs
+	<SPAN class=headactions> 
+		<c:if test="${users.roleCd==1}">
+			<a href="addChildModule.jsp?mCd=${moduleDTO.module.moduleCd }">新增子模块</a>
+		</c:if>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分区版主: <A class=notabs
 		href="userDetailInit.do?userName=${moduleDTO.module.user.userName }">${moduleDTO.module.user.userName
 	}</A> </SPAN>
 	<H3>■${moduleDTO.module.moduleName }</H3>
@@ -38,11 +39,11 @@
 				<TD class=nums>主题</TD>
 				<TD class=nums>帖数</TD>
 				<TD class=lastpost>最后发表</TD>
-				<c:choose>
-					<c:when test="${!empty users}">
+					<c:if test="${!empty users}">
+					<c:if test="${users.roleCd==1}">
 						<TD>操作</TD>
-					</c:when>
-				</c:choose>
+					</c:if>
+				</c:if>
 			</TR>
 		</THEAD>
 		<c:forEach items="${moduleDTO.childModuleDTOList}" var="childModuleDTO">
@@ -51,7 +52,7 @@
 					<TH class=new>
 					<H2><A
 						href="noteBrowseInit.do?mCd=${moduleDTO.module.moduleCd }&cmCd=${childModuleDTO.childModule.childModuleCd }&p=1">${childModuleDTO.childModule.childModuleName
-					}</A><EM> (今日: 53)</EM></H2>
+					}</A><EM> (今日: ${childModuleDTO.todayCount })</EM></H2>
 					<P>${childModuleDTO.childModule.moduleComment }</P>
 					<P class=moderators>版主: <A class=notabs
 						href="userDetailInit.do?userName=${childModuleDTO.childModule.user.userName}"><c:out
@@ -62,12 +63,12 @@
 					</TD>
 					<TD class=lastpost><c:choose>
 						<c:when test="${childModuleDTO.noteCount>0 }">
-							
+							<fmt:formatDate value="${childModuleDTO.lastNote.publishDate}" var="publishDate" pattern="yyyy-MM-dd HH:mm:ss"/>
 								<A href="noteDetailInit.do?noteCd=${childModuleDTO.lastNote.noteCd }">${childModuleDTO.lastNote.title
 								}</A>
 								<CITE>by <A
 									href="userDetailInit.do?userName=${childModuleDTO.lastNote.user.userName }">${childModuleDTO.lastNote.user.userName
-								}</A> ${childModuleDTO.lastNote.publishDate }</CITE>
+								}</A> ${publishDate }</CITE>
 						</c:when>
 						<c:otherwise>
 									此版块暂无帖子
@@ -79,8 +80,8 @@
 					</c:choose></TD>
 					<c:choose>
 						<c:when test="${users.userName==childModuleDTO.childModule.user.userName}">
-							<td><a href="子模块修改.html" target="blank">修改</a>&nbsp;&nbsp;&nbsp;
-							<a>删除</a></td>
+							<td><a href="childModule!editInit.action?cmCd=${childModuleDTO.childModule.childModuleCd }">修改</a>&nbsp;&nbsp;&nbsp;
+							<a href="childModule!delete.action?cmCd=${childModuleDTO.childModule.childModuleCd }&uCd=${users.userCd }">删除</a></td>
 						</c:when>
 						<c:otherwise>
 							<td>&nbsp;</td>

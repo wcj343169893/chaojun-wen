@@ -24,13 +24,14 @@
 			<div class="wrap">
 				<DIV class=pages_btns>
 				<form action="noteBrowser!goPage.do" method="post">
-					<DIV>
+					<SPAN style="float:left;">
 						&nbsp;第${noteBrowsePageInfo.currentPage }/${noteBrowsePageInfo.pageCount }页&nbsp;&nbsp;『<a href="noteBrowser!firstPage.do">首页</a>』&nbsp;&nbsp;
 						『<a href="noteBrowser!backPage.do">上一页</a>』&nbsp;&nbsp;『<a href="noteBrowser!nextPage.do">下一页</a>』&nbsp;&nbsp;『<a href="noteBrowser!lastPage.do">尾页</a>』&nbsp;&nbsp;
 						<input type="text" style="width: 20px" name="gotoPage"/>
 						<input type="submit"
 								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
 								value="GO" />
+								</SPAN>
 					<c:if test="${!empty users}">
 					<SPAN class=postbtn id=newspecial
 						onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu(this.id)"><A
@@ -38,7 +39,6 @@
 						href="addNote.jsp?mCd=${param.mCd }&cmCd=${param.cmCd }"><IMG
 								alt=发布新贴 src="img/newtopic.gif">
 					</A> </SPAN></c:if>
-					</DIV>
 					</form>
 				</DIV>
 				<DIV class="mainbox threadlist">
@@ -121,21 +121,21 @@
 				</DIV>
 				<DIV class=pages_btns>
 					<form action="noteBrowser!goPage.do" method="post">
-					<DIV>
+						<SPAN style="float:left;">
 						&nbsp;第${noteBrowsePageInfo.currentPage }/${noteBrowsePageInfo.pageCount }页&nbsp;&nbsp;『<a href="noteBrowser!firstPage.do">首页</a>』&nbsp;&nbsp;
 						『<a href="noteBrowser!backPage.do">上一页</a>』&nbsp;&nbsp;『<a href="noteBrowser!nextPage.do">下一页</a>』&nbsp;&nbsp;『<a href="noteBrowser!lastPage.do">尾页</a>』&nbsp;&nbsp;
 						<input type="text" style="width: 20px" name="gotoPage"/>
 						<input type="submit"
 								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
 								value="GO" />
-						<c:if test="${!empty users}">
+								</SPAN>
+					<c:if test="${!empty users}">
 					<SPAN class=postbtn id=newspecial
 						onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu(this.id)"><A
 						title=参与竞价
 						href="addNote.jsp?mCd=${param.mCd }&cmCd=${param.cmCd }"><IMG
 								alt=发布新贴 src="img/newtopic.gif">
 					</A> </SPAN></c:if>
-					</DIV>
 					</form>
 				</DIV>
 			</div>

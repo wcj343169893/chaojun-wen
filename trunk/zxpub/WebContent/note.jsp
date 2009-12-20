@@ -93,19 +93,18 @@
 			<!-- *************网站导航地图************* -->
 			<div class="wrap">
 				<FORM name=modactions action="goPageNote.do" method=post>
-					<DIV class=pages_btns>
-						<div>
+					<SPAN style="float:left;">
 							第${noteDetailsPageInfo.currentPage }/${noteDetailsPageInfo.pageCount }页『<a href="firstPageNote.do">首页</a>』 『<a href="backPageNote.do">上一页</a>』『<a href="nextPageNote.do">下一页</a>』『<a href="lastPageNote.do">尾页</a>』
 							<input type="text"
 								style="width: 20px; border: 1px solid #999999;" name="gotoPage"/>
 							<input type="submit"
 								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
 								value="GO" />
+					</span>
 						<c:if test="${!empty users}">
-						<SPAN class=replybtn><a href="javascript:show()"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
+						<SPAN style="float: right;"><a href="javascript:show()"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
 						</c:if>
-						</div>
-					</DIV>
+					
 				</FORM>
 					<INPUT type=hidden value=6b487188 name=formhash>
 					<DIV class="mainbox viewthread">
@@ -341,17 +340,17 @@
 					<DIV class=pages_btns>
 						<div class="wrap">
 							<FORM name=modactions action="goPageNote.do" method=post>
-								<DIV class=pages_btns>
-										第${noteDetailsPageInfo.currentPage }/${noteDetailsPageInfo.pageCount }页『<a href="firstPageNote.do">首页</a>』 『<a href="backPageNote.do">上一页</a>』『<a href="nextPageNote.do">下一页</a>』『<a href="lastPageNote.do">尾页</a>』
-										<input type="text"
-											style="width: 20px; border: 1px solid #999999;" name="gotoPage"/>
-										<input type="submit"
-											style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
-											value="GO" />
-									<c:if test="${!empty users}">
-									<SPAN class=replybtn><a href="javascript:show()"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
-									</c:if>
-								</DIV>
+									<SPAN style="float:left;">
+							第${noteDetailsPageInfo.currentPage }/${noteDetailsPageInfo.pageCount }页『<a href="firstPageNote.do">首页</a>』 『<a href="backPageNote.do">上一页</a>』『<a href="nextPageNote.do">下一页</a>』『<a href="lastPageNote.do">尾页</a>』
+							<input type="text"
+								style="width: 20px; border: 1px solid #999999;" name="gotoPage"/>
+							<input type="submit"
+								style="width: 26px; height: 20px; border: 0px; background-image: url(img/go.gif);"
+								value="GO" />
+							</span>
+						<c:if test="${!empty users}">
+						<SPAN style="float: right;"><a href="javascript:show()"><IMG alt="" src="img/reply.gif" border=0></a> </SPAN>
+						</c:if>
 							</FORM>
 					</DIV>
 			</div>

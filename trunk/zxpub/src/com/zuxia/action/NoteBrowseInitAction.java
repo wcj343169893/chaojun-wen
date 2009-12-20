@@ -104,7 +104,7 @@ public class NoteBrowseInitAction extends ActionSupport {
 	public String execute() throws Exception {
 		PageInfo pageInfo = new PageInfo();
 		pageInfo.setCurrentPage(1);
-		pageInfo.setPageSize(3);
+		pageInfo.setPageSize(10);
 		ServletActionContext.getRequest().getSession().setAttribute("childModuleCd", this.cmCd);
 		ServletActionContext.getRequest().getSession().setAttribute("mduleCd", this.mCd);
 		ServletActionContext.getRequest().setAttribute("noteDTOs",

@@ -125,19 +125,22 @@ public class FellowNoteAction extends ActionSupport {
 	}
 
 	public String edit() throws Exception {
-		// TODO Auto-generated method stub
-		return super.execute();
+		HttpServletRequest requst = ServletActionContext.getRequest();
+		fellowNoteService.editFellowNote(editFellowNoteForm, (User)requst.getSession().getAttribute("uses"));
+		return "success";
+
 	}
 
 	public String editInit() throws Exception {
 		HttpServletRequest requst = ServletActionContext.getRequest();
-		requst.setAttribute("fellowNote", "");
-		return super.execute();
+		requst.setAttribute("fellowNote", fellowNoteService
+				.getFellowNoteByCd(fellowNoteCd));
+		return "edit";
 	}
 
 	public String delete() throws Exception {
 		boolean flag = false;
 		flag = fellowNoteService.deleteFellowNote(fellowNoteCd);
-		return super.execute();
+		return "success";
 	}
 }

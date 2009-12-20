@@ -56,10 +56,12 @@
 			<result name="success">/index.jsp</result>
 		</action>
 		<action name="childModule" class="childModuleAction">
-			<result name="success">/module.jsp</result>
+			<result name="success" type="redirectAction">indexInit</result>
+			<result name="edit">/editChildModule.jsp</result>
 		</action>
 		<action name="*fellow" class="fellowNoteAction" method="{1}">
 			<result name="success" type="redirectAction">indexInit</result>
+			<result name="edit">/editFellowNote.jsp</result>
 		</action>
 		<action name="userDetailInit" class="userDetailInitAction">
 			<result name="success">/userDetails.jsp</result>

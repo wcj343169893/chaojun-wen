@@ -59,7 +59,15 @@ public class FellowNoteDaoImpl extends HibernateDaoSupport implements
 
 	@Override
 	public boolean updateFellowNote(FellowNote fellowNote) {
-		// TODO Auto-generated method stub
+		Session session = this.getSession();
+		boolean flag = false;
+		try {
+			session.saveOrUpdate(fellowNote);
+			flag = true;
+		} catch (HibernateException e) {
+			flag = false;
+			e.printStackTrace();
+		}
 		return false;
 	}
 

@@ -120,8 +120,31 @@ public class NoteDaoImpl extends HibernateDaoSupport implements INoteDao {
 		Session session = this.getSession();
 		String hql = "from Note note where note.module.moduleCd=? and note.childModule.childModuleCd=?";
 		Object[] objectArray = new Object[] { moduleCd, childModuleCd };
-		List pageList = PageSearchUtil.getPageList(session, pageInfo, hql, objectArray);
+		List<Note> pageList = PageSearchUtil.getPageList(session, pageInfo,
+				hql, objectArray);
 		return pageList;
+	}
+
+	@Override
+	public int getNoteCountInToday(int childModuleCd) {
+		int count = 0;
+		Session session = this.getSession();
+		String hql = "select count(*) from Note note where note.childModule.childModuleCd=:childModuleCd and PUBLISH_DATE=CURDATE()";
+		Query query = session.createQuery(hql);
+		try {
+			query.setParameter("childModuleCd", childModuleCd);
+			List<Object> obj = query.list();
+			if (obj != null && obj.size() > 0) {
+				count = Integer.parseInt(obj.get(0).toString());
+			}
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 }

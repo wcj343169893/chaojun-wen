@@ -111,6 +111,7 @@
 	</bean>
 	<bean id="childModuleAction" class="com.zuxia.action.ChildModuleAction">
 		<property name="childModuleService" ref="childModuleServiceImpl" />
+		<property name="userService" ref="userServiceImpl"/>
 	</bean>
 	<bean id="fellowNoteAction" class="com.zuxia.action.FellowNoteAction">
 		<property name="fellowNoteForm" ref="fellowNoteForm" />

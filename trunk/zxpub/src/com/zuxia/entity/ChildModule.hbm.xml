@@ -17,7 +17,7 @@
 			<column name="MODULE_COMMENT" length="100" />
 		</property>
 		<many-to-one name="user" class="com.zuxia.entity.User"
-			column="CHILD_MODULE_MASTER_CD" insert="false" update="false" fetch="select"></many-to-one>
+			column="CHILD_MODULE_MASTER_CD" update="false"></many-to-one>
 		<bag name="notes">
 			<key column="CHILD_MODULE_CD"></key>
 			<one-to-many class="com.zuxia.entity.Note" />
